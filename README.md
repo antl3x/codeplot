@@ -1,3 +1,16 @@
+![codeplot-readme](https://github.com/atcodePlot/codePlot/assets/26308297/50229d82-2f74-489a-9ab6-c4be8185247f)
+
+<div align="center">
+<a href="#-codeplot">Why</a> 
+<span> · </span>
+<a href="#">codePlot vs. Traditional Tools</a> 
+<span> · </span>
+<a href="#">Community</a> 
+<span> · </span>
+<a href="#">Discord</a>
+</div>
+
+---
 # ▱ codePlot 
 
 **tl;dr**: ▱ codePlot - an innovative, interactive canvas for dynamic, code-driven data visualization and exploration, created by [@antl3x](https://github.com/antl3x).
