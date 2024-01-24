@@ -3,21 +3,18 @@
 <div align="center">
 <a href="#-codeplot">Why</a> 
 <span> · </span>
-<a href="#">codePlot vs. Traditional Tools</a> 
-<span> · </span>
 <a href="#">Community</a> 
 <span> · </span>
 <a href="#">Discord</a>
 </div>
 
 ---
-# ▱ codePlot 
 
 **tl;dr**: ▱ codePlot - an innovative, interactive canvas for dynamic, code-driven data visualization and exploration, created by [@antl3x](https://github.com/antl3x).
 
 Welcome to the future of data visualization! codePlot bridges the gap between traditional coding environments and interactive data visualization, offering a unique canvas for your data exploration needs.
 
-## Why codePlot
+## Why
 
 Traditional IDEs like Jupyter notebooks, Spyder, or DataSpell are great for coding but fall short in dynamic data visualization. codePlot fills this gap. It's not just a tool; it's a revolution in visualizing data, offering a spatial, flexible canvas that complements your existing coding workflow.
 
