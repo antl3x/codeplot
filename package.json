@@ -1,0 +1,15 @@
+{
+  "name": "codePlot",
+  "version": "0.0.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Antonio Moura (@antl3x)",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "yargs": "^17.7.2",
+    "zx": "^7.2.3"
+  }
+}

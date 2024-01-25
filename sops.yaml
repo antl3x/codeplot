@@ -1,0 +1,12 @@
+creation_rules:
+  - filename_regex: '*\@production\.*'
+    pgp: 'D71BDEA0B4441BABAE20BB8AAC05960E659CF71E'
+
+  - filename_regex: '*\@sandbox\.*'
+    pgp: 'F1696049F660B7488734AA3426012C7BBAEB1BF4'
+
+  - filename_regex: '*\@localhost\.*'
+    pgp: '9A94985A359D5A6FED49DBD967840EEBB8B97155'
+
+  # Fallback rule for all other files
+  - pgp: '9A94985A359D5A6FED49DBD967840EEBB8B97155'
