@@ -20,21 +20,30 @@ Tired of static images and endless scrolling in Jupyter or other IDEs? codePlot 
 
 ### codePlot vs. Traditional Tools
 
-- **Traditional IDEs**: Great for coding, but visualizing? Not so much.
-- **codePlot**: A perfect blend of robust coding and interactive, spatial data visualization.
-- **Seamless Integration**: Works like a charm with Python, JavaScript, and more.
+- **Traditional IDEs**: Great for coding, but visualizing or explore data? Not so much.
+
+- **codePlot**: A perfect companion to your IDE and your data exploration journey. Visualize your data on an interactive canvas, and explore it like never before!
+
+- **Seamless Integration**: You can plot things to your canvas using our Python package or our JavaScript npm module directly from your code / repl.
+
 - **Interactive Canvas**: Say goodbye to static images. Hello, dynamic data playground!
+
 - **Flexibility and Insight**: Dive deeper into your data with versatile visualization options.
 
-- **Diverse Visualizations**: From simple charts to complex patterns, create it all.
-- **Custom Layouts**: Bring different data elements together on one canvas for better insights.
-- **Accessible to All**: Whether you're a seasoned data scientist or just starting out, codePlot welcomes you.
+- **Diverse Visualizations**: From simple charts to cool plugin widgets, let's plot using code.
+
+- **Custom Layouts**: Visualize your data in a way that makes sense to you. Drag and move your plots around the canvas.
+
+- **Accessible to All**: Whether you're a seasoned data scientist or just data enthusiast, codePlot welcomes you.
 
 ## Be Part of the codePlot Community
 
 We're more than a tool; we're a movement. Join us and redefine data visualization:
+
 - **Experiment**: Explore new horizons in data visualization with codePlot.
+
 - **Contribute**: Got ideas? Enhancements? Jump in and add your flair!
+
 - **Engage**: Connect with other data enthusiasts and be part of a community that's all about pushing boundaries.
 
 ---
