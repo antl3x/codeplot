@@ -16,7 +16,7 @@ We aim to bridge the gap between traditional coding environments like Jupyter / 
 
 ## Why codeplot?
 
-Tired of static images and endless scrolling in Jupyter or fixed rigid plots images on your IDE? codeplot is here to change that. Imagine a tool that not only complements but enhances your coding workflow with dynamic, spatial data visualization. That's codeplot for you!
+Tired of static images and endless scrolling in Jupyter or fixed rigid plots images on your IDE? codeplot is here to change that. Imagine a tool that not only complements but enhances your data exploration workflow with dynamic, spatial data visualization. That's codeplot for you!
 
 ### codeplot vs. Traditional Tools
 
