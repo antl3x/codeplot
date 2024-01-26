@@ -1,5 +1,4 @@
-![codeplot-readme](https://github.com/atcodeplot/codeplot/assets/26308297/50229d82-2f74-489a-9ab6-c4be8185247f)
-
+![codeplot-readme](https://github.com/codeplot-co/codeplot/assets/26308297/e1212d25-a731-4755-875d-e988848f6d87)
 <div align="center">
 <a href="https://codeplot.co">Docs</a> 
 <span> · </span><a href="https://codeplot.co/getting-started">Getting Started</a> 
