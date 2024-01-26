@@ -8,7 +8,7 @@
 
 ---
 
-**tl;dr**: ▱ codeplot - an tool for interactive code-driven data exploration. Plot graphs, data frames and much more through code.
+**tl;dr**: ▱ codeplot - an tool for interactive code-driven data exploration. Plot graphs, data frames and much more on a spatial canvas using plain code.
 
 Created by [@antl3x](https://github.com/antl3x). You can read why on [this blog post.](https://antl3x.co/posts/2024-01-25-today-i-decided-to-create-a-tool-that-i-always-wanted/)
 
