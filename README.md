@@ -8,27 +8,23 @@
 
 ---
 
-**tl;dr**: ▱ codeplot - an innovative tool for interactive, code-driven data visualization. Explor your data on an canvas like Figma! Created by [@antl3x](https://github.com/antl3x). You can read more about why reading [this blog post.](https://antl3x.co/posts/2024-01-25-today-i-decided-to-create-a-tool-that-i-always-wanted/)
+**tl;dr**: ▱ codeplot - an tool for interactive code-driven data exploration. Plot graphs, data frames and much more through code.
 
-Welcome to the next level of data visualization! We're bridging the gap between traditional coding environments and the vibrant world of interactive data visualization.
+Created by [@antl3x](https://github.com/antl3x). You can read why on [this blog post.](https://antl3x.co/posts/2024-01-25-today-i-decided-to-create-a-tool-that-i-always-wanted/)
+
+We aim to bridge the gap between traditional coding environments like Jupyter / Spyder and the world of interactive spatial canvas.
 
 ## Why codeplot?
 
-Tired of static images and endless scrolling in Jupyter or other IDEs? codeplot is here to change that. Imagine a tool that not only complements but enhances your coding workflow with dynamic, spatial data visualization. That's codeplot for you!
+Tired of static images and endless scrolling in Jupyter or fixed rigid plots images on your IDE? codeplot is here to change that. Imagine a tool that not only complements but enhances your coding workflow with dynamic, spatial data visualization. That's codeplot for you!
 
 ### codeplot vs. Traditional Tools
 
-- **Traditional IDEs**: Great for coding, but visualizing or explore data? Not so much.
-
-- **codeplot**: A perfect companion to your IDE and your data exploration journey. Visualize your data on an interactive canvas, and explore it like never before!
+- **codeplot**: A perfect companion to your data exploration. Visualize your data on an interactive canvas, and explore it like never before!
 
 - **Seamless Integration**: You can plot things to your canvas using our Python package or our JavaScript npm module directly from your code / repl.
 
-- **Interactive Canvas**: Say goodbye to static images. Hello, dynamic data playground!
-
-- **Flexibility and Insight**: Dive deeper into your data with versatile visualization options.
-
-- **Diverse Visualizations**: From simple charts to cool plugin widgets, let's plot using code.
+- **Diverse Visualizations**: From simple charts/plota to cool widgets, let's plot using code.
 
 - **Custom Layouts**: Visualize your data in a way that makes sense to you. Drag and move your plots around the canvas.
 
@@ -37,10 +33,6 @@ Tired of static images and endless scrolling in Jupyter or other IDEs? codeplot 
 ## Be Part of the codeplot Community
 
 We're more than a tool; we're a movement. Join us and redefine data visualization:
-
-- **Experiment**: Explore new horizons in data visualization with codeplot.
-
-- **Contribute**: Got ideas? Enhancements? Jump in and add your flair!
 
 - **Engage**: Connect with other data enthusiasts and be part of a community that's all about pushing boundaries.
 
