@@ -1,0 +1,28 @@
+{
+  "name": "codeplot-co",
+  "description": "codeplot.co Documentation & Website",	
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "compile": "zx _scripts/compile.mjs",
+    "@production:cicd.deploy": "zx _scripts/@production:cicd.deploy.mjs",
+    "@localhost:app.dev": "zx _scripts/@localhost:app.dev.mjs",
+    "@localhost:app.preview": "zx _scripts/@localhost:app.preview.mjs"
+  },
+  "dependencies": {
+    "date-fns": "^3.3.1",
+    "react": "latest",
+    "react-dom": "latest",
+    "sqlite3": "^5.1.7",
+    "vocs": "latest",
+    "yargs": "^17.7.2",
+    "zx": "^7.2.3"
+  },
+  "devDependencies": {
+    "@types/node": "20.11.5",
+    "@types/react": "18.2.48",
+    "mddb": "^0.9.2",
+    "typescript": "5.3.3",
+    "vite-tsconfig-paths": "^4.3.1"
+  }
+}

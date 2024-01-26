@@ -1,0 +1,113 @@
+# Getting Started
+
+## Overview
+
+codeplot is comprised of two parts:
+
+- Canvas
+- SDK
+
+## Quick Start
+
+Scaffold a new project with the command line:
+
+:::code-group
+
+```bash [pip]
+pip install init codeplot
+```
+
+```bash [pnpm]
+pnpm create codeplot
+```
+
+```bash [yarn]
+yarn create codeplot
+```
+
+```bash [bun]
+bun x codeplot init -i bun
+```
+
+:::
+
+## Manual Installation
+
+You can install codeplot in an existing project, or start from scratch, by installing codeplot as a dependency.
+
+::::steps
+
+### Install
+
+First, we will install `codeplot` as a dependency in our project.
+
+:::code-group
+
+```bash [npm]
+npm i codeplot
+```
+
+```bash [pnpm]
+pnpm i codeplot
+```
+
+```bash [yarn]
+yarn add codeplot
+```
+
+```bash [bun]
+bun i codeplot
+```
+
+:::
+
+### Add Scripts to `package.json`
+
+After that, let's add some scripts to our `package.json` for codeplot.
+
+```json [package.json]
+{
+  "name": "example",
+  "version": "0.0.0",
+  "scripts": { // [!code focus]
+    "docs:dev": "codeplot dev", // [!code focus] 
+    "docs:build": "codeplot build", // [!code focus]
+    "docs:preview": "codeplot preview" // [!code focus]
+  } // [!code focus]
+}
+```
+
+### Build your First Page
+
+Create a directory called `docs`, and add a file inside of it called `index.mdx` under a `pages` directory:
+
+```
+my-project/      
+├── docs/                // [!code focus]
+│   ├── pages/           // [!code focus]
+│   │   └── index.mdx   // [!code focus]
+├── node_modules/
+└── package.json  
+```
+
+```markdown [docs/pages/index.mdx]
+# Hello, World! [This is my first page]
+
+Welcome to my docs. 
+```
+
+### Run
+
+Next, run the development server:
+
+```bash [Terminal]
+npm run dev
+```
+
+Then open up your browser to `http://localhost:5173`, and you can see your first page!
+
+### Next Steps
+
+Now that you have a basic documentation site up and running, you can learn more about how codeplot projects are structured in [Project Structure](/docs/structure).
+
+::::

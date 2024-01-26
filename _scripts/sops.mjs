@@ -7,6 +7,7 @@ import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
 import { $ } from 'zx/core';
 
+console.log('1234')
 // Parsing command-line arguments
 const argv = yargs(hideBin(process.argv))
   .command('encrypt <target>', 'Encrypt the file or directory', (yargs) => {

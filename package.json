@@ -1,9 +1,10 @@
 {
-  "name": "codePlot",
+  "name": "codeplot",
   "version": "0.0.0",
   "description": "",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "install.binaries": "zx _scripts/install.binaries.mjs",
+    "sops": "zx _scripts/sops.mjs"
   },
   "keywords": [],
   "author": "Antonio Moura (@antl3x)",

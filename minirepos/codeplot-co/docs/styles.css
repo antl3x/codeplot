@@ -1,0 +1,156 @@
+@layer vocs_preflight { @tailwind base; }
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: 'iAWriterMonoS';
+    src: url('/fonts/iAWriterMonoS-Bold.eot'); /* IE9 Compat Modes */
+    src: url('/fonts/iAWriterMonoS-Bold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('/fonts/iAWriterMonoS-Bold.woff2') format('woff2'), /* Super Modern Browsers */
+         url('/fonts/iAWriterMonoS-Bold.woff') format('woff'); /* Pretty Modern Browsers */
+    font-weight: bold;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'iAWriterMonoS';
+    src: url('/fonts/iAWriterMonoS-BoldItalic.eot');
+    src: url('/fonts/iAWriterMonoS-BoldItalic.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/iAWriterMonoS-BoldItalic.woff2') format('woff2'),
+         url('/fonts/iAWriterMonoS-BoldItalic.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+  }
+  
+  /* Repeat the pattern for Italic and Regular weights */
+  
+  @font-face {
+    font-family: 'iAWriterMonoS';
+    src: url('/fonts/iAWriterMonoS-Italic.eot');
+    src: url('/fonts/iAWriterMonoS-Italic.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/iAWriterMonoS-Italic.woff2') format('woff2'),
+         url('/fonts/iAWriterMonoS-Italic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+  }
+  
+  @font-face {
+    font-family: 'iAWriterMonoS';
+    src: url('/fonts/iAWriterMonoS-Regular.eot');
+    src: url('/fonts/iAWriterMonoS-Regular.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/iAWriterMonoS-Regular.woff2') format('woff2'),
+         url('/fonts/iAWriterMonoS-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'iAWriterDuoS';
+    src: url('/fonts/iAWriterDuoS-Bold.eot'); /* IE9 Compat Modes */
+    src: url('/fonts/iAWriterDuoS-Bold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('/fonts/iAWriterDuoS-Bold.woff2') format('woff2'), /* Super Modern Browsers */
+         url('/fonts/iAWriterDuoS-Bold.woff') format('woff'); /* Pretty Modern Browsers */
+    font-weight: bold;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'iAWriterDuoS';
+    src: url('/fonts/iAWriterDuoS-BoldItalic.eot');
+    src: url('/fonts/iAWriterDuoS-BoldItalic.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/iAWriterDuoS-BoldItalic.woff2') format('woff2'),
+         url('/fonts/iAWriterDuoS-BoldItalic.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+  }
+  
+  /* Repeat the pattern for Italic and Regular weights */
+  
+  @font-face {
+    font-family: 'iAWriterDuoS';
+    src: url('/fonts/iAWriterDuoS-Italic.eot');
+    src: url('/fonts/iAWriterDuoS-Italic.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/iAWriterDuoS-Italic.woff2') format('woff2'),
+         url('/fonts/iAWriterDuoS-Italic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+  }
+  
+  @font-face {
+    font-family: 'iAWriterDuoS';
+    src: url('/fonts/iAWriterDuoS-Regular.eot');
+    src: url('/fonts/iAWriterDuoS-Regular.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/iAWriterDuoS-Regular.woff2') format('woff2'),
+         url('/fonts/iAWriterDuoS-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'iAWriterQuattroS';
+    src: url('/fonts/iAWriterQuattroS-Bold.eot'); /* IE9 Compat Modes */
+    src: url('/fonts/iAWriterQuattroS-Bold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('/fonts/iAWriterQuattroS-Bold.woff2') format('woff2'), /* Super Modern Browsers */
+         url('/fonts/iAWriterQuattroS-Bold.woff') format('woff'); /* Pretty Modern Browsers */
+    font-weight: bold;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'iAWriterQuattroS';
+    src: url('/fonts/iAWriterQuattroS-BoldItalic.eot');
+    src: url('/fonts/iAWriterQuattroS-BoldItalic.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/iAWriterQuattroS-BoldItalic.woff2') format('woff2'),
+         url('/fonts/iAWriterQuattroS-BoldItalic.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+  }
+  
+  /* Repeat the pattern for Italic and Regular weights */
+  
+  @font-face {
+    font-family: 'iAWriterQuattroS';
+    src: url('/fonts/iAWriterQuattroS-Italic.eot');
+    src: url('/fonts/iAWriterQuattroS-Italic.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/iAWriterQuattroS-Italic.woff2') format('woff2'),
+         url('/fonts/iAWriterQuattroS-Italic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+  }
+  
+  @font-face {
+    font-family: 'iAWriterQuattroS';
+    src: url('/fonts/iAWriterQuattroS-Regular.eot');
+    src: url('/fonts/iAWriterQuattroS-Regular.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/iAWriterQuattroS-Regular.woff2') format('woff2'),
+         url('/fonts/iAWriterQuattroS-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  .vocs_Anchor {
+      text-decoration-style: dashed !important;
+  }
+
+  a {
+    cursor: default;
+  }
+
+  .vocs_Sidebar_item:hover  {
+    text-decoration: underline;
+    text-decoration-style: dashed;
+  }
+
+  .vocs_ListItem:not(:last-child) {
+    margin-bottom: 1em !important;
+  }
+
+
+
+.vocs_DocsLayout_gutterLeft {
+    border-right: 1px solid var(--vocs-color_hr);
+}
+
+.vocs_Sidebar_item:hover {
+    color: var(--vocs-color_textAccentHover);
+}
