@@ -1,9 +1,8 @@
 ![codeplot-readme](https://github.com/atcodeplot/codeplot/assets/26308297/50229d82-2f74-489a-9ab6-c4be8185247f)
 
 <div align="center">
-<a href="#why-codeplot">Why codeplot</a> 
-<span> · </span>
-<a href="#community">Community</a> 
+<a href="https://codeplot.co">Docs</a> 
+<span> · </span><a href="https://codeplot.co/getting-started">Getting Started</a> 
 <span> · </span>
 <a href="https://discord.gg/fYTsNp5Wvt">Discord</a>
 </div>
