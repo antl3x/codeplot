@@ -10,7 +10,7 @@
 
 ---
 
-**tl;dr**: ▱ codePlot - an innovative tool for interactive, code-driven data visualization. Explor your data on an canvas like Figma! Created by [@antl3x](https://github.com/antl3x).
+**tl;dr**: ▱ codePlot - an innovative tool for interactive, code-driven data visualization. Explor your data on an canvas like Figma! Created by [@antl3x](https://github.com/antl3x). You can read more about why reading [this blog post.](https://antl3x.co/posts/2024-01-25-today-i-decided-to-create-a-tool-that-i-always-wanted/)
 
 Welcome to the next level of data visualization! We're bridging the gap between traditional coding environments and the vibrant world of interactive data visualization.
 
