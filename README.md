@@ -46,7 +46,7 @@ We're more than a tool; we're a movement. Join us and redefine data visualizatio
 
 - **Engage**: Connect with other data enthusiasts and be part of a community that's all about pushing boundaries.
 
-Join now on **(Discord)**[https://discord.gg/fYTsNp5Wvt]!
+Join now on **[Discord](https://discord.gg/fYTsNp5Wvt)**!
 
 ---
 
