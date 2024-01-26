@@ -5,7 +5,7 @@
 <span> · </span>
 <a href="#community">Community</a> 
 <span> · </span>
-<a href="#discord">Discord</a>
+<a href="https://discord.gg/fYTsNp5Wvt">Discord</a>
 </div>
 
 ---
@@ -45,6 +45,8 @@ We're more than a tool; we're a movement. Join us and redefine data visualizatio
 - **Contribute**: Got ideas? Enhancements? Jump in and add your flair!
 
 - **Engage**: Connect with other data enthusiasts and be part of a community that's all about pushing boundaries.
+
+Join now on **[Discord]**(https://discord.gg/fYTsNp5Wvt)!
 
 ---
 
