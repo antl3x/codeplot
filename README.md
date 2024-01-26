@@ -8,7 +8,7 @@
 
 ---
 
-**tl;dr**: ▱ codeplot is a canvas designed for code-driven data exploration where you can plot graphs, data frames, markdown and much more using plain Python or Javascript code.
+**tl;dr**: codeplot is a canvas designed for code-driven data exploration where you can plot graphs, data frames, markdown and much more using plain Python or Javascript code.
 
 Created by [@antl3x](https://github.com/antl3x). You can read why on [this blog post.](https://antl3x.co/posts/2024-01-25-today-i-decided-to-create-a-tool-that-i-always-wanted/)
 
