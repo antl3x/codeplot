@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.react-flow__pane.selection
+{
+  cursor: default !important;
+}
+
+.react-flow__resize-control {
+    display: none; /* Hide by default */
+  }
+
+.selected > .react-flow__resize-control {
+    display: block; /* Show when .selected class is also present */
+  }

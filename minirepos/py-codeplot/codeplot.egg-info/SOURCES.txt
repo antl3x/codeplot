@@ -1,0 +1,9 @@
+README.md
+setup.py
+codeplot/__init__.py
+codeplot/commands.py
+codeplot.egg-info/PKG-INFO
+codeplot.egg-info/SOURCES.txt
+codeplot.egg-info/dependency_links.txt
+codeplot.egg-info/requires.txt
+codeplot.egg-info/top_level.txt

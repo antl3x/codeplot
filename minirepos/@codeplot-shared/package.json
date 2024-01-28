@@ -1,0 +1,32 @@
+{
+  "name": "@codeplot/shared",
+  "version": "0.0.0",
+  "description": "Shared stuff between gui and server like MobX State Tree",
+  "author": "Antonio Moura (@antl3x)",
+  "type": "module",
+  "exports": {
+    "require": "./dist/cjs/*.js",
+    "import": "./dist/esm/*.js",
+    "types": "./dist/types/*.d.ts"
+  },
+  "main": "./dist/cjs/index.js",
+  "dependencies": {
+    "mobx": "^6.12.0",
+    "mobx-state-tree": "^5.4.0"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.4.0",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-config-standard-with-typescript": "^43.0.1",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-n": "^15.0.0 || ^16.0.0 ",
+    "eslint-plugin-prettier": "^5.1.3",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-rulesdir": "^0.2.2",
+    "prettier": "^3.2.4",
+    "tsup": "^8.0.1",
+    "typescript": "^5.3.3",
+    "zx": "^7.2.3"
+  }
+}
