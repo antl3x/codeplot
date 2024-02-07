@@ -1,3 +1,4 @@
+import { appStore } from "@.core";
 import { fileStore } from "@.core.files";
 import {
   TLUiMenuGroup,
@@ -20,6 +21,7 @@ const _actionsOverrides: TLUiOverrides["actions"] = (
   let newActions = actions;
   newActions = _openCodeplotFileTldrawAction(editor, newActions, helpers);
   newActions = _openGithubTldrawAction(editor, newActions, helpers);
+  newActions = _toggleDarkMode(editor, newActions, helpers);
 
   return newActions;
 };
@@ -52,6 +54,20 @@ const _openGithubTldrawAction: NonNullable<TLUiOverrides["actions"]> = (
     readonlyOk: true,
     onSelect() {
       window.open("https://github.com/codeplot-co/codeplot");
+    },
+  };
+  return actions;
+};
+
+/* ---------------------------- Toggle Dark Mode ---------------------------- */
+
+const _toggleDarkMode: NonNullable<TLUiOverrides["actions"]> = (_, actions) => {
+  actions["toggle-dark-mode"] = {
+    ...actions["toggle-dark-mode"],
+    onSelect() {
+      appStore.theme.setThemeColor(
+        appStore.theme.color === "dark" ? "light" : "dark",
+      );
     },
   };
   return actions;

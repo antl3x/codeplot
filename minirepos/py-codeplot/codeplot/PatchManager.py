@@ -41,6 +41,20 @@ class PatchManager:
             print("Document structure does not contain 'store'.")
         return None
 
+    @staticmethod
+    def get_last_plot_xz_coordinates():
+        if PatchManager.json_data is not None and "store" in PatchManager.json_data:
+            plots = [value for key, value in PatchManager.json_data["store"].items() if value.get("typeName") == "shape" and value.get("type") == "codeplot"]
+            if plots:
+                # Sorting the plots by their 'createdAt' attribute to find the latest one
+                last_plot = sorted(plots, key=lambda x: x["props"]["createdAt"], reverse=True)[0]
+                return {"x": last_plot["x"], "y": last_plot["y"]}  # Assuming 'z' should be 'y' as there is no 'z' attribute in the provided data
+            else:
+                return {"x": 0, "y": 0}
+        else:
+            print("Document structure does not contain 'store'.")
+        return None
+
 def atomic_write(filepath, data):
     dir_name = os.path.dirname(filepath)
     with tempfile.NamedTemporaryFile(mode='w', dir=dir_name, delete=False) as tmp_file:

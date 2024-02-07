@@ -1,0 +1,15 @@
+**/node_modules/*
+**/out/*
+**/dist/*
+**/dist-cjs/*
+**/dist-esm/*
+**/api/*
+!**/pages/api/*
+**/.tsbuild*
+**/.next/*
+*.mdx
+**/_archive/*
+apps/docs/api-content.json
+apps/docs/content.json
+apps/vscode/extension/editor/*
+apps/examples/www

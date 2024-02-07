@@ -4,10 +4,16 @@ import { types } from "mobx-state-tree";
 const AppModel = types
   .model("App", {
     fileManager: FileManagerModel,
-    theme: types.model({
-      name: types.string,
-      color: types.union(types.literal("light"), types.literal("dark")),
-    }),
+    theme: types
+      .model({
+        name: types.string,
+        color: types.union(types.literal("light"), types.literal("dark")),
+      })
+      .actions((self) => ({
+        setThemeColor(theme: "light" | "dark") {
+          self.color = theme;
+        },
+      })),
   })
   .views((self) => ({
     get isBrowserSupported() {

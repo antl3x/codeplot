@@ -8,7 +8,7 @@
 
 ---
 
-**tl;dr**: codeplot is a canvas designed for code-driven data exploration where you can plot graphs, data frames, markdown and much more using plain Python or Javascript code.
+**tl;dr**: codeplot is spatial canvas for data exploration where you can plot graphs, dataframes and much more using Python.
 
 Created by [@antl3x](https://github.com/antl3x). You can read why on [this blog post.](https://antl3x.co/posts/2024-01-25-today-i-decided-to-create-a-tool-that-i-always-wanted/)
 
@@ -22,7 +22,7 @@ Tired of static images and endless scrolling in Jupyter or fixed rigid plots ima
 
 - **codeplot**: A perfect companion to your data exploration. Visualize your data on an interactive canvas, and explore it like never before!
 
-- **Seamless Integration**: You can plot things to your canvas using our Python package or our JavaScript npm module directly from your code / repl.
+- **Seamless Integration**: You can plot things to your canvas using our Python package directly from your code / repl and visualize / open your file at [https://codeplot.co](https://codeplot.com).
 
 - **Diverse Visualizations**: From simple charts/plota to cool widgets, let's plot using code.
 

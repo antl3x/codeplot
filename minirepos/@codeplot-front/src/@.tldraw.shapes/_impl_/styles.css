@@ -1,0 +1,14 @@
+.codeplot-HTMLContainer_Container {
+  container-type: inline-size;
+}
+
+.codeplot-HTMLContainer_TopBar {
+  position: absolute;
+  margin-top: -38px;
+}
+
+@container (min-width: 600px) {
+  .codeplot-HTMLContainer_TopBar {
+    margin-top: -24px;
+  }
+}

@@ -7,6 +7,7 @@ import { defaultTheme, Provider } from "@adobe/react-spectrum";
 import { ToastContainer } from "@react-spectrum/toast";
 import { useEffect } from "react";
 import "./main.css";
+import { reaction } from "mobx";
 
 export const App = observer(() => {
   useEffect(() => {
@@ -16,6 +17,13 @@ export const App = observer(() => {
     const themeName = appStore.theme.name;
     root.setAttribute("data-theme-color", themeColor);
     root.setAttribute("data-theme", themeName);
+
+    return reaction(
+      () => appStore.theme.color,
+      (color) => {
+        root.setAttribute("data-theme-color", color);
+      },
+    );
   }, []);
 
   return (

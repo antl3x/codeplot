@@ -33,6 +33,7 @@ const _setTldrEditor = (_self: unknown) => (editor: Editor) => {
 
   _setupSaveFileOnStoreChanges(self);
   _setupReloadStoreOnFileChanges(self);
+  _setupColorModeSync(self);
 
   self.tldrEditor.user.updateUserPreferences({
     isDarkMode: appStore.theme.color === "dark",
@@ -44,16 +45,41 @@ const _setTldrEditor = (_self: unknown) => (editor: Editor) => {
 const _setupSaveFileOnStoreChanges = (_self: unknown) => {
   const self = _self as Instance<typeof TldrawModel>;
 
+  console.log("Setting up save file on store changes");
   if (!self.tldrEditor) return;
   if (!appStore.fileManager.fileContent) return;
 
   const saveDebounced = debounce(appStore.fileManager.saveFileContent, 1000);
 
+  // Initial Save
+  appStore.fileManager.saveFileContent(
+    JSON.stringify(self.tldrEditor!.store.getSnapshot()),
+  );
+
   self.tldrEditor.store.listen(
     () => {
+      console.log("Store changed");
       saveDebounced(JSON.stringify(self.tldrEditor!.store.getSnapshot()));
     },
     { source: "user", scope: "all" },
+  );
+};
+
+/* -------------------- Setup color mode sync -------------------- */
+
+const _setupColorModeSync = (_self: unknown) => {
+  const self = _self as Instance<typeof TldrawModel>;
+
+  if (!self.tldrEditor) return;
+  if (!appStore.fileManager.fileContent) return;
+
+  reaction(
+    () => appStore.theme.color,
+    (color) => {
+      self.tldrEditor!.user.updateUserPreferences({
+        isDarkMode: color === "dark",
+      });
+    },
   );
 };
 

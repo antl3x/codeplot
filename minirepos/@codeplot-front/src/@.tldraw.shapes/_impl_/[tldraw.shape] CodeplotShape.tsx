@@ -10,9 +10,13 @@ import {
 } from "@tldraw/tldraw";
 
 import { ICodeplotShape } from "./ICodeplotShape";
+import { ArrayToListRender } from "./[render] ArrayToListRender";
 import { DefaultHTMLRender } from "./[render] DefaultHTMLRender";
-import { DefaultObjectRender } from "./[render] DefaultObjectRender";
+import { DefaultMimeImagePngRender } from "./[render] DefaultMimeImagePngRender";
+import { DefaultMimeImageSvgXmlRender } from "./[render] DefaultMimeImageSvgXmlRender";
+import { DefaultMimeTextPlainRender } from "./[render] DefaultMimeTextPlainRender";
 
+import "./styles.css";
 /* -------------------------------------------------------------------------- */
 /*                              CodeplotShapeUtil                             */
 /* -------------------------------------------------------------------------- */
@@ -77,41 +81,36 @@ export class CodeplotShapeUtil extends ShapeUtil<ICodeplotShape> {
     const isInteractive = isEditing || isHoveringWhileEditingSameShape;
 
     return (
-<>
-      <div
-          onClick={console.log}
-          className="absolute -mt-6 flex justify-between w-full"
-        >
-          <span title={shape.props.title}>
-            {_formatPlotTitle(shape.props.title)}
-          </span>
-          <span className="opacity-25">{shape.props.type}</span>
+      <>
+        <div className="w-full h-full codeplot-HTMLContainer_Container">
+          <div className="codeplot-HTMLContainer_TopBar absolute w-full flex gap-x-6 flex-wrap justify-between items-center">
+            <span title={shape.props.title}>
+              {_formatPlotTitle(shape.props.title)}
+            </span>
+            <span className="truncate opacity-25 text-ellipsis overflow-hidden">
+              {shape.props.type}
+            </span>
+          </div>
+          <HTMLContainer
+            onPointerDown={(e) => {
+              e.stopPropagation();
+              e.preventDefault();
+            }}
+            onWheelCapture={(e) => {
+              e.stopPropagation();
+            }}
+            id={shape.id}
+            className="rounded-lg overflow-hidden"
+            style={{
+              border: 0,
+              pointerEvents: isInteractive ? "auto" : "none",
+              zIndex: isInteractive ? "" : "-1",
+            }}
+          >
+            {renderSwitch(shape, isInteractive)}
+          </HTMLContainer>
         </div>
-      <HTMLContainer
-      onPointerDown={(e) => e.stopPropagation()}
-
-      onWheelCapture={e => {
-        e.stopPropagation();
-      }
-      }
-
-      id={shape.id}
-      className="rounded-md overflow-x-auto"
-      style={{
-        border: 0,
-        padding: "8px",
-        pointerEvents: isInteractive ? "auto" : "none",
-        zIndex: isInteractive ? "" : "-1",
-      }}
-      >
-        {shape.props.type === "pandas/dataframe" && (
-          <DefaultObjectRender shape={shape} isInteractive={isInteractive} />
-          )}
-        {shape.props.type !== "pandas/dataframe" && (
-          <DefaultHTMLRender shape={shape} isInteractive={isInteractive} />
-          )}
-      </HTMLContainer>
-          </>
+      </>
     );
   }
 
@@ -122,6 +121,44 @@ export class CodeplotShapeUtil extends ShapeUtil<ICodeplotShape> {
   }
 
   // Implement hitTest and canBind as needed based on your requirements
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                Switch Render                               */
+/* -------------------------------------------------------------------------- */
+
+function renderSwitch(shape: ICodeplotShape, isInteractive: boolean) {
+  switch (shape.props.type) {
+    case "pandas/dataframe":
+      return <DefaultHTMLRender shape={shape} isInteractive={isInteractive} />;
+    case "pandas/index":
+      return <ArrayToListRender shape={shape} isInteractive={isInteractive} />;
+  }
+
+  if (shape.props.mime?.["image/svg+xml"]) {
+    return (
+      <DefaultMimeImageSvgXmlRender
+        shape={shape}
+        isInteractive={isInteractive}
+      />
+    );
+  }
+
+  if (shape.props.mime?.["image/png"]) {
+    return (
+      <DefaultMimeImagePngRender shape={shape} isInteractive={isInteractive} />
+    );
+  }
+
+  if (shape.props.mime?.["text/html"]) {
+    return <DefaultHTMLRender shape={shape} isInteractive={isInteractive} />;
+  }
+
+  if (shape.props.mime?.["text/plain"]) {
+    return (
+      <DefaultMimeTextPlainRender shape={shape} isInteractive={isInteractive} />
+    );
+  }
 }
 
 /* -------------------------------------------------------------------------- */

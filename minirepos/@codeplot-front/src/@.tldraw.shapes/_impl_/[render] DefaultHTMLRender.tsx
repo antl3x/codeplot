@@ -1,61 +1,10 @@
 import { useRef } from "react";
 import { ICodeplotShape } from "./ICodeplotShape";
+import { appStore } from "@.core";
+import { observer } from "mobx-react";
+import { GLOBAL_IFRAME_SCRIPT, GLOBAL_STYLE } from "./RenderIframeScripts";
 
-const _GLOBAL_IFRAME_SCRIPT = `
-<script>
-    window.addEventListener('message', function(event) {
-        console.log(event.origin)
-        // if (event.origin !== 'https://localhost:5173' && event.origin !== 'https://codeplot.co') return;
-
-        console.log('Received message from parent:', event.data);
-
-        // Check if the message contains theme information
-        if (event.data.__name__ === 'CHANGE_THEME') {
-            // Apply the theme based on the message
-            document.documentElement.setAttribute('data-theme-color', event.data.themeColor);
-            // Update your CSS variables or classes based on the theme as needed
-        }
-    }, false);
-</script>
-`;
-
-const _GLOBAL_STYLE = `
-<style>
-html, body {
-    padding: 0;
-    margin: 0;
-    font-family: 'DM Mono', sans-serif;
-    font-size: 12px;
-    background-color: var(--background-color);
-    color: var(--text-color);
-}
-/* custom scrollbar */
-::-webkit-scrollbar {
-width: 16px;
-}
-
-::-webkit-scrollbar-track {
-background-color: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-background-color: #d6dee1;
-border-radius: 20px;
-border: 6px solid transparent;
-background-clip: content-box;
-}
-
-::-webkit-scrollbar-thumb:hover {
-background-color: #a8bbbf;
-}
-
-::-webkit-scrollbar-corner {
-    background-color: transparent;
-}
-</style>
-`;
-
-export const PANDAS_TABLE_STYLE = `
+export const DATAFRAME_TABLE_STYLE = `
 <style>
 
 
@@ -77,6 +26,11 @@ export const PANDAS_TABLE_STYLE = `
         --row-hover-background-color: #555;
         --zebra-striping-color: #3d3d3d;
         --border-color: #555;
+    }
+
+    small {
+        display: block;
+        margin: 8px;
     }
 
     .dataframe {
@@ -180,32 +134,33 @@ type IDefaultHTMLRenderProps = {
   isInteractive: boolean;
 };
 
-export function DefaultHTMLRender({
-  shape,
-  isInteractive,
-}: IDefaultHTMLRenderProps) {
-  const iframeRef = useRef(null);
-  return (
-    <iframe
-      ref={iframeRef}
-      className="w-full h-full"
-      sandbox="allow-same-origin allow-scripts"
-      srcDoc={`
-        ${_GLOBAL_STYLE}
-        ${_GLOBAL_IFRAME_SCRIPT}
-        ${shape.props.type.includes("pandas") ? PANDAS_TABLE_STYLE : ""}
+export const DefaultHTMLRender = observer(
+  ({ shape, isInteractive }: IDefaultHTMLRenderProps) => {
+    const iframeRef = useRef(null);
+    return (
+      <iframe
+        ref={iframeRef}
+        className="w-full h-full"
+        sandbox="allow-same-origin allow-scripts"
+        srcDoc={`
+        <html data-theme-color=${appStore.theme.color}></html>
+        ${GLOBAL_STYLE}
+        ${GLOBAL_IFRAME_SCRIPT}
+        ${shape.props.type.includes("pandas") ? DATAFRAME_TABLE_STYLE : ""}
+        ${shape.props.type.includes("polars") ? DATAFRAME_TABLE_STYLE : ""}
         ${shape.props.type.includes("plotly") ? PLOTLY_FIGURE_STYLE : ""}
         ${shape.props.type.includes("matplotlib/figure") ? MATPLOTLIB_FIGURE_STYLE : ""}
-        ${shape.props.staticMimes["text/html"]}`}
-      style={{
-        border: 0,
-        pointerEvents: isInteractive ? "auto" : "none",
-        // Fix for safari <https://stackoverflow.com/a/49150908>
-        zIndex: isInteractive ? "" : "-1",
-        // boxShadow: getRotatedBoxShadow(pageRotation),
-        // borderRadius: embedInfo?.definition.overrideOutlineRadius ?? 8,
-        // background: embedInfo?.definition.backgroundColor,
-      }}
-    />
-  );
-}
+        ${shape.props.mime["text/html"]}`}
+        style={{
+          border: 0,
+          pointerEvents: isInteractive ? "auto" : "none",
+          // Fix for safari <https://stackoverflow.com/a/49150908>
+          zIndex: isInteractive ? "" : "-1",
+          // boxShadow: getRotatedBoxShadow(pageRotation),
+          // borderRadius: embedInfo?.definition.overrideOutlineRadius ?? 8,
+          // background: embedInfo?.definition.backgroundColor,
+        }}
+      />
+    );
+  },
+);

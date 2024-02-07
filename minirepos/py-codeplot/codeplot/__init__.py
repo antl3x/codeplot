@@ -10,6 +10,7 @@ import logging
 
 from .PatchManager import PatchManager
 from .commands import plot
+from .NEW_FILE_CONTENT import NEW_FILE_CONTENT
 
 CURRENT_CODEPLOT_FILE_PATH = None
 CURRENT_CODEPLOT_FILE_JSON = None
@@ -97,4 +98,4 @@ def _createOrOpenFile(filepath):
         if contents:
             CURRENT_CODEPLOT_FILE_JSON = json.loads(contents)
         else:
-            CURRENT_CODEPLOT_FILE_JSON = {}  # Initialize as an empty JSON if the file is new
+            CURRENT_CODEPLOT_FILE_JSON = json.loads(json.dumps(NEW_FILE_CONTENT))

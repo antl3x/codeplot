@@ -6,12 +6,18 @@ export type ICodeplotShape = TLBaseShape<
     id: string;
     title: string;
     type: string;
-    renderer: string;
-    staticMimes: {
+    renderWith: string;
+    mime: {
       "text/plain": string;
       "text/html": string;
+      "image/png": string;
+      "image/jpeg": string;
+      "image/svg+xml": string;
+      "application/json": string;
+      "application/javascript": string;
+      "application/x-latex": string;
+      "text/markdown": string;
     };
-    value: string;
     w: number;
     h: number;
     metacode: {

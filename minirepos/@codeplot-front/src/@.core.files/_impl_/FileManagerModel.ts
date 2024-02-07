@@ -1,3 +1,4 @@
+import { ToastQueue } from "@react-spectrum/toast";
 import { Instance, flow, types } from "mobx-state-tree";
 
 /* -------------------------------------------------------------------------- */
@@ -68,6 +69,9 @@ function _saveFileContent(_self: unknown) {
         console.log("File saved successfully");
       } catch (error) {
         console.error("Error saving file:", error);
+        ToastQueue.negative(
+          "Saving file failed, probably due to a permission issue.",
+        );
         self.isSaving = false;
       }
     }

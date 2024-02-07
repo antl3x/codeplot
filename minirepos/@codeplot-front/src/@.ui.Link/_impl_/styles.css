@@ -1,0 +1,12 @@
+.codeplot-Link {
+  color: var(--codeplot-Link-color);
+}
+
+.codeplot-Link:hover,
+.codeplot-Link:hover:after {
+  color: var(--codeplot-Link-colorOnHover);
+}
+
+.codeplot-Link:active {
+  color: var(--codeplot-Link-colorOnActive);
+}

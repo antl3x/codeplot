@@ -17,7 +17,7 @@
 
 /* custom scrollbar */
 ::-webkit-scrollbar {
-  width: 20px;
+  width: 16px;
 }
 
 ::-webkit-scrollbar-track {
@@ -25,14 +25,18 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #d6dee1;
+  background-color: var(--codeplot-surface-color);
   border-radius: 20px;
   border: 6px solid transparent;
   background-clip: content-box;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #a8bbbf;
+  background-color: var(--codeplot-surface-color);
+}
+
+::-webkit-scrollbar-corner {
+  background-color: transparent;
 }
 
 a,
@@ -53,4 +57,17 @@ body {
 #root > div {
   height: 100%;
   width: 100%;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                              TLDraw Overrides                              */
+/* -------------------------------------------------------------------------- */
+
+.tl-background {
+  background-color: var(--codeplot-surface-backgroundColor);
+}
+
+div[data-state="unchecked"] > div {
+  mask: none !important;
+  background-color: transparent !important;
 }

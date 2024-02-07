@@ -1,8 +1,8 @@
-:root[data-theme="default"][data-theme-color="dark"] {
+:root {
   --codeplot-color-white: 0, 0%, 100%;
   --codeplot-color-yellow: 43, 65%, 50%;
 
-  --codeplot-color-surface: 0, 0%, 13%;
+  --codeplot-color-surface: 0, 0%, 100%;
   --codeplot-color-surface1: 0, 0%, 16%;
   --codeplot-color-surface2: 0, 0%, 22%;
   --codeplot-color-surface3: 0, 0%, 27%;
@@ -12,7 +12,7 @@
 
   --codeplot-surface2-backgroundColor: hsla(
     var(--codeplot-color-surface2),
-    90%
+    100%
   );
   --codeplot-surface2-backgroundColorOnHover: hsla(
     var(--codeplot-color-surface2),
@@ -73,6 +73,41 @@
     100%
   );
 
+  /* ------------------------------ Link ------------------------------ */
+
+  --codeplot-Link-color: hsla(var(--codeplot-color-primary), 100%);
+  --codeplot-Link-colorOnHover: hsla(var(--codeplot-color-primary), 80%);
+  --codeplot-Link-colorOnActive: hsla(var(--codeplot-color-primary), 95%);
+
   /* --------------------------------- Button --------------------------------- */
   --codeplot-Button-radius: var(--codeplot-radius-md);
+}
+
+:root[data-theme="default"][data-theme-color="dark"] {
+  --codeplot-color-white: 0, 0%, 100%;
+  --codeplot-color-yellow: 43, 65%, 50%;
+
+  --codeplot-color-surface: 0, 0%, 13%;
+  --codeplot-color-surface1: 0, 0%, 16%;
+  --codeplot-color-surface2: 0, 0%, 22%;
+  --codeplot-color-surface3: 0, 0%, 27%;
+
+  --codeplot-surface-backgroundColor: hsla(var(--codeplot-color-surface), 1);
+  --codeplot-surface-color: hsla(var(--codeplot-color-white), 80%);
+
+  --codeplot-surface2-backgroundColor: hsla(
+    var(--codeplot-color-surface2),
+    100%
+  );
+  --codeplot-surface2-backgroundColorOnHover: hsla(
+    var(--codeplot-color-surface2),
+    100%
+  );
+  --codeplot-surface2-color: hsla(var(--codeplot-color-white), 80%);
+  --codeplot-surface2-border-color: hsla(var(--codeplot-color-surface3), 100%);
+
+  --codeplot-color-primary: var(--codeplot-color-yellow);
+  --codeplot-color-onPrimary: 0, 0%, 0%;
+  --codeplot-color-primaryContainer: 0, 0%, 100%;
+  --codeplot-color-onPrimaryContainer: 0, 0%, 100%;
 }
