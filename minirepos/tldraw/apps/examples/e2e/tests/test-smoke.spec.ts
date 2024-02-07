@@ -65,13 +65,14 @@ test.describe('smoke tests', () => {
 		expect(await getAllShapeTypes(page)).toEqual(['geo'])
 
 		const getSelectedShapeColor = async () =>
-			await page.evaluate(() => (editor.selectedShapes[0] as TLGeoShape).props.color)
+			await page.evaluate(() => (editor.getSelectedShapes()[0] as TLGeoShape).props.color)
 
 		// change style
 		expect(await getSelectedShapeColor()).toBe('black')
 
 		// when on a mobile device...
-		const hasMobileMenu = await page.isVisible('.tlui-toolbar__styles__button')
+		const mobileStylesButton = page.getByTestId('mobile.styles')
+		const hasMobileMenu = await mobileStylesButton.isVisible()
 
 		if (hasMobileMenu) {
 			// open the style menu

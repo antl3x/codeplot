@@ -21,6 +21,9 @@ import {
 	DefaultHoveredShapeIndicator,
 	TLHoveredShapeIndicatorComponent,
 } from '../components/default-components/DefaultHoveredShapeIndicator'
+import { TLInFrontOfTheCanvas } from '../components/default-components/DefaultInFrontOfTheCanvas'
+import { TLLoadingScreenComponent } from '../components/default-components/DefaultLoadingScreen'
+import { TLOnTheCanvas } from '../components/default-components/DefaultOnTheCanvas'
 import {
 	DefaultScribble,
 	TLScribbleComponent,
@@ -48,7 +51,7 @@ import {
 import { DefaultSpinner, TLSpinnerComponent } from '../components/default-components/DefaultSpinner'
 import { DefaultSvgDefs, TLSvgDefsComponent } from '../components/default-components/DefaultSvgDefs'
 
-interface BaseEditorComponents {
+export interface BaseEditorComponents {
 	Background: TLBackgroundComponent
 	SvgDefs: TLSvgDefsComponent
 	Brush: TLBrushComponent
@@ -68,21 +71,29 @@ interface BaseEditorComponents {
 	SelectionForeground: TLSelectionForegroundComponent
 	SelectionBackground: TLSelectionBackgroundComponent
 	HoveredShapeIndicator: TLHoveredShapeIndicatorComponent
+	OnTheCanvas: TLOnTheCanvas
+	InFrontOfTheCanvas: TLInFrontOfTheCanvas
+	LoadingScreen: TLLoadingScreenComponent
 }
 
-/** @public */
-export type TLEditorComponents = {
-	[K in keyof BaseEditorComponents]: BaseEditorComponents[K] | null
-} & {
+// These will always have defaults
+type ErrorComponents = {
 	ErrorFallback: TLErrorFallbackComponent
 	ShapeErrorFallback: TLShapeErrorFallbackComponent
 	ShapeIndicatorErrorFallback: TLShapeIndicatorErrorFallbackComponent
 }
 
-const EditorComponentsContext = createContext({} as TLEditorComponents)
+/** @public */
+export type TLEditorComponents = Partial<
+	{
+		[K in keyof BaseEditorComponents]: BaseEditorComponents[K] | null
+	} & ErrorComponents
+>
+
+const EditorComponentsContext = createContext({} as TLEditorComponents & ErrorComponents)
 
 type ComponentsContextProviderProps = {
-	overrides?: Partial<TLEditorComponents>
+	overrides?: TLEditorComponents
 	children: any
 }
 
@@ -95,6 +106,7 @@ export function EditorComponentsProvider({ overrides, children }: ComponentsCont
 					SvgDefs: DefaultSvgDefs,
 					Brush: DefaultBrush,
 					ZoomBrush: DefaultBrush,
+					ScreenshotBrush: DefaultBrush,
 					CollaboratorBrush: DefaultBrush,
 					Cursor: DefaultCursor,
 					CollaboratorCursor: DefaultCursor,
@@ -113,6 +125,8 @@ export function EditorComponentsProvider({ overrides, children }: ComponentsCont
 					SelectionBackground: DefaultSelectionBackground,
 					SelectionForeground: DefaultSelectionForeground,
 					HoveredShapeIndicator: DefaultHoveredShapeIndicator,
+					OnTheCanvas: null,
+					InFrontOfTheCanvas: null,
 					...overrides,
 				}),
 				[overrides]

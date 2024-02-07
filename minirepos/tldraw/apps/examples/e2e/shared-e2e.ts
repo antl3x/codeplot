@@ -5,18 +5,6 @@ export function sleep(ms: number) {
 	return new Promise((resolve) => setTimeout(resolve, ms))
 }
 
-// export async function expectPathToBe(page: Page, path: string) {
-// 	expect(await page.evaluate(() => editor.root.path.value)).toBe(path)
-// }
-
-// export async function expectToHaveNShapes(page: Page, numberOfShapes: number) {
-// 	expect(await page.evaluate(() => editor.currentPageShapes.length)).toBe(numberOfShapes)
-// }
-
-// export async function expectToHaveNSelectedShapes(page: Page, numberOfSelectedShapes: number) {
-// 	expect(await page.evaluate(() => editor.selectedShapeIds.length)).toBe(numberOfSelectedShapes)
-// }
-
 declare const editor: Editor
 
 export async function setup({ page }: PlaywrightTestArgs & PlaywrightWorkerArgs) {
@@ -38,6 +26,7 @@ export async function setupPage(page: PlaywrightTestArgs['page']) {
 	await page.evaluate(() => {
 		editor.user.updateUserPreferences({ animationSpeed: 0 })
 	})
+	await page.mouse.move(50, 50)
 }
 
 export async function setupPageWithShapes(page: PlaywrightTestArgs['page']) {

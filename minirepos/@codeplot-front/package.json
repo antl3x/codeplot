@@ -8,7 +8,7 @@
     "@localhost:app.dev": "zx _scripts/@localhost:app.dev.mjs"
   },
   "overrides": {
-    "@tldraw/state": "2.0.0-alpha.16"
+    "@tldraw/state": "2.0.0-alpha.19"
   },
   "dependencies": {
     "@adobe/react-spectrum": "^3.33.1",
@@ -18,8 +18,8 @@
     "@react-spectrum/toast": "3.0.0-beta.8",
     "@react-stately/toast": "3.0.0-beta.1",
     "@spectrum-icons/illustrations": "^3.6.9",
-    "@tldraw/editor": "2.0.0-alpha.16",
-    "@tldraw/tldraw": "2.0.0-alpha.16",
+    "@tldraw/editor": "2.0.0-alpha.19",
+    "@tldraw/tldraw": "2.0.0-alpha.19",
     "Upload": "link:@spectrum-icons/illustrations/Upload",
     "fast-json-patch": "^3.1.1",
     "mobx": "^6.12.0",

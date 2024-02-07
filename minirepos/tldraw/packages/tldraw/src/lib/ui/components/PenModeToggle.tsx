@@ -5,7 +5,7 @@ import { Button } from './primitives/Button'
 export const ExitPenMode = track(function ExitPenMode() {
 	const editor = useEditor()
 
-	const isPenMode = editor.instanceState.isPenMode
+	const isPenMode = editor.getInstanceState().isPenMode
 
 	const actions = useActions()
 
@@ -15,6 +15,7 @@ export const ExitPenMode = track(function ExitPenMode() {
 
 	return (
 		<Button
+			type="normal"
 			label={action.label}
 			iconLeft={action.icon}
 			onClick={() => action.onSelect('helper-buttons')}

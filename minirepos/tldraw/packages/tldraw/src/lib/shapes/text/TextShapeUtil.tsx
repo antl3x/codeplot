@@ -17,6 +17,7 @@ import {
 	textShapeMigrations,
 	textShapeProps,
 	toDomPrecision,
+	useEditor,
 } from '@tldraw/editor'
 import { createTextSvgElementFromSpans } from '../shared/createTextSvgElementFromSpans'
 import { FONT_FAMILIES, FONT_SIZES, TEXT_PROPS } from '../shared/default-shape-constants'
@@ -70,7 +71,7 @@ export class TextShapeUtil extends ShapeUtil<TLTextShape> {
 			props: { text, color },
 		} = shape
 
-		const theme = getDefaultColorTheme({ isDarkMode: this.editor.user.isDarkMode })
+		const theme = getDefaultColorTheme({ isDarkMode: this.editor.user.getIsDarkMode() })
 		const { width, height } = this.getMinDimensions(shape)
 
 		const {
@@ -141,13 +142,15 @@ export class TextShapeUtil extends ShapeUtil<TLTextShape> {
 
 	indicator(shape: TLTextShape) {
 		const bounds = this.editor.getShapeGeometry(shape).bounds
+		const editor = useEditor()
+		if (shape.props.autoSize && editor.getEditingShapeId() === shape.id) return null
 		return <rect width={toDomPrecision(bounds.width)} height={toDomPrecision(bounds.height)} />
 	}
 
 	override toSvg(shape: TLTextShape, ctx: SvgExportContext) {
 		ctx.addExportDef(getFontDefForExport(shape.props.font))
 
-		const theme = getDefaultColorTheme({ isDarkMode: this.editor.user.isDarkMode })
+		const theme = getDefaultColorTheme({ isDarkMode: this.editor.user.getIsDarkMode() })
 		const bounds = this.editor.getShapeGeometry(shape).bounds
 		const text = shape.props.text
 

@@ -17,10 +17,12 @@ export const Menu = React.memo(function Menu() {
 		<M.Root id="main menu">
 			<M.Trigger>
 				<Button
+					type="icon"
 					className="tlui-menu__trigger"
 					data-testid="main.menu"
 					title={msg('menu.title')}
 					icon="menu"
+					smallIcon
 				/>
 			</M.Trigger>
 			<M.Content alignOffset={0} sideOffset={6}>
@@ -43,6 +45,7 @@ function MenuContent() {
 		parent: TLUiMenuChild | null,
 		depth: number
 	) {
+		if (!item) return null
 		switch (item.type) {
 			case 'custom': {
 				if (isReadonly && !item.readonlyOk) return null
@@ -100,7 +103,7 @@ function MenuContent() {
 							checked={item.checked}
 							disabled={item.disabled}
 						>
-							{labelStr && <span>{labelStr}</span>}
+							{labelStr && <span className="tlui-button__label">{labelStr}</span>}
 							{kbd && <Kbd>{kbd}</Kbd>}
 						</M.CheckboxItem>
 					)
@@ -109,6 +112,7 @@ function MenuContent() {
 				// Item is a button
 				return (
 					<M.Item
+						type="menu"
 						key={id}
 						data-testid={`menu-item.${item.id}`}
 						kbd={kbd}

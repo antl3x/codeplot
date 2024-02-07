@@ -1,3 +1,36 @@
+# v2.0.0-alpha.18 (Fri Nov 10 2023)
+
+#### 🏠 Internal
+
+- Revert "bump prerelease from alpha to beta" [#2192](https://github.com/tldraw/tldraw/pull/2192) ([@ds300](https://github.com/ds300))
+- bump prerelease from alpha to beta [#2148](https://github.com/tldraw/tldraw/pull/2148) ([@ds300](https://github.com/ds300))
+
+#### Authors: 1
+
+- David Sheldrick ([@ds300](https://github.com/ds300))
+
+---
+
+# v2.0.0-alpha.17 (Tue Oct 17 2023)
+
+### Release Notes
+
+#### Add offline indicator (also to top zone example) ([#2083](https://github.com/tldraw/tldraw/pull/2083))
+
+- [@tldraw/tldraw] add offline indicator to ui components
+
+---
+
+#### 🚀 Enhancement
+
+- Add offline indicator (also to top zone example) [#2083](https://github.com/tldraw/tldraw/pull/2083) ([@steveruizok](https://github.com/steveruizok))
+
+#### Authors: 1
+
+- Steve Ruiz ([@steveruizok](https://github.com/steveruizok))
+
+---
+
 # v2.0.0-alpha.15 (Fri Oct 06 2023)
 
 ### Release Notes

@@ -23,7 +23,7 @@ type ShapeWithUrl = TLBaseShape<string, { url: string }>
 export const EditLinkDialog = track(function EditLinkDialog({ onClose }: TLUiDialogProps) {
 	const editor = useEditor()
 
-	const selectedShape = editor.onlySelectedShape
+	const selectedShape = editor.getOnlySelectedShape()
 
 	if (
 		!(selectedShape && 'url' in selectedShape.props && typeof selectedShape.props.url === 'string')
@@ -89,7 +89,7 @@ export const EditLinkDialogInner = track(function EditLinkDialogInner({
 	}, [])
 
 	const handleClear = useCallback(() => {
-		const { onlySelectedShape } = editor
+		const onlySelectedShape = editor.getOnlySelectedShape()
 		if (!onlySelectedShape) return
 		editor.updateShapes([
 			{ id: onlySelectedShape.id, type: onlySelectedShape.type, props: { url: '' } },
@@ -98,7 +98,7 @@ export const EditLinkDialogInner = track(function EditLinkDialogInner({
 	}, [editor, onClose])
 
 	const handleComplete = useCallback(() => {
-		const { onlySelectedShape } = editor
+		const onlySelectedShape = editor.getOnlySelectedShape()
 
 		if (!onlySelectedShape) return
 
@@ -157,7 +157,7 @@ export const EditLinkDialogInner = track(function EditLinkDialogInner({
 				</div>
 			</Dialog.Body>
 			<Dialog.Footer className="tlui-dialog__footer__actions">
-				<Button onClick={handleCancel} onTouchEnd={handleCancel}>
+				<Button type="normal" onClick={handleCancel} onTouchEnd={handleCancel}>
 					{msg('edit-link-dialog.cancel')}
 				</Button>
 				{isRemoving ? (

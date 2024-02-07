@@ -9,12 +9,12 @@ import { TLUiTranslationKey } from '../hooks/useTranslation/TLUiTranslationKey'
 import { useTranslation } from '../hooks/useTranslation/useTranslation'
 import { TLUiIconType } from '../icon-types'
 import { LanguageMenu } from './LanguageMenu'
+import { Button } from './primitives/Button'
 import * as M from './primitives/DropdownMenu'
-import { Icon } from './primitives/Icon'
 
 interface HelpMenuLink {
-	label: TLUiTranslationKey
-	icon: TLUiIconType
+	label: TLUiTranslationKey | Exclude<string, TLUiTranslationKey>
+	icon: TLUiIconType | Exclude<string, TLUiIconType>
 	url: string
 }
 
@@ -32,14 +32,16 @@ export const HelpMenu = React.memo(function HelpMenu() {
 	return (
 		<div className="tlui-help-menu">
 			<Root dir="ltr" open={isOpen} onOpenChange={onOpenChange} modal={false}>
-				<Trigger
-					className="tlui-button tlui-help-menu__button"
-					dir="ltr"
-					title={msg('help-menu.title')}
-				>
-					<Icon icon="question-mark" />
+				<Trigger asChild dir="ltr">
+					<Button
+						type="help"
+						className="tlui-button"
+						smallIcon
+						title={msg('help-menu.title')}
+						icon="question-mark"
+					/>
 				</Trigger>
-				<Portal container={container} dir="ltr">
+				<Portal container={container}>
 					<Content
 						className="tlui-menu"
 						side="top"
@@ -62,6 +64,7 @@ function HelpMenuContent() {
 	const isReadonly = useReadonly()
 
 	function getHelpMenuItem(item: TLUiMenuChild) {
+		if (!item) return null
 		if (isReadonly && !item.readonlyOk) return null
 
 		switch (item.type) {
@@ -90,6 +93,7 @@ function HelpMenuContent() {
 				const { id, kbd, label, onSelect, icon } = item.actionItem
 				return (
 					<M.Item
+						type="menu"
 						key={id}
 						kbd={kbd}
 						label={label}

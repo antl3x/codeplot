@@ -1,3 +1,365 @@
+# v2.0.0-alpha.19 (Tue Dec 12 2023)
+
+### Release Notes
+
+#### zoom to affected shapes after undo/redo ([#2293](https://github.com/tldraw/tldraw/pull/2293))
+
+- Make sure affected shapes are visible after undo/redo
+
+#### Add fit to content for frames. ([#2275](https://github.com/tldraw/tldraw/pull/2275))
+
+- Add Fit to content option to the context menu for frames. This resizes the frames to correctly fit all their content.
+
+#### fix new page naming ([#2292](https://github.com/tldraw/tldraw/pull/2292))
+
+- Fix naming of pages created by the "move to page" action
+
+#### Fix exporting of cropped images. ([#2268](https://github.com/tldraw/tldraw/pull/2268))
+
+- Fix exporting of cropped images.
+
+#### [improvements] arrows x enclosing shapes x precision. ([#2265](https://github.com/tldraw/tldraw/pull/2265))
+
+- Improves the logic about when to draw "precise" arrows between the center of bound shapes.
+
+#### fix vite HMR issue ([#2279](https://github.com/tldraw/tldraw/pull/2279))
+
+- Fixes a bug that could cause crashes due to a re-render loop with HMR #1989
+
+#### Removing frames and adding elements to frames ([#2219](https://github.com/tldraw/tldraw/pull/2219))
+
+- Allow users to remove the frame, but keep it's children. Allow the users to add shapes to the frame directly when creating a frame.
+
+#### Fix missing padding-right in toast ([#2251](https://github.com/tldraw/tldraw/pull/2251))
+
+- Fox padding-right in toast content.
+
+#### Also export `TLUiEventMap` ([#2234](https://github.com/tldraw/tldraw/pull/2234))
+
+- Export `TLUiEventMap` type.
+
+#### Fix the tool lock button. ([#2225](https://github.com/tldraw/tldraw/pull/2225))
+
+- Adds the missing tool lock button.
+
+#### Custom Tools DX + screenshot example ([#2198](https://github.com/tldraw/tldraw/pull/2198))
+
+- adds ScreenshotTool custom tool example
+- improvements and new exports related to copying and exporting images / files
+- loosens up types around icons and translations
+- moving `StateNode.isActive` into an atom
+- adding `Editor.path`
+
+#### StateNode atoms ([#2213](https://github.com/tldraw/tldraw/pull/2213))
+
+- adds computed `StateNode.getPath`
+- adds computed StateNode.getCurrent`
+- adds computed StateNode.getIsActive`
+- adds computed `Editor.getPath()`
+- makes transition's second property optional
+
+#### don't overwrite bookmark position if it changed before metadata arrives ([#2215](https://github.com/tldraw/tldraw/pull/2215))
+
+- Fixes issue when creating new bookmark shape where the position would be reset if you moved it before the bookmark metadata was fetched.
+
+#### [fix] huge images, use downscale for image scaling ([#2207](https://github.com/tldraw/tldraw/pull/2207))
+
+- Improved image rescaling.
+
+#### Fix an issue with not being able to group a shape an an arrow. ([#2205](https://github.com/tldraw/tldraw/pull/2205))
+
+- Add a brief release note for your PR here.
+
+#### feat: add new prop to force mobile mode layout ([#1734](https://github.com/tldraw/tldraw/pull/1734))
+
+- add new prop to force mobile mode layout
+
+---
+
+#### 💥 Breaking Change
+
+- No impure getters pt 1 [#2189](https://github.com/tldraw/tldraw/pull/2189) ([@steveruizok](https://github.com/steveruizok) [@ds300](https://github.com/ds300))
+
+#### 🚀 Enhancement
+
+- Add fit to content for frames. [#2275](https://github.com/tldraw/tldraw/pull/2275) ([@MitjaBezensek](https://github.com/MitjaBezensek) [@steveruizok](https://github.com/steveruizok))
+- [improvements] arrows x enclosing shapes x precision. [#2265](https://github.com/tldraw/tldraw/pull/2265) ([@steveruizok](https://github.com/steveruizok))
+- Removing frames and adding elements to frames [#2219](https://github.com/tldraw/tldraw/pull/2219) ([@MitjaBezensek](https://github.com/MitjaBezensek) [@steveruizok](https://github.com/steveruizok) [@Taha-Hassan-Git](https://github.com/Taha-Hassan-Git))
+- Add `getSvgAsImage` to exports. [#2229](https://github.com/tldraw/tldraw/pull/2229) ([@steveruizok](https://github.com/steveruizok))
+- Custom Tools DX + screenshot example [#2198](https://github.com/tldraw/tldraw/pull/2198) ([@steveruizok](https://github.com/steveruizok))
+- StateNode atoms [#2213](https://github.com/tldraw/tldraw/pull/2213) ([@steveruizok](https://github.com/steveruizok))
+- [fix] huge images, use downscale for image scaling [#2207](https://github.com/tldraw/tldraw/pull/2207) ([@steveruizok](https://github.com/steveruizok))
+- feat: add new prop to force mobile mode layout [#1734](https://github.com/tldraw/tldraw/pull/1734) ([@gabrielchl](https://github.com/gabrielchl) [@steveruizok](https://github.com/steveruizok))
+
+#### 🐛 Bug Fix
+
+- Revert "zoom to affected shapes after undo/redo" [#2310](https://github.com/tldraw/tldraw/pull/2310) ([@ds300](https://github.com/ds300))
+- zoom to affected shapes after undo/redo [#2293](https://github.com/tldraw/tldraw/pull/2293) ([@ds300](https://github.com/ds300))
+- fix new page naming [#2292](https://github.com/tldraw/tldraw/pull/2292) ([@SomeHats](https://github.com/SomeHats))
+- Fix exporting of cropped images. [#2268](https://github.com/tldraw/tldraw/pull/2268) ([@MitjaBezensek](https://github.com/MitjaBezensek))
+- fix vite HMR issue [#2279](https://github.com/tldraw/tldraw/pull/2279) ([@SomeHats](https://github.com/SomeHats))
+- Hot elbows [#2258](https://github.com/tldraw/tldraw/pull/2258) ([@ds300](https://github.com/ds300) [@steveruizok](https://github.com/steveruizok))
+- Fix missing padding-right in toast [#2251](https://github.com/tldraw/tldraw/pull/2251) ([@ByMykel](https://github.com/ByMykel) [@steveruizok](https://github.com/steveruizok))
+- Also export `TLUiEventMap` [#2234](https://github.com/tldraw/tldraw/pull/2234) ([@MitjaBezensek](https://github.com/MitjaBezensek))
+- no impure getters pt 11 [#2236](https://github.com/tldraw/tldraw/pull/2236) ([@ds300](https://github.com/ds300))
+- No impure getters pt10 [#2235](https://github.com/tldraw/tldraw/pull/2235) ([@ds300](https://github.com/ds300))
+- Fix the tool lock button. [#2225](https://github.com/tldraw/tldraw/pull/2225) ([@MitjaBezensek](https://github.com/MitjaBezensek))
+- No impure getters pt9 [#2222](https://github.com/tldraw/tldraw/pull/2222) ([@ds300](https://github.com/ds300))
+- No impure getters pt8 [#2221](https://github.com/tldraw/tldraw/pull/2221) ([@ds300](https://github.com/ds300))
+- No impure getters pt7 [#2220](https://github.com/tldraw/tldraw/pull/2220) ([@ds300](https://github.com/ds300))
+- No impure getters pt6 [#2218](https://github.com/tldraw/tldraw/pull/2218) ([@ds300](https://github.com/ds300))
+- don't overwrite bookmark position if it changed before metadata arrives [#2215](https://github.com/tldraw/tldraw/pull/2215) ([@ds300](https://github.com/ds300))
+- No impure getters pt5 [#2208](https://github.com/tldraw/tldraw/pull/2208) ([@ds300](https://github.com/ds300))
+- Fix an issue with not being able to group a shape an an arrow. [#2205](https://github.com/tldraw/tldraw/pull/2205) ([@MitjaBezensek](https://github.com/MitjaBezensek))
+- No impure getters pt4 [#2206](https://github.com/tldraw/tldraw/pull/2206) ([@ds300](https://github.com/ds300))
+- No impure getters pt3 [#2203](https://github.com/tldraw/tldraw/pull/2203) ([@ds300](https://github.com/ds300))
+- No impure getters pt2 [#2202](https://github.com/tldraw/tldraw/pull/2202) ([@ds300](https://github.com/ds300))
+
+#### 🧪 Tests
+
+- fix export snapshot race condition [#2280](https://github.com/tldraw/tldraw/pull/2280) ([@SomeHats](https://github.com/SomeHats))
+
+#### Authors: 7
+
+- [@ByMykel](https://github.com/ByMykel)
+- alex ([@SomeHats](https://github.com/SomeHats))
+- David Sheldrick ([@ds300](https://github.com/ds300))
+- Gabriel Lee ([@gabrielchl](https://github.com/gabrielchl))
+- Mitja Bezenšek ([@MitjaBezensek](https://github.com/MitjaBezensek))
+- Steve Ruiz ([@steveruizok](https://github.com/steveruizok))
+- Taha ([@Taha-Hassan-Git](https://github.com/Taha-Hassan-Git))
+
+---
+
+# v2.0.0-alpha.18 (Fri Nov 10 2023)
+
+### Release Notes
+
+#### Fix an error when using context menu. ([#2186](https://github.com/tldraw/tldraw/pull/2186))
+
+- Fixes the console error when opening the context menu for the first time.
+
+#### [fix] actions menu freezing ui ([#2187](https://github.com/tldraw/tldraw/pull/2187))
+
+- Fix actions menu not closing when clicking the canvas after grouping items via the actions menu.
+
+#### Fix an issue with edit link. ([#2184](https://github.com/tldraw/tldraw/pull/2184))
+
+- Fixes an issue with using the Edit link dialog.
+
+#### Only use the hack if we are in safari. ([#2185](https://github.com/tldraw/tldraw/pull/2185))
+
+- Improve the speed of exporting to png for non Safari browsers.
+
+#### Fix keyboard shortcuts for vscode. ([#2181](https://github.com/tldraw/tldraw/pull/2181))
+
+- Fixes keyboard shortcuts for VS Code extension.
+
+#### Fix printing. ([#2177](https://github.com/tldraw/tldraw/pull/2177))
+
+- Fixes printing of shapes.
+
+#### [fix] Frame label not following staying aligned correctly on rotation ([#2172](https://github.com/tldraw/tldraw/pull/2172))
+
+- Frame labels immediately update their position on rotation.
+
+#### Don't show scrollbars. ([#2171](https://github.com/tldraw/tldraw/pull/2171))
+
+- Hide the horizontal scrollbar in the vertical alignment for Firefox.
+
+#### instant bookmarks ([#2176](https://github.com/tldraw/tldraw/pull/2176))
+
+- Improves ux around pasting bookmarks
+
+#### Fix arrow dropdown localizations. ([#2174](https://github.com/tldraw/tldraw/pull/2174))
+
+- Fix arrow headstyle dropdown translations.
+
+#### Fix crash with zero length arrow ([#2173](https://github.com/tldraw/tldraw/pull/2173))
+
+- Fix a hyper niche arrow crash with zero length arrows.
+
+#### Allow users to select shapes when drag starts on top of a locked shape. ([#2169](https://github.com/tldraw/tldraw/pull/2169))
+
+- Allows brush selecting when you start it on top of a locked shape.
+
+#### Fix the problem with text not being correctly aligned in small geo shapes. ([#2168](https://github.com/tldraw/tldraw/pull/2168))
+
+- Fixes position of Text labels in geo shapes.
+
+#### Zooming improvement ([#2149](https://github.com/tldraw/tldraw/pull/2149))
+
+- Improves zooming for inactive windows.
+
+#### [feature] Things on the canvas ([#2150](https://github.com/tldraw/tldraw/pull/2150))
+
+- [editor] Adds two new components, `OnTheCanvas` and `InFrontOfTheCanvas`.
+
+#### Fix cleanupText ([#2138](https://github.com/tldraw/tldraw/pull/2138))
+
+- Fixes a minor bug where cleaning up text would fail.
+
+#### [android] Fix text labels and link button getting misaligned ([#2132](https://github.com/tldraw/tldraw/pull/2132))
+
+- Fixed a bug where labels and links could lose alignment on android.
+
+#### [feature] multi-scribbles ([#2125](https://github.com/tldraw/tldraw/pull/2125))
+
+- [feature] multi scribbles
+
+#### Tighten up editor ui ([#2102](https://github.com/tldraw/tldraw/pull/2102))
+
+- Small adjustment to editor ui.
+
+#### Remove indicator for autosize text shapes while editing ([#2120](https://github.com/tldraw/tldraw/pull/2120))
+
+- Removed the indicator from autosize text shapes.
+
+#### Taha/initial shape in handle change ([#2117](https://github.com/tldraw/tldraw/pull/2117))
+
+- Add a brief release note for your PR here.
+
+#### fix selection fg transform ([#2113](https://github.com/tldraw/tldraw/pull/2113))
+
+- Fixes a small issue causing the selection foreground to be offset when the browser is at particular zoom levels.
+
+#### Remove (optional) from jsdocs ([#2109](https://github.com/tldraw/tldraw/pull/2109))
+
+- dev: Removed duplicate/inconsistent `(optional)`s from docs
+
+#### [fix] mobile style panel switching open / closed ([#2101](https://github.com/tldraw/tldraw/pull/2101))
+
+- Fix bug with style panel
+
+---
+
+#### 🚀 Enhancement
+
+- instant bookmarks [#2176](https://github.com/tldraw/tldraw/pull/2176) ([@ds300](https://github.com/ds300))
+- [feature] Things on the canvas [#2150](https://github.com/tldraw/tldraw/pull/2150) ([@steveruizok](https://github.com/steveruizok))
+- [feature] multi-scribbles [#2125](https://github.com/tldraw/tldraw/pull/2125) ([@steveruizok](https://github.com/steveruizok))
+- Tighten up editor ui [#2102](https://github.com/tldraw/tldraw/pull/2102) ([@steveruizok](https://github.com/steveruizok))
+- Remove indicator for autosize text shapes while editing [#2120](https://github.com/tldraw/tldraw/pull/2120) ([@TodePond](https://github.com/TodePond))
+
+#### 🐛 Bug Fix
+
+- Add tldraw component exports [#2188](https://github.com/tldraw/tldraw/pull/2188) ([@steveruizok](https://github.com/steveruizok))
+- Fix an error when using context menu. [#2186](https://github.com/tldraw/tldraw/pull/2186) ([@MitjaBezensek](https://github.com/MitjaBezensek))
+- [fix] actions menu freezing ui [#2187](https://github.com/tldraw/tldraw/pull/2187) ([@steveruizok](https://github.com/steveruizok))
+- Fix an issue with edit link. [#2184](https://github.com/tldraw/tldraw/pull/2184) ([@MitjaBezensek](https://github.com/MitjaBezensek))
+- Only use the hack if we are in safari. [#2185](https://github.com/tldraw/tldraw/pull/2185) ([@MitjaBezensek](https://github.com/MitjaBezensek))
+- Fix keyboard shortcuts for vscode. [#2181](https://github.com/tldraw/tldraw/pull/2181) ([@MitjaBezensek](https://github.com/MitjaBezensek))
+- Fix printing. [#2177](https://github.com/tldraw/tldraw/pull/2177) ([@MitjaBezensek](https://github.com/MitjaBezensek))
+- [fix] Frame label not following staying aligned correctly on rotation [#2172](https://github.com/tldraw/tldraw/pull/2172) ([@Taha-Hassan-Git](https://github.com/Taha-Hassan-Git) [@steveruizok](https://github.com/steveruizok))
+- Don't show scrollbars. [#2171](https://github.com/tldraw/tldraw/pull/2171) ([@MitjaBezensek](https://github.com/MitjaBezensek))
+- Fix arrow dropdown localizations. [#2174](https://github.com/tldraw/tldraw/pull/2174) ([@MitjaBezensek](https://github.com/MitjaBezensek))
+- Fix crash with zero length arrow [#2173](https://github.com/tldraw/tldraw/pull/2173) ([@TodePond](https://github.com/TodePond))
+- Allow users to select shapes when drag starts on top of a locked shape. [#2169](https://github.com/tldraw/tldraw/pull/2169) ([@MitjaBezensek](https://github.com/MitjaBezensek))
+- Fix the problem with text not being correctly aligned in small geo shapes. [#2168](https://github.com/tldraw/tldraw/pull/2168) ([@MitjaBezensek](https://github.com/MitjaBezensek))
+- Zooming improvement [#2149](https://github.com/tldraw/tldraw/pull/2149) ([@MitjaBezensek](https://github.com/MitjaBezensek))
+- Fix cleanupText [#2138](https://github.com/tldraw/tldraw/pull/2138) ([@ds300](https://github.com/ds300))
+- [android] Fix text labels and link button getting misaligned [#2132](https://github.com/tldraw/tldraw/pull/2132) ([@TodePond](https://github.com/TodePond))
+- [fix] button gaps [#2130](https://github.com/tldraw/tldraw/pull/2130) ([@steveruizok](https://github.com/steveruizok))
+- [fix] Move to page button / toasts styling [#2126](https://github.com/tldraw/tldraw/pull/2126) ([@steveruizok](https://github.com/steveruizok))
+- [fix] css for editing page title [#2124](https://github.com/tldraw/tldraw/pull/2124) ([@steveruizok](https://github.com/steveruizok))
+- fix selection fg transform [#2113](https://github.com/tldraw/tldraw/pull/2113) ([@ds300](https://github.com/ds300))
+- [fix] mobile style panel switching open / closed [#2101](https://github.com/tldraw/tldraw/pull/2101) ([@steveruizok](https://github.com/steveruizok))
+
+#### 🏠 Internal
+
+- Revert "bump prerelease from alpha to beta" [#2192](https://github.com/tldraw/tldraw/pull/2192) ([@ds300](https://github.com/ds300))
+- bump prerelease from alpha to beta [#2148](https://github.com/tldraw/tldraw/pull/2148) ([@ds300](https://github.com/ds300))
+- Taha/initial shape in handle change [#2117](https://github.com/tldraw/tldraw/pull/2117) ([@Taha-Hassan-Git](https://github.com/Taha-Hassan-Git))
+
+#### 📝 Documentation
+
+- Remove (optional) from jsdocs [#2109](https://github.com/tldraw/tldraw/pull/2109) ([@TodePond](https://github.com/TodePond))
+
+#### Authors: 5
+
+- David Sheldrick ([@ds300](https://github.com/ds300))
+- Lu Wilson ([@TodePond](https://github.com/TodePond))
+- Mitja Bezenšek ([@MitjaBezensek](https://github.com/MitjaBezensek))
+- Steve Ruiz ([@steveruizok](https://github.com/steveruizok))
+- Taha ([@Taha-Hassan-Git](https://github.com/Taha-Hassan-Git))
+
+---
+
+# v2.0.0-alpha.17 (Tue Oct 17 2023)
+
+### Release Notes
+
+#### Firefox, Touch: Fix not being able to open style dropdowns ([#2092](https://github.com/tldraw/tldraw/pull/2092))
+
+- Firefox Mobile: Fixed a bug where you couldn't open some style dropdown options.
+
+#### Add timestamp to file names ([#2096](https://github.com/tldraw/tldraw/pull/2096))
+
+- Add timestamp to exported image file names
+
+#### [fix] Context menu + menus not closing correctly ([#2086](https://github.com/tldraw/tldraw/pull/2086))
+
+- [fix] bug with menus
+
+#### Fix not being able to upload massive images ([#2095](https://github.com/tldraw/tldraw/pull/2095))
+
+- Fixed big images being too big to get added to the canvas.
+
+#### fix cropped image size ([#2097](https://github.com/tldraw/tldraw/pull/2097))
+
+- Fixes a rendering issue where cropped images were sometimes bleeding outside their bounds.
+
+#### Add offline indicator (also to top zone example) ([#2083](https://github.com/tldraw/tldraw/pull/2083))
+
+- [@tldraw/tldraw] add offline indicator to ui components
+
+#### [fix] reparenting locked shapes ([#2070](https://github.com/tldraw/tldraw/pull/2070))
+
+- Fix a bug where grouped locked shapes would be deleted when ungrouped.
+
+#### [fix] Don't select locked shapes on pointer up ([#2069](https://github.com/tldraw/tldraw/pull/2069))
+
+- Fix bug where locked shape could be selected by clicking on its label
+
+#### [fix] locked shape of opacity problem with eraser.pointing ([#2073](https://github.com/tldraw/tldraw/pull/2073))
+
+- locked shape of opacity problem with eraser.pointing
+Before/after:
+![A](https://github.com/tldraw/tldraw/assets/59823089/7483506c-72ac-45cc-93aa-f2a794ea8ff0) ![B](https://github.com/tldraw/tldraw/assets/59823089/ef0f988c-83f5-46a2-b891-0a391bca2f87)
+
+---
+
+#### 🚀 Enhancement
+
+- Add offline indicator (also to top zone example) [#2083](https://github.com/tldraw/tldraw/pull/2083) ([@steveruizok](https://github.com/steveruizok))
+- Add data breakpoint to layout css [#2076](https://github.com/tldraw/tldraw/pull/2076) ([@steveruizok](https://github.com/steveruizok))
+- Same first page id for all editors [#2071](https://github.com/tldraw/tldraw/pull/2071) ([@steveruizok](https://github.com/steveruizok))
+
+#### 🐛 Bug Fix
+
+- Firefox, Touch: Fix not being able to open style dropdowns [#2092](https://github.com/tldraw/tldraw/pull/2092) ([@TodePond](https://github.com/TodePond))
+- Add timestamp to file names [#2096](https://github.com/tldraw/tldraw/pull/2096) ([@Taha-Hassan-Git](https://github.com/Taha-Hassan-Git))
+- move imports [#2099](https://github.com/tldraw/tldraw/pull/2099) ([@SomeHats](https://github.com/SomeHats))
+- [fix] Context menu + menus not closing correctly [#2086](https://github.com/tldraw/tldraw/pull/2086) ([@steveruizok](https://github.com/steveruizok))
+- Fix not being able to upload massive images [#2095](https://github.com/tldraw/tldraw/pull/2095) ([@TodePond](https://github.com/TodePond))
+- fix cropped image size [#2097](https://github.com/tldraw/tldraw/pull/2097) ([@ds300](https://github.com/ds300))
+- Fixed a bug checking translated string keys [#2082](https://github.com/tldraw/tldraw/pull/2082) ([@kewell-tsao](https://github.com/kewell-tsao))
+- [fix] reparenting locked shapes [#2070](https://github.com/tldraw/tldraw/pull/2070) ([@steveruizok](https://github.com/steveruizok))
+- [fix] Don't select locked shapes on pointer up [#2069](https://github.com/tldraw/tldraw/pull/2069) ([@steveruizok](https://github.com/steveruizok))
+- [fix] locked shape of opacity problem with eraser.pointing [#2073](https://github.com/tldraw/tldraw/pull/2073) ([@momenthana](https://github.com/momenthana))
+
+#### Authors: 7
+
+- alex ([@SomeHats](https://github.com/SomeHats))
+- David Sheldrick ([@ds300](https://github.com/ds300))
+- Hana ([@momenthana](https://github.com/momenthana))
+- Kewell ([@kewell-tsao](https://github.com/kewell-tsao))
+- Lu Wilson ([@TodePond](https://github.com/TodePond))
+- Steve Ruiz ([@steveruizok](https://github.com/steveruizok))
+- Taha ([@Taha-Hassan-Git](https://github.com/Taha-Hassan-Git))
+
+---
+
 # v2.0.0-alpha.16 (Wed Oct 11 2023)
 
 ### Release Notes

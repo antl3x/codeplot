@@ -17,8 +17,6 @@ export function useCanvasEvents() {
 			let lastX: number, lastY: number
 
 			function onPointerDown(e: React.PointerEvent) {
-				stopEventPropagation(e)
-
 				if ((e as any).isKilled) return
 
 				if (e.button === 2) {
@@ -41,6 +39,15 @@ export function useCanvasEvents() {
 					name: 'pointer_down',
 					...getPointerInfo(e),
 				})
+
+				if (editor.getOpenMenus().length > 0) {
+					editor.updateInstanceState({
+						openMenus: [],
+					})
+
+					document.body.click()
+					editor.getContainer().focus()
+				}
 			}
 
 			function onPointerMove(e: React.PointerEvent) {
@@ -76,14 +83,14 @@ export function useCanvasEvents() {
 
 			function onPointerEnter(e: React.PointerEvent) {
 				if ((e as any).isKilled) return
-				if (editor.instanceState.isPenMode && e.pointerType !== 'pen') return
+				if (editor.getInstanceState().isPenMode && e.pointerType !== 'pen') return
 				const canHover = e.pointerType === 'mouse' || e.pointerType === 'pen'
 				editor.updateInstanceState({ isHoveringCanvas: canHover ? true : null })
 			}
 
 			function onPointerLeave(e: React.PointerEvent) {
 				if ((e as any).isKilled) return
-				if (editor.instanceState.isPenMode && e.pointerType !== 'pen') return
+				if (editor.getInstanceState().isPenMode && e.pointerType !== 'pen') return
 				const canHover = e.pointerType === 'mouse' || e.pointerType === 'pen'
 				editor.updateInstanceState({ isHoveringCanvas: canHover ? false : null })
 			}

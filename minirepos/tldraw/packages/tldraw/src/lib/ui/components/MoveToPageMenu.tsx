@@ -7,8 +7,8 @@ import { Button } from './primitives/Button'
 export const MoveToPageMenu = track(function MoveToPageMenu() {
 	const editor = useEditor()
 	const container = useContainer()
-	const pages = editor.pages
-	const currentPageId = editor.currentPageId
+	const pages = editor.getPages()
+	const currentPageId = editor.getCurrentPageId()
 	const msg = useTranslation()
 	const { addToast } = useToasts()
 
@@ -16,13 +16,13 @@ export const MoveToPageMenu = track(function MoveToPageMenu() {
 		<_ContextMenu.Sub>
 			<_ContextMenu.SubTrigger dir="ltr" asChild>
 				<Button
-					className="tlui-menu__button"
+					type="menu"
 					label="context-menu.move-to-page"
 					data-testid="menu-item.move-to-page"
 					icon="chevron-right"
 				/>
 			</_ContextMenu.SubTrigger>
-			<_ContextMenu.Portal container={container} dir="ltr">
+			<_ContextMenu.Portal container={container}>
 				<_ContextMenu.SubContent className="tlui-menu" sideOffset={-4} collisionPadding={4}>
 					<_ContextMenu.Group
 						dir="ltr"
@@ -36,7 +36,7 @@ export const MoveToPageMenu = track(function MoveToPageMenu() {
 								disabled={currentPageId === page.id}
 								onSelect={() => {
 									editor.mark('move_shapes_to_page')
-									editor.moveShapesToPage(editor.selectedShapeIds, page.id as TLPageId)
+									editor.moveShapesToPage(editor.getSelectedShapeIds(), page.id as TLPageId)
 
 									const toPage = editor.getPage(page.id)
 
@@ -60,10 +60,11 @@ export const MoveToPageMenu = track(function MoveToPageMenu() {
 								asChild
 							>
 								<Button
+									type="menu"
 									title={page.name}
-									className="tlui-menu__button tlui-context-menu__move-to-page__name"
+									className="tlui-context-menu__move-to-page__name"
 								>
-									<span>{page.name}</span>
+									<span className="tlui-button__label">{page.name}</span>
 								</Button>
 							</_ContextMenu.Item>
 						))}
@@ -78,20 +79,21 @@ export const MoveToPageMenu = track(function MoveToPageMenu() {
 							key="new-page"
 							onSelect={() => {
 								const newPageId = PageRecordType.createId()
-								const ids = editor.selectedShapeIds
+								const ids = editor.getSelectedShapeIds()
 								editor.batch(() => {
 									editor.mark('move_shapes_to_page')
-									editor.createPage({ name: 'Page', id: newPageId })
+									editor.createPage({ name: msg('page-menu.new-page-initial-name'), id: newPageId })
 									editor.moveShapesToPage(ids, newPageId)
 								})
 							}}
 							asChild
 						>
 							<Button
+								type="menu"
 								title={msg('context.pages.new-page')}
-								className="tlui-menu__button tlui-context-menu__move-to-page__name"
+								className="tlui-context-menu__move-to-page__name"
 							>
-								{msg('context.pages.new-page')}
+								<span className="tlui-button__label">{msg('context.pages.new-page')}</span>
 							</Button>
 						</_ContextMenu.Item>
 					</_ContextMenu.Group>

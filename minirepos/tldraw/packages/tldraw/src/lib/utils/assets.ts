@@ -1,4 +1,6 @@
-import { isAnimated } from './is-gif-animated'
+import downscale from 'downscale'
+import { getBrowserCanvasMaxSize } from '../shapes/shared/getBrowserCanvasMaxSize'
+import { isAnimated } from './assets/is-gif-animated'
 
 type BoxWidthHeight = {
 	w: number
@@ -38,39 +40,49 @@ export function containBoxSize(
 /**
  * Get the size of an image from its source.
  *
+ * @example
+ * ```ts
+ * const size = await getImageSize('https://example.com/image.jpg')
+ * const dataUrl = await getResizedImageDataUrl('https://example.com/image.jpg', size.w, size.h, { type: "image/jpeg", quality: 0.92 })
+ * ```
+ *
  * @param dataURLForImage - The image file as a string.
  * @param width - The desired width.
  * @param height - The desired height.
+ * @param opts - Options for the image.
  * @public
  */
 export async function getResizedImageDataUrl(
 	dataURLForImage: string,
 	width: number,
-	height: number
+	height: number,
+	opts = {} as { type?: string; quality?: number }
 ): Promise<string> {
-	return await new Promise((resolve) => {
-		const img = new Image()
-		img.onload = () => {
-			// Initialize the canvas and it's size
-			const canvas = document.createElement('canvas')
-			const ctx = canvas.getContext('2d')
+	let desiredWidth = width * 2
+	let desiredHeight = height * 2
+	const { type = 'image/jpeg', quality = 0.92 } = opts
 
-			if (!ctx) return
+	const canvasSizes = await getBrowserCanvasMaxSize()
 
-			// Set width and height
-			canvas.width = width * 2
-			canvas.height = height * 2
+	const aspectRatio = width / height
 
-			// Draw image and export to a data-uri
-			ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
-			const newDataURL = canvas.toDataURL()
+	if (desiredWidth > canvasSizes.maxWidth) {
+		desiredWidth = canvasSizes.maxWidth
+		desiredHeight = desiredWidth / aspectRatio
+	}
 
-			// Do something with the result, like overwrite original
-			resolve(newDataURL)
-		}
-		img.crossOrigin = 'anonymous'
-		img.src = dataURLForImage
-	})
+	if (desiredHeight > canvasSizes.maxHeight) {
+		desiredHeight = canvasSizes.maxHeight
+		desiredWidth = desiredHeight * aspectRatio
+	}
+
+	if (desiredWidth * desiredHeight > canvasSizes.maxArea) {
+		const ratio = Math.sqrt(canvasSizes.maxArea / (desiredWidth * desiredHeight))
+		desiredWidth *= ratio
+		desiredHeight *= ratio
+	}
+
+	return await downscale(dataURLForImage, desiredWidth, desiredHeight, { imageType: type, quality })
 }
 
 /** @public */

@@ -80,7 +80,9 @@ export const onValidationFailure: StoreSchemaOptions<
 }
 
 function getDefaultPages() {
-	return [PageRecordType.create({ name: 'Page 1', index: 'a1', meta: {} })]
+	return [
+		PageRecordType.create({ id: 'page:page' as TLPageId, name: 'Page 1', index: 'a1', meta: {} }),
+	]
 }
 
 /** @internal */
@@ -100,7 +102,7 @@ export function createIntegrityChecker(store: TLStore): () => void {
 		}
 
 		// make sure there is at least one page
-		const pageIds = $pageIds.value
+		const pageIds = $pageIds.get()
 		if (pageIds.size === 0) {
 			store.put(getDefaultPages())
 			return ensureStoreIsUsable()

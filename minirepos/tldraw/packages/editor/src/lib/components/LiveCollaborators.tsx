@@ -31,14 +31,14 @@ const CollaboratorGuard = track(function CollaboratorGuard({
 	const presence = usePresence(collaboratorId)
 	const collaboratorState = useCollaboratorState(presence)
 
-	if (!(presence && presence.currentPageId === editor.currentPageId)) {
+	if (!(presence && presence.currentPageId === editor.getCurrentPageId())) {
 		// No need to render if we don't have a presence or if they're on a different page
 		return null
 	}
 
 	switch (collaboratorState) {
 		case 'inactive': {
-			const { followingUserId, highlightedUserIds } = editor.instanceState
+			const { followingUserId, highlightedUserIds } = editor.getInstanceState()
 			// If they're inactive and unless we're following them or they're highlighted, hide them
 			if (!(followingUserId === presence.userId || highlightedUserIds.includes(presence.userId))) {
 				return null
@@ -46,10 +46,10 @@ const CollaboratorGuard = track(function CollaboratorGuard({
 			break
 		}
 		case 'idle': {
-			const { highlightedUserIds } = editor.instanceState
+			const { highlightedUserIds } = editor.getInstanceState()
 			// If they're idle and following us and unless they have a chat message or are highlighted, hide them
 			if (
-				presence.followingUserId === editor.user.id &&
+				presence.followingUserId === editor.user.getId() &&
 				!(presence.chatMessage || highlightedUserIds.includes(presence.userId))
 			) {
 				return null
@@ -80,8 +80,9 @@ const Collaborator = track(function Collaborator({
 		CollaboratorShapeIndicator,
 	} = useEditorComponents()
 
-	const { viewportPageBounds, zoomLevel } = editor
-	const { userId, chatMessage, brush, scribble, selectedShapeIds, userName, cursor, color } =
+	const zoomLevel = editor.getZoomLevel()
+	const viewportPageBounds = editor.getViewportPageBounds()
+	const { userId, chatMessage, brush, scribbles, selectedShapeIds, userName, cursor, color } =
 		latestPresence
 
 	// Add a little padding to the top-left of the viewport
@@ -124,15 +125,19 @@ const Collaborator = track(function Collaborator({
 					viewport={viewportPageBounds}
 				/>
 			) : null}
-			{scribble && CollaboratorScribble ? (
-				<CollaboratorScribble
-					className="tl-collaborator__scribble"
-					key={userId + '_scribble'}
-					scribble={scribble}
-					color={color}
-					zoom={zoomLevel}
-					opacity={scribble.color === 'laser' ? 0.5 : 0.1}
-				/>
+			{CollaboratorScribble && scribbles.length ? (
+				<>
+					{scribbles.map((scribble) => (
+						<CollaboratorScribble
+							key={userId + '_scribble_' + scribble.id}
+							className="tl-collaborator__scribble"
+							scribble={scribble}
+							color={color}
+							zoom={zoomLevel}
+							opacity={scribble.color === 'laser' ? 0.5 : 0.1}
+						/>
+					))}
+				</>
 			) : null}
 			{CollaboratorShapeIndicator &&
 				selectedShapeIds.map((shapeId) => (

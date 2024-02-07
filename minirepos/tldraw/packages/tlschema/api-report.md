@@ -43,6 +43,7 @@ export const arrowShapeProps: {
             boundShapeId: TLShapeId;
             normalizedAnchor: Vec2dModel;
             isExact: boolean;
+            isPrecise: boolean;
         }>;
         point: T.ObjectValidator<{
             type: "point";
@@ -56,6 +57,7 @@ export const arrowShapeProps: {
             boundShapeId: TLShapeId;
             normalizedAnchor: Vec2dModel;
             isExact: boolean;
+            isPrecise: boolean;
         }>;
         point: T.ObjectValidator<{
             type: "point";
@@ -1040,7 +1042,7 @@ export interface TLInstance extends BaseRecord<'instance', TLInstanceId> {
     // (undocumented)
     screenBounds: Box2dModel;
     // (undocumented)
-    scribble: null | TLScribble;
+    scribbles: TLScribble[];
     // (undocumented)
     stylesForNextShape: Record<string, unknown>;
     // (undocumented)
@@ -1107,7 +1109,7 @@ export interface TLInstancePresence extends BaseRecord<'instance_presence', TLIn
     // (undocumented)
     screenBounds: Box2dModel;
     // (undocumented)
-    scribble: null | TLScribble;
+    scribbles: TLScribble[];
     // (undocumented)
     selectedShapeIds: TLShapeId[];
     // (undocumented)
@@ -1155,12 +1157,15 @@ export type TLSchema = StoreSchema<TLRecord, TLStoreProps>;
 
 // @public
 export type TLScribble = {
+    id: string;
     points: Vec2dModel[];
     size: number;
     color: TLCanvasUiColor;
     opacity: number;
     state: SetValue<typeof TL_SCRIBBLE_STATES>;
     delay: number;
+    shrink: number;
+    taper: boolean;
 };
 
 // @public (undocumented)
