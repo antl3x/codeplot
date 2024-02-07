@@ -20,8 +20,10 @@ export function OpenCodeplotFile() {
         />
         <div className="flex gap-6">
           <HowItWorksDialog />
-          <ExternalLink href="https://docs.codeplot.com/">Docs</ExternalLink>
-          <ExternalLink href="https://docs.codeplot.com/">Github</ExternalLink>
+          <ExternalLink href="https://docs.codeplot.co/">Docs</ExternalLink>
+          <ExternalLink href="https://github.com/codeplot-co/codeplot">
+            Github
+          </ExternalLink>
         </div>
       </div>
 
