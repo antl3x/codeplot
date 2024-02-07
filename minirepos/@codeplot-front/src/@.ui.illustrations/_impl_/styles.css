@@ -1,0 +1,7 @@
+:root {
+  --codeplot-Illustration-stroke: hsla(var(--codeplot-color-surface2), 100%);
+}
+
+.codeplot-Illustration {
+  stroke: var(--codeplot-Illustration-stroke);
+}

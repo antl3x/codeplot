@@ -1,0 +1,59 @@
+{
+  "name": "@codeplot/front",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "compile": "zx _scripts/compile.mjs",
+    "@localhost:app.dev": "zx _scripts/@localhost:app.dev.mjs"
+  },
+  "overrides": {
+    "@tldraw/state": "2.0.0-alpha.19"
+  },
+  "dependencies": {
+    "@adobe/react-spectrum": "^3.33.1",
+    "@githubocto/flat-ui": "^0.14.1",
+    "@react-aria/toast": "3.0.0-beta.8",
+    "@react-spectrum/dropzone": "3.0.0-rc.1",
+    "@react-spectrum/toast": "3.0.0-beta.8",
+    "@react-stately/toast": "3.0.0-beta.1",
+    "@spectrum-icons/illustrations": "^3.6.9",
+    "@tldraw/editor": "2.0.0-alpha.19",
+    "@tldraw/tldraw": "2.0.0-alpha.19",
+    "Upload": "link:@spectrum-icons/illustrations/Upload",
+    "fast-json-patch": "^3.1.1",
+    "mobx": "^6.12.0",
+    "mobx-react": "^9.1.0",
+    "mobx-state-tree": "^5.4.0",
+    "react": "^18.2.0",
+    "react-aria-components": "^1.0.1",
+    "react-dom": "^18.2.0",
+    "react-inspector": "^6.0.2",
+    "react-json-view": "^1.21.3"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.48",
+    "@types/react-dom": "^18.2.17",
+    "@typescript-eslint/eslint-plugin": "^6.14.0",
+    "@typescript-eslint/parser": "^6.14.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "autoprefixer": "^10.4.17",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.5",
+    "postcss": "^8.4.33",
+    "prettier": "^3.2.4",
+    "stylelint": "^16.2.1",
+    "stylelint-prettier": "^5.0.0",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5.2.2",
+    "vite": "^5.0.8",
+    "vite-plugin-mkcert": "^1.17.3",
+    "vite-plugin-svgr": "^4.2.0",
+    "vite-tsconfig-paths": "^4.3.1",
+    "yargs": "^17.7.2",
+    "zx": "^7.2.3"
+  }
+}

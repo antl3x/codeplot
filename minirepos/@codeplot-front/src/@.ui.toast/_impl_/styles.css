@@ -1,0 +1,75 @@
+:root {
+  --codeplot-Toast-color: hsla(var(--codeplot-color-accent-foreground), 1);
+  --codeplot-Toast-backgroundColor: var(--codeplot-surface2-backgroundColor);
+  --codeplot-Toast-backgroundColorOnHover: var(
+    --codeplot-surface2-backgroundColorOnHover
+  );
+
+  --codeplot-Toast_CloseBtn-borderRadius: var(--codeplot-radius-full);
+}
+
+.codeplot-ToastRegion {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.codeplot-Toast {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--codeplot-Toast-backgroundColor);
+  color: var(--codeplot-Toast-color);
+  padding: 8px 8px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  margin-left: 16px;
+  margin-right: 16px;
+  margin-top: 16px;
+  max-width: 500px;
+  padding-block-end: 8px;
+  padding-block-start: 8px;
+  padding-inline-end: 8px;
+  padding-inline-start: 16px;
+}
+
+.codeplot-Toast_Description {
+  width: 100%;
+  height: 100%;
+  border-right: 1px solid var(--codeplot-surface2-border-color);
+  padding-inline-end: 16px;
+}
+
+.codeplot-Toast_CloseBtn {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  padding-inline-start: 8px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  appearance: none;
+  border-radius: var(--codeplot-Toast_CloseBtn-borderRadius);
+  fill: var(--codeplot-surface2-color);
+}
+
+.codeplot-Toast_CloseBtn:hover {
+  background-color: hsla(var(--codeplot-color-white), 5%);
+}
+
+.codeplot-Toast button:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 2px slateblue,
+    0 0 0 4px white;
+}
+
+.codeplot-Toast button:active {
+  background: rgba(255, 255, 255, 0.2);
+}

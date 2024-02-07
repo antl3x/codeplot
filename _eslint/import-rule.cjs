@@ -3,7 +3,7 @@ module.exports = {
     type: "problem",
     docs: {
       description:
-        "disallow imports from local modules without a '@' in their name, while allowing package imports",
+        "disallow imports from local modules without a '@' in their name, while allowing package imports and exceptions for JSON or CSS files",
       category: "Stylistic Issues",
       recommended: false,
     },
@@ -16,9 +16,12 @@ module.exports = {
 
         // Check if the import is from a local module (starting with '.' or '@')
         const isLocalModule =
-          importPath.startsWith(".") || importPath.startsWith("@");
+          importPath.startsWith(".") || importPath.startsWith("@.");
 
-        if (isLocalModule) {
+        // Check for allowed file extensions
+        const isAllowedExtension = importPath.startsWith("./") || /\.(json|css|scss|svg)$/.test(importPath) || !importPath.includes("_impl_");
+
+        if (isLocalModule && !isAllowedExtension) {
           // Split the import path on '/'
           const segments = importPath.split("/");
 
@@ -35,7 +38,7 @@ module.exports = {
             context.report({
               node,
               message:
-                'Invalid import: local module imports must contain a "@" in each segment after the initial "./" or "@".',
+                'Invalid import: local module imports must contain a "@" in each segment after the initial "./" or "@", except for allowed JSON or CSS files.',
             });
           }
         }

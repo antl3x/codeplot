@@ -4,16 +4,16 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-importers:
-
-  .:
-    devDependencies:
-      yargs:
-        specifier: ^17.7.2
-        version: 17.7.2
-      zx:
-        specifier: ^7.2.3
-        version: 7.2.3
+devDependencies:
+  eslint-plugin-rulesdir:
+    specifier: ^0.2.2
+    version: 0.2.2
+  yargs:
+    specifier: ^17.7.2
+    version: 17.7.2
+  zx:
+    specifier: ^7.2.3
+    version: 7.2.3
 
 packages:
 
@@ -136,6 +136,11 @@ packages:
   /escalade@3.1.1:
     resolution: {integrity: sha512-k0er2gUkLf8O0zKJiAhmkTnJlTvINGv7ygDNPbeIsX/TJjGJZHuh9B2UxbsaEkmlEo9MfhrSzmhIlhRlI2GXnw==}
     engines: {node: '>=6'}
+    dev: true
+
+  /eslint-plugin-rulesdir@0.2.2:
+    resolution: {integrity: sha512-qhBtmrWgehAIQeMDJ+Q+PnOz1DWUZMPeVrI0wE9NZtnpIMFUfh3aPKFYt2saeMSemZRrvUtjWfYwepsC8X+mjQ==}
+    engines: {node: '>=4.0.0'}
     dev: true
 
   /event-stream@3.3.4:

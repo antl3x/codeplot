@@ -6,6 +6,7 @@ import json
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 import threading
+import logging
 
 from .PatchManager import PatchManager
 from .commands import plot
@@ -20,8 +21,16 @@ class MyHandler(FileSystemEventHandler):
         global CURRENT_CODEPLOT_FILE_JSON
 
         if event.src_path == CURRENT_CODEPLOT_FILE_PATH:
-            new_contents = _readFile(CURRENT_CODEPLOT_FILE_PATH)
-            CURRENT_CODEPLOT_FILE_JSON = json.loads(new_contents)
+            try:
+                new_contents = _readFile(CURRENT_CODEPLOT_FILE_PATH)
+                if new_contents:
+                    # Validate JSON structure
+                    json.loads(new_contents)  # This line acts as a validation step
+                    CURRENT_CODEPLOT_FILE_JSON = json.loads(new_contents)
+            except json.JSONDecodeError as e:
+                logging.warning(f"JSON decoding failed during file modification: {e}")
+            except Exception as e:
+                logging.error(f"Unexpected error during file modification: {e}")# Handle other unexpected errors
 
 def _readFile(filepath):
     """
@@ -59,8 +68,13 @@ def init(filepath=None):
     default_filename = "Untitled.codeplot"
     
     if filepath:
-        final_path = filepath
+        # Check if the provided filepath is absolute, if not, consider it relative to the current directory
+        if not os.path.isabs(filepath):
+            final_path = os.path.join(os.getcwd(), filepath)
+        else:
+            final_path = filepath
     else:
+        # If no filepath is provided, use the default filename in the current directory
         final_path = os.path.join(os.getcwd(), default_filename)
 
     CURRENT_CODEPLOT_FILE_PATH = final_path
@@ -72,8 +86,10 @@ def init(filepath=None):
     # Start monitoring the file for changes
     start_monitoring(final_path)
 
-
 def _createOrOpenFile(filepath):
+    # Ensure the directory exists
+    os.makedirs(os.path.dirname(filepath), exist_ok=True)
+    
     with open(filepath, 'a+') as file:
         file.seek(0)
         contents = file.read()

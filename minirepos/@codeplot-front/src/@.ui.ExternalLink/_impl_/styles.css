@@ -1,0 +1,27 @@
+.codeplot-ExternalLink {
+    color: var(--codeplot-ExternalLink-color);
+    text-decoration: underline;
+    text-decoration-style: dashed;
+    text-underline-offset: .40em;
+  }
+  
+  .codeplot-ExternalLink:hover, .codeplot-ExternalLink:hover:after {
+    color: var(--codeplot-ExternalLink-colorOnHover);
+  }
+  
+  .codeplot-ExternalLink:active {
+    color: var(--codeplot-ExternalLink-colorOnActive);
+  }
+  
+  .codeplot-ExternalLink:after {
+    content: "";
+    background-color: currentColor;
+    color: var(--codeplot-ExternalLink_Arrow-color);
+    display: inline-block;
+    height: .5em;
+    margin-left: .325em;
+    margin-right: .25em;
+    width: .5em;
+    -webkit-mask: url(/arrow-diagonal.svg) no-repeat center / contain;
+    mask: url(/arrow-diagonal.svg) no-repeat center / contain;
+  }

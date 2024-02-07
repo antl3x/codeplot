@@ -1,0 +1,56 @@
+@import "./main.vars.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.spectrum {
+  font-family: var(--codeplot-fontFamily-mono);
+}
+
+* {
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently supported by Chrome, Opera, and Edge */
+}
+
+/* custom scrollbar */
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #d6dee1;
+  border-radius: 20px;
+  border: 6px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #a8bbbf;
+}
+
+a,
+button {
+  cursor: default !important;
+}
+
+html,
+body {
+  min-height: 100dvh;
+  height: 100dvh;
+  font-family: var(--codeplot-fontFamily-mono);
+  background-color: hsl(var(--codeplot-body-backgroundColor), 1);
+  color: var(--codeplot-body-color);
+}
+
+#root,
+#root > div {
+  height: 100%;
+  width: 100%;
+}

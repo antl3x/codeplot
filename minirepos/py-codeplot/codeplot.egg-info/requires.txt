@@ -1,1 +1,3 @@
 watchdog>=3.0.0
+pandas>=2.2.0
+typeid-python>=0.2.2

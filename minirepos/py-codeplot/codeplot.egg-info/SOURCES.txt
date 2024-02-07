@@ -1,5 +1,6 @@
 README.md
 setup.py
+codeplot/PatchManager.py
 codeplot/__init__.py
 codeplot/commands.py
 codeplot.egg-info/PKG-INFO
