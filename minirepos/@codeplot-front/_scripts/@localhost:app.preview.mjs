@@ -14,4 +14,4 @@ pnpm compile
 docker context use $DOCKER_CONTEXT
 docker build -t $DOCKER_IMAGE .
 docker compose --file ./_tmp/docker-compose.yaml up
-`
+`;

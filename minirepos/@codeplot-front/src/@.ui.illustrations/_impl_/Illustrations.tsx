@@ -2,7 +2,7 @@
 import { Suspense, lazy } from "react";
 import "./styles.css";
 
-type Illustrations = "Upload" | "NotFound";
+type Illustrations = "Upload" | "NotFound" | "Plus" | "CreateNew";
 
 export function Illustration({ name }: { name: Illustrations }) {
   const DynamicComp = lazy(() => import(`./${name}.svg?react`));

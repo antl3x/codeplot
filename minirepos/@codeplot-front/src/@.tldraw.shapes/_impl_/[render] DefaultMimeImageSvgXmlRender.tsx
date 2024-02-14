@@ -7,7 +7,6 @@ import { observer } from "mobx-react";
 
 type IDefaultMimeImageSvgXmlRenderProps = {
   shape: ICodeplotShape;
-  isInteractive: boolean;
 };
 
 // Using the given object

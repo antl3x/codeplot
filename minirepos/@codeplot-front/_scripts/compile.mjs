@@ -3,4 +3,4 @@
 await $`
 tsc
 vite build
-`
+`;

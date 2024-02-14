@@ -2,7 +2,7 @@
 import { Suspense, lazy } from "react";
 import "./styles.css";
 
-type Icons = "Close";
+type Icons = "Close" | "Drag" | "PinOn" | "PinOff";
 
 // Suport to append className
 

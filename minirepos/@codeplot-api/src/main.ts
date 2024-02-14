@@ -1,25 +1,39 @@
-import express from "express";
-import { createServer } from "node:http";
-import { Server } from "socket.io";
+#!/usr/bin/env node
 
-const expressApp = express();
-const expressServer = createServer(expressApp);
+// Import statements with TypeScript types
+import WebSocket, { WebSocketServer } from "ws"; // Make sure 'ws' module supports ESM
+import http, { IncomingMessage, ServerResponse, Server } from "http";
+import { setupWSConnection } from "@.yjs.server"; // Ensure './utils' is an ESM module and exports setupWSConnection
 
-expressApp.get("/", (req, res) => {
-  res.json({
-    status: "ok",
-    version: process.env.npm_package_version,
-  });
+const port: number = parseInt(process.env.PORT_HOST || "9107");
+
+const server: Server = http.createServer(
+  (request: IncomingMessage, response: ServerResponse) => {
+    response.writeHead(200, { "Content-Type": "text/plain" });
+    response.end("okay");
+  },
+);
+
+const wss: WebSocketServer = new WebSocketServer({ noServer: true });
+
+wss.on("connection", setupWSConnection);
+
+server.on("upgrade", (request: IncomingMessage, socket: any, head: Buffer) => {
+  // Authentication check can be performed here
+  const handleAuth = (ws: WebSocket): void => {
+    wss.emit("connection", ws, request);
+  };
+  wss.handleUpgrade(request, socket, head, handleAuth);
 });
 
-const ioServer = new Server(expressServer);
-
-expressServer.listen(3000, () => {
-  console.log(
-    `Server Running @ ${process.env.TARGET + ":" + process.env.PORT_CONTAINER}`,
-  );
+server.listen(port, () => {
+  console.log(`running at on port ${port}`);
 });
 
-ioServer.on("connection", () => {
-  console.log("a user connected");
+server.on("error", (error) => {
+  console.error("Server error:", error);
+});
+
+wss.on("error", (error) => {
+  console.error("WebSocket Server error:", error);
 });

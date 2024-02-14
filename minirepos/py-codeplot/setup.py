@@ -10,6 +10,7 @@ setup(
         'pandas >= 2.2.0',
         'typeid-python >= 0.2.2',
         'plotly >= 5.18.0',
+        'python-socketio >= 5.11.0',
     ],
     # Additional metadata about your package
     author='Antonio Moura (@antl3x)',

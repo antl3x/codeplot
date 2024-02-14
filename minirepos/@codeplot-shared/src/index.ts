@@ -1,2 +1,2 @@
-export * as atCoreFiles from "@core.files";
-export * as atCorePages from "@core.pages";
+export * as atMst from "@.mst";
+export * as atMstFile from "@.mst.file";

@@ -131,16 +131,15 @@ body > img {
 
 type IDefaultHTMLRenderProps = {
   shape: ICodeplotShape;
-  isInteractive: boolean;
 };
 
 export const DefaultHTMLRender = observer(
-  ({ shape, isInteractive }: IDefaultHTMLRenderProps) => {
+  ({ shape }: IDefaultHTMLRenderProps) => {
     const iframeRef = useRef(null);
     return (
       <iframe
         ref={iframeRef}
-        className="w-full h-full"
+        className="peer w-full h-full"
         sandbox="allow-same-origin allow-scripts"
         srcDoc={`
         <html data-theme-color=${appStore.theme.color}></html>
@@ -151,15 +150,6 @@ export const DefaultHTMLRender = observer(
         ${shape.props.type.includes("plotly") ? PLOTLY_FIGURE_STYLE : ""}
         ${shape.props.type.includes("matplotlib/figure") ? MATPLOTLIB_FIGURE_STYLE : ""}
         ${shape.props.mime["text/html"]}`}
-        style={{
-          border: 0,
-          pointerEvents: isInteractive ? "auto" : "none",
-          // Fix for safari <https://stackoverflow.com/a/49150908>
-          zIndex: isInteractive ? "" : "-1",
-          // boxShadow: getRotatedBoxShadow(pageRotation),
-          // borderRadius: embedInfo?.definition.overrideOutlineRadius ?? 8,
-          // background: embedInfo?.definition.backgroundColor,
-        }}
       />
     );
   },

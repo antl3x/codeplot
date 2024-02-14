@@ -1,5 +1,5 @@
 :root {
-  --codeplot-Illustration-stroke: hsla(var(--codeplot-color-surface2), 100%);
+  --codeplot-Illustration-stroke: hsla(var(--codeplot-color-white), 60%);
 }
 
 .codeplot-Illustration {

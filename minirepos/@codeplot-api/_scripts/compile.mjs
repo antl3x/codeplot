@@ -1,5 +1,7 @@
 #!/usr/bin/env zx
 
 await $`
-node_modules/.bin/tsup src/main.ts
+rm -rf dist
+pnpm --filter @codeplot/api^... compile
+node_modules/.bin/tsup
 `;

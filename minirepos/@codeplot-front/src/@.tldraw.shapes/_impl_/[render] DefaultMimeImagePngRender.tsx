@@ -4,7 +4,6 @@ import { ICodeplotShape } from "./ICodeplotShape";
 
 type IDefaultMimeImagePngRenderProps = {
   shape: ICodeplotShape;
-  isInteractive: boolean;
 };
 
 // Using the given object

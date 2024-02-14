@@ -4,15 +4,34 @@
   "description": "Shared stuff between gui and server like MobX State Tree",
   "author": "Antonio Moura (@antl3x)",
   "type": "module",
-  "exports": {
-    "require": "./dist/cjs/*.js",
-    "import": "./dist/esm/*.js",
-    "types": "./dist/types/*.d.ts"
-  },
-  "main": "./dist/cjs/index.js",
   "dependencies": {
+    "fast-json-patch": "^3.1.1",
     "mobx": "^6.12.0",
-    "mobx-state-tree": "^5.4.0"
+    "mobx-state-tree": "5.4.0"
+  },
+  "typesVersions": {
+    "*": {
+      "@.*": [
+        "dist/esm/@.*/index.d.ts"
+      ]
+    }
+  },
+  "exports": {
+    "./dist/esm/@.*": {
+      "import": "./dist/esm/@.*/index.js",
+      "require": "./dist/cjs/@.*/index.cjs",
+      "types": "./dist/esm/@.*/index.d.ts"
+    },
+    "./@.*": {
+      "import": "./dist/esm/@.*/index.js",
+      "require": "./dist/cjs/@.*/index.cjs",
+      "types": "./dist/esm/index.d.ts"
+    }
+  },
+  "main": "./dist/cjs/index.cjs",
+  "module": "./dist/esm/index.js",
+  "scripts": {
+    "compile": "zx _scripts/compile.mjs"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^6.4.0",
@@ -25,6 +44,7 @@
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-rulesdir": "^0.2.2",
     "prettier": "^3.2.4",
+    "tsc-alias": "^1.8.8",
     "tsup": "^8.0.1",
     "typescript": "^5.3.3",
     "zx": "^7.2.3"

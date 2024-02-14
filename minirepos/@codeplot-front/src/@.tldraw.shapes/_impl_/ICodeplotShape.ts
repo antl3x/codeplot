@@ -20,8 +20,9 @@ export type ICodeplotShape = TLBaseShape<
     };
     w: number;
     h: number;
-    metacode: {
-      context: string;
+    metadata: {
+      isPinned: boolean;
+      pythonCallerFrameCodeContext: string;
     };
   }
 >;

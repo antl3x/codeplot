@@ -1,13 +1,16 @@
 import { FileManagerModel } from "@.core.files";
+import { createNewSession } from "@.ws.client";
+import { RootModel } from "@codeplot/shared/@.mst";
 import { types } from "mobx-state-tree";
 
 const AppModel = types
   .model("App", {
     fileManager: FileManagerModel,
+    sharedRootStore: RootModel,
     theme: types
       .model({
-        name: types.string,
-        color: types.union(types.literal("light"), types.literal("dark")),
+        name: "default",
+        color: types.union(types.literal("dark"), types.literal("light")),
       })
       .actions((self) => ({
         setThemeColor(theme: "light" | "dark") {
@@ -15,6 +18,14 @@ const AppModel = types
         },
       })),
   })
+  .volatile(() => ({
+    wsSession: null as ReturnType<typeof createNewSession> | null,
+  }))
+  .actions((self) => ({
+    createNewSession(sessionId: string, url = "http://localhost:9107") {
+      self.wsSession = createNewSession({ sessionId, url });
+    },
+  }))
   .views((self) => ({
     get isBrowserSupported() {
       return _isBrowserSupported();
@@ -48,6 +59,9 @@ const _isFileOpened = (_self: unknown) => {
 
 export const appStore = AppModel.create({
   fileManager: {},
+  sharedRootStore: {
+    file: {},
+  },
   theme: {
     name: "default",
     color: "dark",

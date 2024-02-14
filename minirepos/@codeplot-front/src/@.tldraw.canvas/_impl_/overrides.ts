@@ -19,7 +19,7 @@ const _actionsOverrides: TLUiOverrides["actions"] = (
   helpers,
 ) => {
   let newActions = actions;
-  newActions = _openCodeplotFileTldrawAction(editor, newActions, helpers);
+  newActions = _saveSnapshotFileTldrawAction(editor, newActions, helpers);
   newActions = _openGithubTldrawAction(editor, newActions, helpers);
   newActions = _toggleDarkMode(editor, newActions, helpers);
 
@@ -32,7 +32,7 @@ const _actionsOverrides: TLUiOverrides["actions"] = (
 
 const _menuOverrides: TLUiOverrides["menu"] = (editor, menu, helpers) => {
   let newMenu = menu;
-  newMenu = _openCodeplotFileTldrawMenu(editor, newMenu, helpers);
+  newMenu = _saveSnapshotFileTldrawMenu(editor, newMenu, helpers);
   newMenu = _openGithubMenu(editor, newMenu, helpers);
   newMenu = _removeEmbedMenu(newMenu);
   newMenu = _removeUploadMediaMenu(newMenu);
@@ -75,17 +75,26 @@ const _toggleDarkMode: NonNullable<TLUiOverrides["actions"]> = (_, actions) => {
 
 /* ------------------------ Open Codeplot File Action ----------------------- */
 
-const _openCodeplotFileTldrawAction: NonNullable<TLUiOverrides["actions"]> = (
+const _saveSnapshotFileTldrawAction: NonNullable<TLUiOverrides["actions"]> = (
   _,
   actions,
 ) => {
-  actions["open-codeplot-file"] = {
-    id: "open-codeplot-file",
-    label: "Open Codeplot File",
+  actions["save-snapshot-file"] = {
+    id: "save-snapshot-file",
+    label: "Save Snapshot File",
     readonlyOk: true,
     kbd: "$u",
     onSelect() {
-      fileStore.openFilePicker();
+      // get snapshot and save file prompt user
+      const snapshot = _.store.getSnapshot();
+      const blob = new Blob([JSON.stringify(snapshot)], {
+        type: "application/json",
+      });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "Snapshot.codeplot";
+      a.click();
     },
   };
   return actions;
@@ -130,14 +139,14 @@ export const _openGithubMenu: NonNullable<TLUiOverrides["menu"]> = (
 
 /* ------------------------- Open Codeplot File Menu ------------------------ */
 
-const _openCodeplotFileTldrawMenu: NonNullable<TLUiOverrides["menu"]> = (
+const _saveSnapshotFileTldrawMenu: NonNullable<TLUiOverrides["menu"]> = (
   _,
   menu,
   { actions },
 ) => {
   const fileMenu = findMenuItem(menu, ["menu", "file"]);
   if (fileMenu.type === "submenu") {
-    const newMenuItem = menuItem(actions["open-codeplot-file"]);
+    const newMenuItem = menuItem(actions["save-snapshot-file"]);
     fileMenu.children.unshift(newMenuItem);
   }
   return menu;

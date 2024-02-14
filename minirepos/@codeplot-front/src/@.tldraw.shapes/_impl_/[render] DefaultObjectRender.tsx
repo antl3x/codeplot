@@ -6,7 +6,6 @@ import { Inspector, chromeDark, chromeLight } from "react-inspector";
 
 type IDefaultObjectRenderProps = {
   shape: ICodeplotShape;
-  isInteractive: boolean;
 };
 
 // Using the given object
@@ -25,7 +24,7 @@ export function DefaultObjectRender({ shape }: IDefaultObjectRenderProps) {
             },
           } as unknown as string
         }
-        data={JSON.parse(shape.props.value)}
+        data={JSON.parse(shape.props.mime["application/javascript"])}
       />
 
       {/* <ReactJson theme={"brewer"} src={JSON.parse(shape.props.value)} /> */}

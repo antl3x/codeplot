@@ -5,35 +5,48 @@
   "type": "module",
   "scripts": {
     "compile": "zx _scripts/compile.mjs",
-    "@localhost:app.dev": "zx _scripts/@localhost:app.dev.mjs"
+    "@localhost:app.dev": "zx _scripts/@localhost:app.dev.mjs",
+    "@localhost:app.preview": "zx _scripts/@localhost:app.preview.mjs",
+    "@production:app.deploy": "zx _scripts/@production:app.deploy.mjs"
   },
   "overrides": {
     "@tldraw/state": "2.0.0-alpha.19"
   },
   "dependencies": {
     "@adobe/react-spectrum": "^3.33.1",
+    "@codeplot/shared": "workspace:^",
     "@githubocto/flat-ui": "^0.14.1",
     "@react-aria/toast": "3.0.0-beta.8",
     "@react-spectrum/dropzone": "3.0.0-rc.1",
     "@react-spectrum/toast": "3.0.0-beta.8",
     "@react-stately/toast": "3.0.0-beta.1",
     "@spectrum-icons/illustrations": "^3.6.9",
+    "@spectrum-icons/workflow": "^4.2.8",
     "@tldraw/editor": "2.0.0-alpha.19",
     "@tldraw/tldraw": "2.0.0-alpha.19",
     "Upload": "link:@spectrum-icons/illustrations/Upload",
     "fast-json-patch": "^3.1.1",
+    "katex": "^0.16.9",
     "mobx": "^6.12.0",
     "mobx-react": "^9.1.0",
-    "mobx-state-tree": "^5.4.0",
+    "mobx-state-tree": "5.4.0",
     "react": "^18.2.0",
     "react-aria-components": "^1.0.1",
     "react-dom": "^18.2.0",
     "react-inspector": "^6.0.2",
-    "react-json-view": "^1.21.3"
+    "react-json-view": "^1.21.3",
+    "react-katex": "^3.0.1",
+    "socket.io-client": "^4.7.4",
+    "typeid-js": "^0.5.0",
+    "y-utility": "^0.1.3",
+    "y-webrtc": "^10.3.0",
+    "y-websocket": "^1.5.3",
+    "yjs": "^13.6.12"
   },
   "devDependencies": {
     "@types/react": "^18.2.48",
     "@types/react-dom": "^18.2.17",
+    "@types/react-katex": "^3.0.4",
     "@typescript-eslint/eslint-plugin": "^6.14.0",
     "@typescript-eslint/parser": "^6.14.0",
     "@vitejs/plugin-react": "^4.2.1",

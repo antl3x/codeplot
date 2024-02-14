@@ -2,7 +2,6 @@ import { ICodeplotShape } from "./ICodeplotShape";
 
 type IDefaultMimeTextPlainRenderProps = {
   shape: ICodeplotShape;
-  isInteractive: boolean;
 };
 
 export function DefaultMimeTextPlainRender({

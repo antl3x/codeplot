@@ -1,6 +1,6 @@
 import { appStore } from "@.core";
-import { debounce } from "@.utils";
 import { Editor } from "@tldraw/editor";
+import { compare } from "fast-json-patch";
 import { IReactionDisposer, reaction } from "mobx";
 import { Instance, types } from "mobx-state-tree";
 
@@ -12,13 +12,13 @@ const TldrawModel = types
   .model("Tldraw")
   .volatile(() => ({
     tldrEditor: null as Editor | null,
-    _setupReloadStoreOnFileChangesReaction: null as null | IReactionDisposer,
+    _setupReloadStoreOnFileChanges: null as null | IReactionDisposer,
   }))
   .actions((self) => ({
     setTtldrEditor: _setTldrEditor(self),
     onDestroy() {
-      if (self._setupReloadStoreOnFileChangesReaction) {
-        self._setupReloadStoreOnFileChangesReaction();
+      if (self._setupReloadStoreOnFileChanges) {
+        self._setupReloadStoreOnFileChanges();
       }
     },
   }));
@@ -31,7 +31,7 @@ const _setTldrEditor = (_self: unknown) => (editor: Editor) => {
 
   self.tldrEditor = editor;
 
-  _setupSaveFileOnStoreChanges(self);
+  _setupJsonDiffOnStoreChanges(self);
   _setupReloadStoreOnFileChanges(self);
   _setupColorModeSync(self);
 
@@ -42,27 +42,10 @@ const _setTldrEditor = (_self: unknown) => (editor: Editor) => {
 
 /* -------------------- Setup save file on store changes -------------------- */
 
-const _setupSaveFileOnStoreChanges = (_self: unknown) => {
+const _setupJsonDiffOnStoreChanges = (_self: unknown) => {
   const self = _self as Instance<typeof TldrawModel>;
 
-  console.log("Setting up save file on store changes");
   if (!self.tldrEditor) return;
-  if (!appStore.fileManager.fileContent) return;
-
-  const saveDebounced = debounce(appStore.fileManager.saveFileContent, 1000);
-
-  // Initial Save
-  appStore.fileManager.saveFileContent(
-    JSON.stringify(self.tldrEditor!.store.getSnapshot()),
-  );
-
-  self.tldrEditor.store.listen(
-    () => {
-      console.log("Store changed");
-      saveDebounced(JSON.stringify(self.tldrEditor!.store.getSnapshot()));
-    },
-    { source: "user", scope: "all" },
-  );
 };
 
 /* -------------------- Setup color mode sync -------------------- */
@@ -91,7 +74,7 @@ const _setupReloadStoreOnFileChanges = (_self: unknown) => {
   if (!self.tldrEditor) return;
   if (!appStore.fileManager.fileContent) return;
 
-  self._setupReloadStoreOnFileChangesReaction = reaction(
+  self._setupReloadStoreOnFileChanges = reaction(
     () => appStore.fileManager.fileContent,
     () => {
       const tldrEditor = self.tldrEditor!;

@@ -10,8 +10,8 @@ export $(cat _tmp/.env | xargs)
 pnpm compile
 
 docker context use $DOCKER_CONTEXT
-docker build -t $DOCKER_IMAGE .
-docker compose --file ./_tmp/docker-compose.yaml up -d
+docker build -t $DOCKER_IMAGE --file Dockerfile ../../
+node_modules/.bin/tsup --watch &
+docker compose --file ./_tmp/docker-compose.yaml up
 
-node_modules/.bin/tsup src/main.ts --watch
 `;

@@ -10,7 +10,7 @@ dockerComposeLocalhost: {
                 "\(envVariablesLocalhost.PORT_HOST):\(envVariablesLocalhost.PORT_CONTAINER)"
             ]
             volumes:
-                ["../dist:/opt/@codeplot-api/dist"]
+                ["../dist:/opt/minirepos/@codeplot-api/dist"]
         }
     }
 }
@@ -20,7 +20,7 @@ envVariablesLocalhost: envVariables & {
     TARGET: "localhost"
     DOCKER_CONTEXT: "default"
     DOCKER_IMAGE: "codeplot-api:localhost"
-    PORT_CONTAINER: "3000"
+    PORT_CONTAINER: "9107"
     PORT_HOST: "9107"
 }
 

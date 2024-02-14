@@ -1,5 +1,7 @@
 import {
+  StoreSnapshot,
   Canvas as TLCanvas,
+  TLRecord,
   TldrawEditor,
   TldrawEditorProps,
 } from "@tldraw/editor";
@@ -24,10 +26,16 @@ import { CodeplotShapeUtil } from "@.tldraw.shapes";
 import { tldrawStore } from "@.tldraw.store";
 import { overrides } from "./overrides";
 
-export const Canvas = observer(
-  (props: React.PropsWithChildren<TldrawProps & { snapshot: string }>) => {
-    console.log(" rendered");
+import "katex/dist/katex.min.css";
+import { useStore } from "./useStore";
+import { typeid } from "typeid-js";
 
+export const Canvas = observer(
+  (
+    props: React.PropsWithChildren<
+      TldrawProps & { snapshot: StoreSnapshot<TLRecord> }
+    >,
+  ) => {
     const withDefaults: TldrawEditorProps = useMemo(
       () => ({
         initialState: "select",
@@ -46,10 +54,15 @@ export const Canvas = observer(
       [],
     );
 
+    const store = useStore({
+      roomId: "1122",
+      shapeUtils: withDefaults.shapeUtils!,
+    });
+
     return (
       <>
         <TldrawEditor
-          snapshot={JSON.parse(props.snapshot)}
+          store={store}
           autoFocus={true}
           {...withDefaults}
           onMount={(editor) => {

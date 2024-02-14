@@ -2,10 +2,11 @@
   "compilerOptions": {
     "esModuleInterop": true,
     "target": "esnext", // or your desired ECMAScript target
-    "module": "commonjs",
+    "module": "CommonJS",
     "paths": {
-      "@*": ["./src/@*",], // Alias for '#*' pointing to '#*/index.ts'
+      "@.*": ["./src/@.*",], // Alias for '#*' pointing to '#*/index.ts'
     },
+    "typeRoots": ["./src/@types/index.d.ts"],
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "skipLibCheck": true

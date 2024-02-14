@@ -89,8 +89,8 @@
 
   --codeplot-color-surface: 0, 0%, 13%;
   --codeplot-color-surface1: 0, 0%, 16%;
-  --codeplot-color-surface2: 0, 0%, 22%;
-  --codeplot-color-surface3: 0, 0%, 27%;
+  --codeplot-color-surface2: 0, 0%, 20%;
+  --codeplot-color-surface3: 0, 0%, 25%;
 
   --codeplot-surface-backgroundColor: hsla(var(--codeplot-color-surface), 1);
   --codeplot-surface-color: hsla(var(--codeplot-color-white), 80%);
@@ -99,12 +99,20 @@
     var(--codeplot-color-surface2),
     100%
   );
+
   --codeplot-surface2-backgroundColorOnHover: hsla(
     var(--codeplot-color-surface2),
     100%
   );
-  --codeplot-surface2-color: hsla(var(--codeplot-color-white), 80%);
-  --codeplot-surface2-border-color: hsla(var(--codeplot-color-surface3), 100%);
+
+  --codeplot-surface3-backgroundColor: hsla(
+    var(--codeplot-color-surface3),
+    100%
+  );
+  --codeplot-surface2-backgroundColorOnHover: hsla(
+    var(--codeplot-color-surface3),
+    100%
+  );
 
   --codeplot-color-primary: var(--codeplot-color-yellow);
   --codeplot-color-onPrimary: 0, 0%, 0%;
