@@ -8,37 +8,22 @@
 
 ---
 
-**tl;dr**: codeplot is spatial canvas for data exploration where you can plot graphs, dataframes and much more using Python.
+codeplot is a dynamic spatial canvas for data exploration, offering an interactive environment for graphing and visualizing data with Python. 
 
-Created by [@antl3x](https://github.com/antl3x). You can read why on [this blog post.](https://antl3x.co/posts/2024-01-25-today-i-decided-to-create-a-tool-that-i-always-wanted/)
+Created by [@antl3x](https://github.com/antl3x), [read more](https://antl3x.co/posts/2024-01-25-today-i-decided-to-create-a-tool-that-i-always-wanted/) about its inception.
 
-We aim to bridge the gap between traditional coding environments like Jupyter / Spyder and the world of interactive spatial canvas.
+**Why Choose codeplot?**
 
-## Why codeplot?
+- **Dynamic Visualization**: Break free from static images and rigid layouts. codeplot brings your data to life on an interactive canvas.
+  
+- **Easy Integration**: Directly plot from your Python code or REPL into your canvas at [codeplot.co](https://codeplot.co).
+  
+- **Varied Visualizations**: From basic charts to advanced widgets, codeplot supports a wide range of data representations.
+  
+- **Flexible Layouts**: Arrange your visualizations to suit your workflow, with draggable and movable plots.
+  
+- **Open to Everyone**: Designed for data scientists and enthusiasts alike, codeplot aims to enhance your data exploration experience.
 
-Tired of static images and endless scrolling in Jupyter or fixed rigid plots images on your IDE? codeplot is here to change that. Imagine a tool that not only complements but enhances your data exploration workflow with dynamic, spatial data visualization. That's codeplot for you!
+**Join the codeplot Community**
 
-### codeplot vs. Traditional Tools
-
-- **codeplot**: A perfect companion to your data exploration. Visualize your data on an interactive canvas, and explore it like never before!
-
-- **Seamless Integration**: You can plot things to your canvas using our Python package directly from your code / repl and visualize / open your file at [https://codeplot.co](https://codeplot.com).
-
-- **Diverse Visualizations**: From simple charts/plota to cool widgets, let's plot using code.
-
-- **Custom Layouts**: Visualize your data in a way that makes sense to you. Drag and move your plots around the canvas.
-
-- **Accessible to All**: Whether you're a seasoned data scientist or just data enthusiast, codeplot welcomes you.
-
-## Be Part of the codeplot Community
-
-We're more than a tool; we're a movement. Join us and redefine data visualization:
-
-- **Engage**: Connect with other data enthusiasts and be part of a community that's all about pushing boundaries.
-
-Join now on **[Discord](https://discord.gg/fYTsNp5Wvt)**!
-
----
-
-Remember, your journey with data doesn't have to be a solo trip. With codeplot, it's a collaborative adventure. Let's plot our way to incredible insights, together!
-
+Become part of a forward-thinking community dedicated to advancing data visualization. Connect, engage, and grow with peers on **[Discord](https://discord.gg/fYTsNp5Wvt)**. With codeplot, data visualization is a shared journey. Let's explore new insights together!
