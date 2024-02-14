@@ -1,5 +1,5 @@
 import { appStore } from "@.core";
-import { fileStore } from "@.core.files";
+import { ToastQueue } from "@react-spectrum/toast";
 import {
   TLUiMenuGroup,
   TLUiMenuSchema,
@@ -8,6 +8,7 @@ import {
   findMenuItem,
   menuItem,
 } from "@tldraw/tldraw";
+import { getSnapshot } from "mobx-state-tree";
 
 /* -------------------------------------------------------------------------- */
 /*                              Actions Overrides                             */
@@ -22,6 +23,7 @@ const _actionsOverrides: TLUiOverrides["actions"] = (
   newActions = _saveSnapshotFileTldrawAction(editor, newActions, helpers);
   newActions = _openGithubTldrawAction(editor, newActions, helpers);
   newActions = _toggleDarkMode(editor, newActions, helpers);
+  newActions = _copyRoomUrlTldrawAction(editor, newActions, helpers);
 
   return newActions;
 };
@@ -36,6 +38,7 @@ const _menuOverrides: TLUiOverrides["menu"] = (editor, menu, helpers) => {
   newMenu = _openGithubMenu(editor, newMenu, helpers);
   newMenu = _removeEmbedMenu(newMenu);
   newMenu = _removeUploadMediaMenu(newMenu);
+  newMenu = _copyRoomUrl(editor, newMenu, helpers);
 
   return newMenu;
 };
@@ -59,6 +62,24 @@ const _openGithubTldrawAction: NonNullable<TLUiOverrides["actions"]> = (
   return actions;
 };
 
+/* ------------------------------ Copy Room URL ----------------------------- */
+
+const _copyRoomUrlTldrawAction: NonNullable<TLUiOverrides["actions"]> = (
+  _,
+  actions,
+) => {
+  actions["copy-room-url"] = {
+    id: "copy-room-url",
+    label: "Copy Room URL",
+    readonlyOk: true,
+    onSelect() {
+      navigator.clipboard.writeText(appStore.wsUrl);
+      ToastQueue.neutral("Room url copied to clipboard!");
+    },
+  };
+  return actions;
+};
+
 /* ---------------------------- Toggle Dark Mode ---------------------------- */
 
 const _toggleDarkMode: NonNullable<TLUiOverrides["actions"]> = (_, actions) => {
@@ -68,6 +89,10 @@ const _toggleDarkMode: NonNullable<TLUiOverrides["actions"]> = (_, actions) => {
       appStore.theme.setThemeColor(
         appStore.theme.color === "dark" ? "light" : "dark",
       );
+
+      appStore.tldrEditor?.user.updateUserPreferences({
+        isDarkMode: appStore.theme.color === "dark",
+      });
     },
   };
   return actions;
@@ -86,7 +111,7 @@ const _saveSnapshotFileTldrawAction: NonNullable<TLUiOverrides["actions"]> = (
     kbd: "$u",
     onSelect() {
       // get snapshot and save file prompt user
-      const snapshot = _.store.getSnapshot();
+      const snapshot = getSnapshot(appStore.fileManager).openedFile;
       const blob = new Blob([JSON.stringify(snapshot)], {
         type: "application/json",
       });
@@ -134,6 +159,17 @@ export const _openGithubMenu: NonNullable<TLUiOverrides["menu"]> = (
   { actions },
 ) => {
   menu.push(menuItem(actions["open-github"]));
+  return menu;
+};
+
+/* ------------------------------ Copy Room URL ----------------------------- */
+
+export const _copyRoomUrl: NonNullable<TLUiOverrides["menu"]> = (
+  _,
+  menu,
+  { actions },
+) => {
+  menu.push(menuItem(actions["copy-room-url"]));
   return menu;
 };
 

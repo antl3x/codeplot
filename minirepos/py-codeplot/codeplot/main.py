@@ -13,8 +13,6 @@ import datetime
 import nest_asyncio
 from .yutils import YKeyValue
 
-logging.basicConfig(level=logging.INFO)
-
 def is_notebook() -> bool:
     try:
         shell = get_ipython().__class__.__name__
@@ -44,7 +42,7 @@ class Codeplot:
 
                 # TODO: This is a bugfix. Somehow the provider is not ready to accept messages
                 # immediately after the started event is set. This is a temporary fix.
-                await asyncio.sleep(1)  
+                await asyncio.sleep(0.1)  
                 ####
 
 
@@ -58,15 +56,48 @@ class Codeplot:
                 self.session_id = session_id
                 self.websocket = websocket
                 self.ykeyvalue = ykeyvalue
+                logging.info(f"Connected to {uri}")
 
                 return self
         
     async def set(self, key, val):
         self.ykeyvalue.set(key, val)
-        await asyncio.sleep(1)
+        await asyncio.sleep(0.1)
+
+    def _get_instance(self):
+        instance = self.ykeyvalue.get("instance:instance")
+        return instance
+    
+    def _get_pointer(self):
+        pointer = self.ykeyvalue.get("pointer:pointer")
+        return pointer
+
+    def _get_current_page_camera(self):
+            instance = self._get_instance()
+            current_pageid = instance["currentPageId"]
+            camera = self.ykeyvalue.get(f"camera:{current_pageid}")
+            return camera
+
+
 
 
     async def plot(self, data, **kwargs) -> None:
+
+        def plot_center(screen_width, screen_height, cam_x, cam_y, obj_width, obj_height):
+            # Normalize camera coordinates (this step depends on your specific use case)
+            norm_cam_x = cam_x # Example normalization
+            norm_cam_y = cam_y # Example normalization
+
+            # Calculate the object's position to center it on the screen
+            # Adjusting for the camera's position and zoom
+            obj_x = (screen_width / 2) + norm_cam_x
+            obj_y = (screen_height / 2) + norm_cam_y
+
+            # Ensure the object's position and dimensions are within screen bounds
+            obj_x = max(0, min(obj_x, screen_width ))
+            obj_y = max(0, min(obj_y, screen_height))
+
+            return obj_x, obj_y
         
         """
         Main plotting function that dispatches to specific plotting functions based on data type or '_as' parameter.
@@ -75,7 +106,11 @@ class Codeplot:
         metacode_line = "" if is_notebook() else caller_frame_record.code_context[0]
 
         # last_plot_coords = PatchManager.get_last_plot_xz_coordinates()
-        last_plot_coords = {"x": 10, "y": 10}
+        camera = self._get_current_page_camera()
+        instance = self._get_instance()
+        # to get x and y pos to plot we need consider camera zoom and xy position
+
+        
 
         kwargs.setdefault("id", str(TypeID(prefix="plot")))
         kwargs.setdefault("title", "Untitled"),
@@ -84,9 +119,9 @@ class Codeplot:
         kwargs.setdefault("rotation", 0)
         kwargs.setdefault("opacity", 1)
         kwargs.setdefault("is_locked", False)
-        kwargs.setdefault("x_pos", last_plot_coords["x"])
-        kwargs.setdefault("y_pos", last_plot_coords["y"] + kwargs["height"] + 10)
-        kwargs.setdefault("page_id", "page:page")
+        kwargs.setdefault("x_pos", -camera["x"] + 100)
+        kwargs.setdefault("y_pos", -camera["y"] + 100)
+        kwargs.setdefault("page_id", instance["currentPageId"])
 
         shape = {
                 "id": "shape:"+kwargs["id"],

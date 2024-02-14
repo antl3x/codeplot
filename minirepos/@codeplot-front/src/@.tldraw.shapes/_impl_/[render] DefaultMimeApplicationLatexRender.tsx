@@ -1,6 +1,6 @@
 import { observer } from "mobx-react";
 import { BlockMath } from "react-katex";
-import "./DefaultMimeApplicationLatexRender.css";
+import "./[render] DefaultMimeApplicationLatexRender.css";
 import { ICodeplotShape } from "./ICodeplotShape";
 
 type IDefaultMimeImageApplicationLatexrProps = {

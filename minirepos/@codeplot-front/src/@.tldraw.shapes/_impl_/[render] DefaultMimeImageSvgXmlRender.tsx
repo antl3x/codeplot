@@ -1,6 +1,6 @@
 import { appStore } from "@.core";
 import { ICodeplotShape } from "./ICodeplotShape";
-import { GLOBAL_IFRAME_SCRIPT, GLOBAL_STYLE } from "./RenderIframeScripts";
+import { GLOBAL_IFRAME_SCRIPT, GLOBAL_STYLE } from "./IFRAME_SANDBOX_SCRIPTS";
 import { observer } from "mobx-react";
 
 // import ReactJson from "react-json-view";

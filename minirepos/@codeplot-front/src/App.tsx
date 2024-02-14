@@ -1,13 +1,13 @@
 import { observer } from "mobx-react";
 
-import { appStore, OpenCodeplotFile, UnsupportedBrowser, WebRTC } from "@.core";
+import { appStore, OpenOrCreate } from "@.core";
 import { Canvas } from "@.tldraw.canvas";
 
 import { defaultTheme, Provider } from "@adobe/react-spectrum";
 import { ToastContainer } from "@react-spectrum/toast";
+import { reaction } from "mobx";
 import { useEffect } from "react";
 import "./main.css";
-import { reaction } from "mobx";
 export const App = observer(() => {
   useEffect(() => {
     // add data-theme-color and data-theme attributes to the root element
@@ -27,10 +27,7 @@ export const App = observer(() => {
 
   return (
     <Provider UNSAFE_className="spectrum" theme={defaultTheme}>
-      {/* <WebRTC /> */}
-      <Canvas
-        snapshot={JSON.parse(appStore.sharedRootStore.file?.tldrawFile)}
-      />
+      {appStore.fileManager.openedFile ? <Canvas /> : <OpenOrCreate />}
       <ToastContainer />
     </Provider>
   );

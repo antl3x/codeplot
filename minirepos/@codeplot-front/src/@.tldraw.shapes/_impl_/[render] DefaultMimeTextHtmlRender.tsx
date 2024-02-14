@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { ICodeplotShape } from "./ICodeplotShape";
 import { appStore } from "@.core";
 import { observer } from "mobx-react";
-import { GLOBAL_IFRAME_SCRIPT, GLOBAL_STYLE } from "./RenderIframeScripts";
+import { GLOBAL_IFRAME_SCRIPT, GLOBAL_STYLE } from "./IFRAME_SANDBOX_SCRIPTS";
 
 export const DATAFRAME_TABLE_STYLE = `
 <style>
@@ -129,12 +129,12 @@ body > img {
 //   }
 // }
 
-type IDefaultHTMLRenderProps = {
+type IDefaultMimeTextHtmlRenderProps = {
   shape: ICodeplotShape;
 };
 
-export const DefaultHTMLRender = observer(
-  ({ shape }: IDefaultHTMLRenderProps) => {
+export const DefaultMimeTextHtmlRender = observer(
+  ({ shape }: IDefaultMimeTextHtmlRenderProps) => {
     const iframeRef = useRef(null);
     return (
       <iframe

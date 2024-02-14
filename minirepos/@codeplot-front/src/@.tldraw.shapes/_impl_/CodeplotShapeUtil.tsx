@@ -6,19 +6,19 @@ import {
   TLShapeUtilFlag,
   resizeBox,
 } from "@tldraw/tldraw";
+import { useRef, useState } from "react";
+import { observer } from "mobx-react";
 
-import { DefaultMimeApplicationLatexRender } from "./DefaultMimeApplicationLatexRender";
-import { ICodeplotShape } from "./ICodeplotShape";
 import { ArrayToListRender } from "./[render] ArrayToListRender";
-import { DefaultHTMLRender } from "./[render] DefaultHTMLRender";
+import { DefaultMimeApplicationLatexRender } from "./[render] DefaultMimeApplicationLatexRender.tsx";
+import { DefaultMimeTextHtmlRender } from "./[render] DefaultMimeTextHtmlRender";
 import { DefaultMimeImagePngRender } from "./[render] DefaultMimeImagePngRender";
 import { DefaultMimeImageSvgXmlRender } from "./[render] DefaultMimeImageSvgXmlRender";
 import { DefaultMimeTextPlainRender } from "./[render] DefaultMimeTextPlainRender";
 
 import { Icon } from "@.ui.Icons";
-import { observer } from "mobx-react";
+import { ICodeplotShape } from "./ICodeplotShape";
 import "./styles.css";
-import { useRef, useState } from "react";
 /* -------------------------------------------------------------------------- */
 /*                              CodeplotShapeUtil                             */
 /* -------------------------------------------------------------------------- */
@@ -28,7 +28,6 @@ export class CodeplotShapeUtil extends ShapeUtil<ICodeplotShape> {
   override canEdit: TLShapeUtilFlag<ICodeplotShape> = () => true;
   override canEditInReadOnly = () => true;
   override canBind = () => true;
-
   override onResize: TLOnResizeHandler<ICodeplotShape> = (shape, info) => {
     return resizeBox(shape, info);
   };
@@ -124,7 +123,7 @@ export const Component = observer(({ shape }: { shape: ICodeplotShape }) => {
         opacity-50
         `}
         >
-          {shape.props.metadata.pythonCallerFrameCodeContext}
+          {shape.props.type}
         </span>
       </div>
       <div className="w-full h-full">
@@ -141,7 +140,7 @@ export const Component = observer(({ shape }: { shape: ICodeplotShape }) => {
 export const RenderSwitch = observer(({ shape }: { shape: ICodeplotShape }) => {
   switch (shape.props.type) {
     case "pandas/dataframe":
-      return <DefaultHTMLRender shape={shape} />;
+      return <DefaultMimeTextHtmlRender shape={shape} />;
     case "pandas/index":
       return <ArrayToListRender shape={shape} />;
   }
@@ -159,7 +158,7 @@ export const RenderSwitch = observer(({ shape }: { shape: ICodeplotShape }) => {
   }
 
   if (shape.props.mime?.["text/html"]) {
-    return <DefaultHTMLRender shape={shape} />;
+    return <DefaultMimeTextHtmlRender shape={shape} />;
   }
 
   if (shape.props.mime?.["text/plain"]) {

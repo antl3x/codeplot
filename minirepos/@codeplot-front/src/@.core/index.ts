@@ -1,4 +1,3 @@
 export { appStore } from "./_impl_/AppModel";
-export { OpenCodeplotFile } from "./_impl_/OpenCodeplotFile";
+export { OpenOrCreate } from "./_impl_/OpenOrCreate";
 export { UnsupportedBrowser } from "./_impl_/UnsupportedBrowser";
-export { WebRTC } from "./_impl_/WebRTC";
