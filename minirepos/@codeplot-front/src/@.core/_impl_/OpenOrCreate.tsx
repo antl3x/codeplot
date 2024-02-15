@@ -25,7 +25,9 @@ export function OpenOrCreate() {
         />
         <div className="flex gap-6">
           <HowItWorksDialog />
-          <ExternalLink href="https://docs.codeplot.co/">Docs</ExternalLink>
+          <ExternalLink href="https://discord.gg/fYTsNp5Wvt">
+            Discord
+          </ExternalLink>
           <ExternalLink href="https://github.com/codeplot-co/codeplot">
             Github
           </ExternalLink>

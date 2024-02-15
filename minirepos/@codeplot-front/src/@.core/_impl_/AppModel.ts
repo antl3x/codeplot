@@ -106,8 +106,8 @@ const AppModel = types
   .model("App", {
     wsHost:
       import.meta.env.VITE_TARGET === "localhost"
-        ? "ws://localhost:9107"
-        : "wss://ws.codeplot.co",
+        ? "ws://localhost:9108"
+        : "wss://api.codeplot.co",
     roomId: typeid("room").toString(),
     fileManager: FileManagerModel,
     theme: ThemeModel,

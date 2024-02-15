@@ -23,7 +23,7 @@ RUN pnpm install
 COPY minirepos/@codeplot-api/_scripts /opt/minirepos/@codeplot-api/_scripts
 COPY minirepos/@codeplot-api/dist /opt/minirepos/@codeplot-api/dist
 
-EXPOSE 9107
+EXPOSE 9108
 
 # Define the command to run your app using CMD which defines your runtime
 CMD [ "pnpm", "server.start" ]

@@ -8,7 +8,8 @@
   "scripts": {
     "compile": "zx _scripts/compile.mjs",
     "server.start": "zx _scripts/server.start.mjs",
-    "@localhost:server.dev": "zx _scripts/@localhost:server.dev.mjs"
+    "@localhost:server.dev": "zx _scripts/@localhost:server.dev.mjs",
+    "@production:app.deploy": "zx _scripts/@production:app.deploy.mjs"
   },
   "dependencies": {
     "@codeplot/shared": "workspace:^",
