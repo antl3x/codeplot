@@ -5,7 +5,7 @@ import WebSocket, { WebSocketServer } from "ws"; // Make sure 'ws' module suppor
 import http, { IncomingMessage, ServerResponse, Server } from "http";
 import { setupWSConnection } from "@.yjs.server"; // Ensure './utils' is an ESM module and exports setupWSConnection
 
-const port: number = parseInt(process.env.PORT_HOST || "9107");
+const port: number = parseInt(process.env.PORT_HOST || "9108");
 
 const server: Server = http.createServer(
   (request: IncomingMessage, response: ServerResponse) => {

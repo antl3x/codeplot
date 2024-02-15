@@ -72,7 +72,7 @@ await cP.plot(df)
 Instead of using the public codeplot server, you can self-host and run codeplot on your local machine using Docker. To do so, you can use the following command:
 
 ```bash
-docker run -p 9107:9107 -p 9108:9108 codeplot/codeplot
+docker run -p 9107:9107 -p 9108:9108 codeplotco/codeplot
 ```
 
 This will start a codeplot server and a client on your local machine, and you can access it at:

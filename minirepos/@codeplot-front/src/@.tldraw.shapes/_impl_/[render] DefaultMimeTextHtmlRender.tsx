@@ -45,7 +45,7 @@ export const DATAFRAME_TABLE_STYLE = `
     .dataframe th, .dataframe td {
         padding: 8px;
         text-align: left;
-        border-bottom: 1px solid var(--border-color);
+        border: 1px solid var(--border-color);
     }
 
     .dataframe thead th {

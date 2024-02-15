@@ -87,7 +87,7 @@ export const GLOBAL_STYLE = `
 html, body {
     padding: 0;
     margin: 0;
-    font-family: 'DM Mono', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     font-size: 12px;
     background-color: var(--background-color);
     color: var(--text-color);

@@ -1,3 +1,35 @@
+# License and Pricing
+Codeplot is crafted to support a wide range of users, from individuals exploring their personal projects to enterprises seeking to enhance their business processes. To accommodate this diversity, Codeplot adopts a dual-license approach.
+
+## For Non-Commercial Use
+Codeplot is available for free under the Affero General Public License version 3 (AGPLv3) for non-commercial purposes. This means you can use, modify, and distribute Codeplot without any cost, provided that:
+
+- Your use of Codeplot is for personal, educational, or non-profit activities.
+- Any modifications or derivative works you create based on Codeplot are also shared under the same AGPLv3 license.
+
+## For Commercial Use
+If you intend to use Codeplot for commercial purposes, a commercial license is required. Commercial use is defined as:
+
+- Using Codeplot for revenue-generating activities.
+- Utilizing Codeplot within a for-profit organization that employs two or more individuals.
+- Deploying Codeplot in a work-related context within any business environment.
+
+# Pricing and Plans
+
+Commercial licenses are tailored to fit the size and needs of your organization, ensuring that you have the support and flexibility required for your business operations. Our pricing structure is designed to be transparent and scalable. [Include pricing details here or provide a link to a pricing page.]
+
+# Benefits of a Commercial License
+By opting for a commercial license, you not only comply with the licensing terms but also gain access to a suite of benefits designed to enhance your Codeplot experience:
+
+- Access to advanced features and updates.
+- Commercial use rights, allowing you to integrate Codeplot into your business workflows seamlessly.
+- Peace of mind with a license that aligns with your business use case.
+
+# How to Obtain a License
+To learn more about our licensing options or to obtain a commercial license, please send an email to [antonio@codeplot.co](mailto:antonio@codeplot.co)
+
+# License
+
 Copyright 2022 - 2024 DVQO, LLC.
 
 
