@@ -43,7 +43,6 @@ export function useStore({
 
   const setupConnection = useMemo(() => {
     if (!connectionRef.current) {
-      console.log("Setting up connection");
       const yDoc = new Y.Doc({ gc: true });
       const yArr = yDoc.getArray<{ key: string; val: TLRecord }>(
         `tldrRec:${roomId}`,
@@ -75,7 +74,6 @@ export function useStore({
 
       function syncStoreChangesToYjsDoc({ changes }: HistoryEntry<TLRecord>) {
         yDoc.transact(() => {
-          console.log("syncStoreChangesToYjsDoc", changes);
           Object.values(changes.added).forEach((record) => {
             yStore.set(record.id, record);
           });

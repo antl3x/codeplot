@@ -6,7 +6,7 @@ import {
   TLShapeUtilFlag,
   resizeBox,
 } from "@tldraw/tldraw";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { observer } from "mobx-react";
 
 import { ArrayToListRender } from "./[render] ArrayToListRender";
@@ -66,67 +66,62 @@ export class CodeplotShapeUtil extends ShapeUtil<ICodeplotShape> {
 
 export const Component = observer(({ shape }: { shape: ICodeplotShape }) => {
   const pinRef = useRef(shape.props.metadata.isPinned);
-  const [isPinned, setIsPinned] = useState(pinRef.current);
+  const [, forceUpdate] = useState({});
+
+  // Initialize pin state from props only on the first render
+  useEffect(() => {
+    pinRef.current = shape.props.metadata.isPinned;
+    // Force an update in case the initial pin state should cause a re-render
+    forceUpdate({});
+  }, []); // Empty dependency array ensures this runs only once on mount
 
   const togglePin = () => {
-    pinRef.current = !isPinned;
-    setIsPinned(!isPinned);
+    pinRef.current = !pinRef.current;
+    // Force a re-render since we're updating the ref
+    forceUpdate({});
+  };
+
+  const stopPropagation = (e: React.MouseEvent) => {
+    e.stopPropagation();
   };
 
   return (
     <HTMLContainer
       id={shape.id}
-      className="group flex flex-col rounded-lg overflow-hidden"
+      data-is_pinned={pinRef.current}
+      className="codeplot-HTMLContainer"
       style={{
         width: shape.props.w,
         height: shape.props.h,
-        pointerEvents: "auto",
       }}
     >
-      <div
-        className={`
-        w-full min-h-8 px-2 z-10 
-        ${pinRef.current ? "flex" : "hidden"}
-        ${pinRef.current ? "" : "group-hover:absolute"}
-        group-hover:flex
-        gap-4 items-center justify-between
-        hover:!cursor-move 
-        bg-[var(--codeplot-surface2-backgroundColor)]`}
-      >
-        <div className="flex items-center gap-2">
+      <div className="codeplot-HTMLContainer__TopBar">
+        <div
+          className="codeplot-HTMLContainer__TopBar__TitleContainer"
+          onPointerDown={stopPropagation}
+        >
           <button
-            className={`flex items-center justify-center
-          active:bg-[var(--codeplot-surface3-backgroundColor)]
-          hover:bg-[var(--codeplot-surface3-backgroundColor)]
-         ${pinRef.current ? "bg-[var(--codeplot-surface3-backgroundColor)]" : ""}
-          w-[18px] h-[18px] pointer-events-auto rounded-sm`}
+            className="codeplot-HTMLContainer__TopBar__PinButton"
             type="button"
-            onPointerDown={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-            }}
             onClick={togglePin}
           >
             <Icon
+              className="codeplot-HTMLContainer__TopBar__PinButton__Icon"
               name={pinRef.current ? "PinOn" : "PinOff"}
-              className="w-[12px] h-[12px]"
             />
           </button>
-          <span className="text-white">
-            {_formatPlotTitle(shape.props?.title || shape.props?.id)}
-          </span>
+          <span>{_formatPlotTitle(shape.props?.title || shape.props?.id)}</span>
         </div>
-        <span
-          className={`text-ellipsis
-        truncate
-        text-[var(--codeplot-surface2-color)]
-        opacity-50
-        `}
-        >
+        <span className="codeplot-HTMLContainer__TopBar__TypeLabel">
           {shape.props.type}
         </span>
       </div>
-      <div className="w-full h-full">
+      <div
+        className="codeplot-HTMLContainer__Render"
+        onWheelCapture={stopPropagation}
+        onPointerDown={stopPropagation}
+        onContextMenu={stopPropagation}
+      >
         <RenderSwitch shape={shape} />
       </div>
     </HTMLContainer>

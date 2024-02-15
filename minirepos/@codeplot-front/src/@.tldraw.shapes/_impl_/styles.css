@@ -1,14 +1,92 @@
-.codeplot-HTMLContainer_Container {
+.codeplot-HTMLContainer {
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.5rem;
+  overflow: hidden;
   container-type: inline-size;
-}
+  pointer-events: all;
 
-.codeplot-HTMLContainer_TopBar {
-  position: absolute;
-  margin-top: -38px;
-}
+  &:hover {
+    & .codeplot-HTMLContainer__TopBar {
+      display: flex;
+    }
 
-@container (min-width: 600px) {
-  .codeplot-HTMLContainer_TopBar {
-    margin-top: -24px;
+    &[data-is_pinned="false"] .codeplot-HTMLContainer__TopBar {
+      position: absolute;
+    }
+  }
+
+  &[data-is_pinned="true"] {
+    .codeplot-HTMLContainer__TopBar {
+      display: flex;
+    }
+
+    .codeplot-HTMLContainer__TopBar__PinButton {
+      background-color: var(--codeplot-surface3-backgroundColor);
+    }
+  }
+
+  &__Render {
+    width: 100%;
+    height: 100%;
+
+    * {
+      user-select: text;
+      cursor: auto !important;
+      pointer-events: all;
+    }
+  }
+
+  &__TopBar {
+    width: 100%;
+    min-height: 32px;
+    padding: 0 8px;
+    z-index: 10;
+    display: none;
+    gap: 4px;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--codeplot-surface2-backgroundColor);
+    user-select: none;
+
+    &:hover {
+      cursor: move;
+    }
+
+    &__TitleContainer {
+      display: flex;
+      gap: 8px;
+
+      align-items: center;
+    }
+
+    &__TypeLabel {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      color: var(--codeplot-surface2-color);
+      opacity: 0.5;
+      margin-left: 8px;
+    }
+
+    &__PinButton {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px;
+      height: 18px;
+      pointer-events: auto;
+      border-radius: 0.125rem;
+
+      &:hover,
+      &:active {
+        background-color: var(--codeplot-surface3-backgroundColor);
+      }
+
+      &__Icon {
+        width: 12px;
+        height: 12px;
+      }
+    }
   }
 }
