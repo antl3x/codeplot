@@ -11,6 +11,9 @@ codeplot is a dynamic spatial canvas for data exploration, offering an interacti
 
 Created by [@antl3x](https://github.com/antl3x), [read more](https://antl3x.co/posts/2024-01-25-today-i-decided-to-create-a-tool-that-i-always-wanted/) about its inception.
 
+# Video Demo
+[![Watch the video](https://img.youtube.com/vi/nu5pY9nxXsA/maxresdefault.jpg)](https://youtu.be/nu5pY9nxXsA)
+
 **Why Choose codeplot?**
 
 - **Dynamic Visualization**: Break free from static images and rigid layouts. codeplot brings your data to life on an interactive canvas.
