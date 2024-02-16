@@ -105,7 +105,8 @@ const FileManagerModel = types
 const AppModel = types
   .model("App", {
     wsHost:
-      import.meta.env.VITE_TARGET === "localhost"
+      import.meta.env.VITE_TARGET === "localhost" ||
+      import.meta.env.VITE_TARGET === "selfhost"
         ? "ws://localhost:9108"
         : "wss://api.codeplot.co",
     roomId: typeid("room").toString(),

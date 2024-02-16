@@ -100,7 +100,13 @@ export const Canvas = observer((props: React.PropsWithChildren) => {
       <TldrawEditor
         {...withDefaults}
         store={store}
-        onMount={appStore.setTldrEditor}
+        onMount={(editor) => {
+          editor.user.updateUserPreferences({
+            isDarkMode: true,
+          });
+
+          appStore.setTldrEditor(editor);
+        }}
       >
         <TldrawUi forceMobile overrides={overrides} {...withDefaults}>
           <ContextMenu>

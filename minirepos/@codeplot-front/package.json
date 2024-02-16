@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "compile": "zx _scripts/compile.mjs",
+    "dockerhub.release": "zx _scripts/dockerhub.release.mjs",
     "@localhost:app.dev": "zx _scripts/@localhost:app.dev.mjs",
     "@localhost:app.preview": "zx _scripts/@localhost:app.preview.mjs",
     "@production:app.deploy": "zx _scripts/@production:app.deploy.mjs"

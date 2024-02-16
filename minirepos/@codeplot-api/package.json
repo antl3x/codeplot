@@ -1,11 +1,12 @@
 {
   "name": "@codeplot/api",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Server API",
   "author": "Antonio Moura (@antl3x)",
   "type": "module",
   "main": "./dist/main.js",
   "scripts": {
+    "dockerhub.release": "zx _scripts/dockerhub.release.mjs",
     "compile": "zx _scripts/compile.mjs",
     "server.start": "zx _scripts/server.start.mjs",
     "@localhost:server.dev": "zx _scripts/@localhost:server.dev.mjs",

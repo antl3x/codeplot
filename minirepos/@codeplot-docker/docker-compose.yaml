@@ -1,0 +1,21 @@
+services:
+  codeplot-api:
+    image: codeplotco/codeplot-api:latest
+    environment:
+      TARGET: selfhost
+      PORT_CONTAINER: "9108"
+      PORT_HOST: "9108"
+    ports:
+      - "9108:9108"
+  codeplot-front:
+    image: codeplotco/codeplot-front:latest
+    environment:
+      TARGET: selfhost
+      PORT_CONTAINER: "80"
+      PORT_HOST: "9107"
+      VITE_TARGET: selfhost
+      VITE_NPM_VERSION: "latest"
+    ports:
+      - "9107:80"
+    depends_on:
+      - "codeplot-api"

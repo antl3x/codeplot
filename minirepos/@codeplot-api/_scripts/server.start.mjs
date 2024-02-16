@@ -2,7 +2,7 @@
 
 console.log(`Starting server in ${process.env.TARGET} mode...`);
 
-if (process.env.TARGET === "production") {
+if (process.env.TARGET === "production" || process.env.TARGET === "selfhost") {
   await $`node ./dist/main.js`;
 }
 
