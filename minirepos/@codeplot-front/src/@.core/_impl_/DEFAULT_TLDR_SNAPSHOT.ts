@@ -130,7 +130,7 @@ export const DEFAULT_TLDR_SNAPSHOT = {
           arrow: 1,
           highlight: 0,
           embed: 4,
-          image: 2,
+          // image: 2,
           video: 1,
         },
       },

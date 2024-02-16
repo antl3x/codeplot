@@ -189,10 +189,35 @@ const _saveSnapshotFileTldrawMenu: NonNullable<TLUiOverrides["menu"]> = (
 };
 
 /* -------------------------------------------------------------------------- */
+/*                               _toolsOverrides                              */
+/* -------------------------------------------------------------------------- */
+
+const _toolsOverrides: TLUiOverrides["tools"] = (_, tools) => {
+  return tools;
+};
+
+/* -------------------------------------------------------------------------- */
+/*                              _toolbarOverrides                             */
+/* -------------------------------------------------------------------------- */
+
+const _toolbarOverrides: TLUiOverrides["toolbar"] = (_, toolbar) => {
+  console.log("toolbar");
+  return toolbar.filter((item) => {
+    return (
+      item.id !== "asset" &&
+      item.id !== "note" &&
+      item.id !== "frame" &&
+      item.id !== "embed"
+    );
+  });
+};
+/* -------------------------------------------------------------------------- */
 /*                                  Overrides                                 */
 /* -------------------------------------------------------------------------- */
 
 export const overrides: TldrawUiContextProviderProps["overrides"] = {
   actions: _actionsOverrides,
   menu: _menuOverrides,
+  toolbar: _toolbarOverrides,
+  tools: _toolsOverrides,
 };

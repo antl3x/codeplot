@@ -5,16 +5,32 @@ import {
   TldrawEditorProps,
 } from "@tldraw/editor";
 import {
+  ArrowShapeTool,
+  ArrowShapeUtil,
+  BookmarkShapeUtil,
   ContextMenu,
-  TldrawHandles,
-  TldrawHoveredShapeIndicator,
-  TldrawScribble,
-  TldrawSelectionBackground,
-  TldrawSelectionForeground,
+  DrawShapeTool,
+  DrawShapeUtil,
+  EraserTool,
+  GeoShapeTool,
+  GeoShapeUtil,
+  HandTool,
+  TldrawHandles as Handles,
+  HighlightShapeTool,
+  HighlightShapeUtil,
+  TldrawHoveredShapeIndicator as HoveredShapeIndicator,
+  LaserTool,
+  LineShapeTool,
+  LineShapeUtil,
+  TldrawScribble as Scribble,
+  SelectTool,
+  TldrawSelectionBackground as SelectionBackground,
+  TldrawSelectionForeground as SelectionForeground,
+  TextShapeTool,
+  TextShapeUtil,
   TldrawUi,
-  defaultShapeTools,
-  defaultShapeUtils,
-  defaultTools,
+  VideoShapeUtil,
+  ZoomTool,
 } from "@tldraw/tldraw";
 
 import "@tldraw/tldraw/tldraw.css";
@@ -27,22 +43,47 @@ import { overrides } from "./overrides";
 import { appStore } from "@.core";
 import { ToastQueue } from "@react-spectrum/toast";
 import "katex/dist/katex.min.css";
+
 import { useStore } from "./useStore";
+
+import "./styles.css";
 
 export const Canvas = observer((props: React.PropsWithChildren) => {
   const withDefaults: TldrawEditorProps = useMemo(
     () => ({
       initialState: "select",
       components: {
-        Scribble: TldrawScribble,
-        CollaboratorScribble: TldrawScribble,
-        SelectionForeground: TldrawSelectionForeground,
-        SelectionBackground: TldrawSelectionBackground,
-        Handles: TldrawHandles,
-        HoveredShapeIndicator: TldrawHoveredShapeIndicator,
+        Scribble,
+        CollaboratorScribble: Scribble,
+        SelectionForeground,
+        SelectionBackground,
+        Handles,
+        HoveredShapeIndicator,
       },
-      shapeUtils: [...defaultShapeUtils, CodeplotShapeUtil],
-      tools: [...defaultTools, ...defaultShapeTools],
+      shapeUtils: [
+        TextShapeUtil,
+        BookmarkShapeUtil,
+        DrawShapeUtil,
+        GeoShapeUtil,
+        LineShapeUtil,
+        ArrowShapeUtil,
+        HighlightShapeUtil,
+        VideoShapeUtil,
+        CodeplotShapeUtil,
+      ],
+      tools: [
+        EraserTool,
+        HandTool,
+        LaserTool,
+        ZoomTool,
+        SelectTool,
+        TextShapeTool,
+        DrawShapeTool,
+        GeoShapeTool,
+        LineShapeTool,
+        ArrowShapeTool,
+        HighlightShapeTool,
+      ],
     }),
     [],
   );
@@ -55,7 +96,7 @@ export const Canvas = observer((props: React.PropsWithChildren) => {
   });
 
   return (
-    <div className="w-full h-full flex flex-col">
+    <div className="codeplot-Canvas">
       <TldrawEditor
         {...withDefaults}
         store={store}
@@ -68,20 +109,11 @@ export const Canvas = observer((props: React.PropsWithChildren) => {
           {props.children}
         </TldrawUi>
       </TldrawEditor>
-      <div
-        className={`w-full h-[32px]
-        flex items-center
-        text-xs
-        bg-[var(--codeplot-surface2-backgroundColor)]`}
-      >
-        <div className="flex items-center ml-auto px-2">
+      <div className="codeplot-Canvas__BottomBar">
+        <div className="codeplot-Canvas__BottomBar__RoomURL">
           <TooltipTrigger>
             <button
-              className={`
-              opacity-75
-              text-[var(--codeplot-surface2-color)]
-              ml-2 px-2 py-1 rounded-md hover:bg-[var(--codeplot-surface3-backgroundColor)] focus:bg-[var(--codeplot-surface2-backgroundColor)] focus:outline-none`}
-              tabIndex={0}
+              className="codeplot-Canvas__BottomBar__RoomURL__CopyButton"
               aria-label="Copy WS URL to clipboard"
               onClick={() => {
                 navigator.clipboard.writeText(appStore.wsUrl);
