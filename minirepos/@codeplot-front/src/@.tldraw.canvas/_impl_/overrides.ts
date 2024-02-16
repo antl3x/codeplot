@@ -24,6 +24,7 @@ const _actionsOverrides: TLUiOverrides["actions"] = (
   newActions = _openGithubTldrawAction(editor, newActions, helpers);
   newActions = _toggleDarkMode(editor, newActions, helpers);
   newActions = _copyRoomUrlTldrawAction(editor, newActions, helpers);
+  newActions = _openDiscordTldrawAction(editor, newActions, helpers);
 
   return newActions;
 };
@@ -39,6 +40,7 @@ const _menuOverrides: TLUiOverrides["menu"] = (editor, menu, helpers) => {
   newMenu = _removeEmbedMenu(newMenu);
   newMenu = _removeUploadMediaMenu(newMenu);
   newMenu = _copyRoomUrl(editor, newMenu, helpers);
+  newMenu = _openDiscordMenu(editor, newMenu, helpers);
 
   return newMenu;
 };
@@ -57,6 +59,23 @@ const _openGithubTldrawAction: NonNullable<TLUiOverrides["actions"]> = (
     readonlyOk: true,
     onSelect() {
       window.open("https://github.com/codeplot-co/codeplot");
+    },
+  };
+  return actions;
+};
+
+/* ------------------------ _openDiscordTldrawAction ------------------------ */
+
+const _openDiscordTldrawAction: NonNullable<TLUiOverrides["actions"]> = (
+  _,
+  actions,
+) => {
+  actions["open-discord"] = {
+    id: "open-discord",
+    label: "Join Discord",
+    readonlyOk: true,
+    onSelect() {
+      window.open("https://codeplot.co/discord");
     },
   };
   return actions;
@@ -159,6 +178,17 @@ export const _openGithubMenu: NonNullable<TLUiOverrides["menu"]> = (
   { actions },
 ) => {
   menu.push(menuItem(actions["open-github"]));
+  return menu;
+};
+
+/* ---------------------------- Open Discord Menu --------------------------- */
+
+export const _openDiscordMenu: NonNullable<TLUiOverrides["menu"]> = (
+  _,
+  menu,
+  { actions },
+) => {
+  menu.push(menuItem(actions["open-discord"]));
   return menu;
 };
 

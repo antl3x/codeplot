@@ -96,13 +96,11 @@ export const Component = observer(({ shape }: { shape: ICodeplotShape }) => {
       }}
     >
       <div className="codeplot-HTMLContainer__TopBar">
-        <div
-          className="codeplot-HTMLContainer__TopBar__TitleContainer"
-          onPointerDown={stopPropagation}
-        >
+        <div className="codeplot-HTMLContainer__TopBar__TitleContainer">
           <button
             className="codeplot-HTMLContainer__TopBar__PinButton"
             type="button"
+            onPointerDown={stopPropagation}
             onClick={togglePin}
           >
             <Icon

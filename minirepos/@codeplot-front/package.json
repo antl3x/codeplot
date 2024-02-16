@@ -1,7 +1,7 @@
 {
   "name": "@codeplot/front",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
   "scripts": {
     "compile": "zx _scripts/compile.mjs",
@@ -22,6 +22,7 @@
     "@react-stately/toast": "3.0.0-beta.1",
     "@spectrum-icons/illustrations": "^3.6.9",
     "@spectrum-icons/workflow": "^4.2.8",
+    "@tanstack/react-router": "^1.16.2",
     "@tldraw/editor": "2.0.0-alpha.19",
     "@tldraw/tldraw": "2.0.0-alpha.19",
     "Upload": "link:@spectrum-icons/illustrations/Upload",

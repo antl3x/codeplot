@@ -12,6 +12,14 @@
     font-size: 12px;
     background-color: var(--codeplot-surface2-backgroundColor);
 
+    &__Version {
+      display: flex;
+      align-items: center;
+      padding: 0 8px;
+      margin-right: auto;
+      opacity: 0.25;
+    }
+
     &__RoomURL {
       display: flex;
       align-items: center;

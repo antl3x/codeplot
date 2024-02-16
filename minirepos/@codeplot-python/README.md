@@ -2,7 +2,7 @@
 <div align="center">
 <a href="https://codeplot.co">Demo</a> 
 <span> · </span>
-<a href="https://discord.gg/fYTsNp5Wvt">Discord</a>
+<a href="https://codeplot.co/discord">Discord</a>
 </div>
 
 ---
@@ -82,7 +82,7 @@ This will start a codeplot server and a client on your local machine, and you ca
 
 **Join the codeplot Community**
 
-Become part of a forward-thinking community dedicated to advancing data visualization. Connect, engage, and grow with peers on **[Discord](https://discord.gg/fYTsNp5Wvt)**. With codeplot, data visualization is a shared journey. Let's explore new insights together!
+Become part of a forward-thinking community dedicated to advancing data visualization. Connect, engage, and grow with peers on **[Discord](https://codeplot.co/discord)**. With codeplot, data visualization is a shared journey. Let's explore new insights together!
 
 # License and Pricing
 

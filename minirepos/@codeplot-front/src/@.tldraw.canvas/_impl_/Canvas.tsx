@@ -110,6 +110,9 @@ export const Canvas = observer((props: React.PropsWithChildren) => {
         </TldrawUi>
       </TldrawEditor>
       <div className="codeplot-Canvas__BottomBar">
+        <div className="codeplot-Canvas__BottomBar__Version">
+          <span>v{import.meta.env.VITE_NPM_VERSION}</span>
+        </div>
         <div className="codeplot-Canvas__BottomBar__RoomURL">
           <TooltipTrigger>
             <button
