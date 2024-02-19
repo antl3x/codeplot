@@ -231,14 +231,8 @@ const _toolsOverrides: TLUiOverrides["tools"] = (_, tools) => {
 /* -------------------------------------------------------------------------- */
 
 const _toolbarOverrides: TLUiOverrides["toolbar"] = (_, toolbar) => {
-  console.log("toolbar");
   return toolbar.filter((item) => {
-    return (
-      item.id !== "asset" &&
-      item.id !== "note" &&
-      item.id !== "frame" &&
-      item.id !== "embed"
-    );
+    return item.id === "hand" || item.id === "select";
   });
 };
 /* -------------------------------------------------------------------------- */

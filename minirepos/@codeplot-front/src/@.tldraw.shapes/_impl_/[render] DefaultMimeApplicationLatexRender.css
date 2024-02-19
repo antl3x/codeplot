@@ -1,20 +1,22 @@
-/* Adjust font size based on the number of columns */
-div[data-testid="react-katex"] {
-  width: 100%;
-  height: 100%;
+mjx-container[jax="SVG"] > svg {
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+}
+/* 
+style={{
+  width: "100%",
+  height: "100%",
+  display: "flex",
+  justifyContent: "center",
+  padding: "1rem",
+}} */
+
+.codeplot-DefaultMimeApplicationLatexRender {
   display: flex;
   justify-content: center;
-  align-items: center;
-  overflow: auto;
-
-  container-type: inline-size;
-}
-
-span.katex-display > * {
-  font-size: 8cqw;
-}
-span.katex-display {
-  display: flex !important;
-  justify-content: center;
-  align-items: center;
+  padding: 1rem;
+  width: 100%;
+  height: 100%;
+  background-color: var(--codeplot-surface2-backgroundColor);
 }

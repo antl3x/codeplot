@@ -43,3 +43,19 @@
     }
   }
 }
+
+/* -------------------------------------------------------------------------- */
+/*                              Tldraw Overrides                              */
+/* -------------------------------------------------------------------------- */
+.tlui-toolbar__extras {
+  display: none;
+}
+
+.tlui-toolbar__tools {
+  justify-content: center;
+  width: fit-content;
+}
+
+button[title="Styles"] {
+  display: none;
+}

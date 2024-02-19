@@ -8,6 +8,15 @@ declare module "*.svg?react" {
 }
 
 declare global {
+  interface Window {
+    MathJax: {
+      tex2svg: (latex: string, options: any) => any;
+      startup: {
+        promise: Promise<void>;
+      };
+    };
+  }
+
   interface FileSystemHandle {
     readonly kind: "file" | "directory";
     readonly name: string;
