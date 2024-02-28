@@ -64,6 +64,9 @@ class Codeplot:
         self.ykeyvalue.set(key, val)
         await asyncio.sleep(0.1)
 
+    def _update_ykeyvalue(self):
+        self.ykeyvalue = YKeyValue(self.ydoc, self.ydoc.get_array(f"tldrRec:{self.session_id}"))
+    
     def _get_instance(self):
         instance = self.ykeyvalue.get("instance:instance")
         return instance
@@ -71,6 +74,10 @@ class Codeplot:
     def _get_pointer(self):
         pointer = self.ykeyvalue.get("pointer:pointer")
         return pointer
+
+    def _get_shape(self, shape_id):
+        shape = self.ykeyvalue.get(f"shape:{shape_id}")
+        return shape
 
     def _get_current_page_camera(self):
             instance = self._get_instance()
@@ -82,78 +89,129 @@ class Codeplot:
 
 
     async def plot(self, data, **kwargs) -> None:
-
-        def plot_center(screen_width, screen_height, cam_x, cam_y, obj_width, obj_height):
-            # Normalize camera coordinates (this step depends on your specific use case)
-            norm_cam_x = cam_x # Example normalization
-            norm_cam_y = cam_y # Example normalization
-
-            # Calculate the object's position to center it on the screen
-            # Adjusting for the camera's position and zoom
-            obj_x = (screen_width / 2) + norm_cam_x
-            obj_y = (screen_height / 2) + norm_cam_y
-
-            # Ensure the object's position and dimensions are within screen bounds
-            obj_x = max(0, min(obj_x, screen_width ))
-            obj_y = max(0, min(obj_y, screen_height))
-
-            return obj_x, obj_y
-        
         """
         Main plotting function that dispatches to specific plotting functions based on data type or '_as' parameter.
         """
-        caller_frame_record = inspect.stack()[-1]
-        metacode_line = "" if is_notebook() else caller_frame_record.code_context[0]
+        try:
+            # We force this update to receive latest data from the shared document
+            self._update_ykeyvalue()
+            
+            metacode_line = ""
 
-        # last_plot_coords = PatchManager.get_last_plot_xz_coordinates()
-        camera = self._get_current_page_camera()
-        instance = self._get_instance()
-        # to get x and y pos to plot we need consider camera zoom and xy position
+            # last_plot_coords = PatchManager.get_last_plot_xz_coordinates()
+            camera = self._get_current_page_camera()
+            instance = self._get_instance()
+
+            # to get x and y pos to plot we need consider camera zoom and xy position
+            shape = self._get_shape(kwargs['id'])
+
+            
+            kwargs.setdefault("id", str(TypeID(prefix="plot")))
+            kwargs.setdefault("title", "Untitled"),
+            kwargs.setdefault("width", shape['props']['w'] if shape else 500) 
+            kwargs.setdefault("height",  shape['props']['h'] if shape else 250)
+            kwargs.setdefault("rotation",shape['rotation'] if shape else 0)
+            kwargs.setdefault("opacity", shape['opacity'] if shape else 1)
+            kwargs.setdefault("is_locked", shape['isLocked'] if shape else False)
+            kwargs.setdefault("x_pos", shape['x'] if shape else -camera["x"] + 100)
+            kwargs.setdefault("y_pos", shape['y'] if shape else -camera["y"] + 100)
+            kwargs.setdefault("page_id", instance["currentPageId"])
+            kwargs.setdefault("id", str(TypeID(prefix="plot")))
+
+            shape = {
+                    "id": "shape:"+kwargs["id"],
+                    "x": kwargs["x_pos"],
+                    "y": kwargs["y_pos"],
+                    "rotation": kwargs["rotation"],
+                    "opacity": kwargs["opacity"],
+                    "isLocked": kwargs["is_locked"],
+                    "props": {
+                        "w": kwargs["width"],
+                        "h": kwargs["height"],
+                        "id": "shape:"+kwargs["id"],
+                        "title": kwargs["title"],
+                        "type": str(type(data)),
+                        "renderWith": "default",
+                        "mime": _get_mime_representations(data),
+                        "metadata": {
+                            "isPinned": False,
+                            "pythonCallerFrameCodeContext": metacode_line,
+                        },
+                        "createdAt": datetime.datetime.utcnow().isoformat() + "Z"
+                    },
+                    "meta": {},
+                    "type": "codeplot",
+                    "parentId": kwargs["page_id"],
+                    "index": "a1",
+                    "typeName": "shape"
+                }
 
         
+            await self.set(f"shape:"+kwargs['id'], shape)
+        except Exception as e:
+            print("Error plotting:", e)
 
-        kwargs.setdefault("id", str(TypeID(prefix="plot")))
-        kwargs.setdefault("title", "Untitled"),
-        kwargs.setdefault("width", 500)
-        kwargs.setdefault("height", 250)
-        kwargs.setdefault("rotation", 0)
-        kwargs.setdefault("opacity", 1)
-        kwargs.setdefault("is_locked", False)
-        kwargs.setdefault("x_pos", -camera["x"] + 100)
-        kwargs.setdefault("y_pos", -camera["y"] + 100)
-        kwargs.setdefault("page_id", instance["currentPageId"])
+    async def _plotIPythonCell(self, data, **kwargs) -> None:
 
-        shape = {
-                "id": "shape:"+kwargs["id"],
-                "x": kwargs["x_pos"],
-                "y": kwargs["y_pos"],
-                "rotation": kwargs["rotation"],
-                "opacity": kwargs["opacity"],
-                "isLocked": kwargs["is_locked"],
-                "props": {
-                    "w": kwargs["width"],
-                    "h": kwargs["height"],
+        try:
+            # We force this update to receive latest data from the shared document
+            self._update_ykeyvalue()
+
+
+            # last_plot_coords = PatchManager.get_last_plot_xz_coordinates()
+            camera = self._get_current_page_camera()
+            instance = self._get_instance()
+
+            # to get x and y pos to plot we need consider camera zoom and xy position
+            shape = self._get_shape(kwargs['id'])
+
+            
+            kwargs.setdefault("id", str(TypeID(prefix="plot")))
+            kwargs.setdefault("title", "Untitled"),
+            kwargs.setdefault("width", shape['props']['w'] if shape else 500) 
+            kwargs.setdefault("height",  shape['props']['h'] if shape else 250)
+            kwargs.setdefault("rotation",shape['rotation'] if shape else 0)
+            kwargs.setdefault("opacity", shape['opacity'] if shape else 1)
+            kwargs.setdefault("is_locked", shape['isLocked'] if shape else False)
+            kwargs.setdefault("x_pos", shape['x'] if shape else -camera["x"] + 100)
+            kwargs.setdefault("y_pos", shape['y'] if shape else -camera["y"] + 100)
+            kwargs.setdefault("page_id", instance["currentPageId"])
+            kwargs.setdefault("id", str(TypeID(prefix="plot")))
+
+            shape = {
                     "id": "shape:"+kwargs["id"],
-                    "title": kwargs["title"],
-                    "type": str(type(data)),
-                    "renderWith": "default",
-                    "mime": _get_mime_representations(data),
-                    "metadata": {
-                        "isPinned": False,
-                        "pythonCallerFrameCodeContext": metacode_line
+                    "x": kwargs["x_pos"],
+                    "y": kwargs["y_pos"],
+                    "rotation": kwargs["rotation"],
+                    "opacity": kwargs["opacity"],
+                    "isLocked": kwargs["is_locked"],
+                    "props": {
+                        "w": kwargs["width"],
+                        "h": kwargs["height"],
+                        "id": "shape:"+kwargs["id"],
+                        "title": kwargs["title"],
+                        "type": str(type(data)),
+                        "renderWith": "default",
+                        "mime": data,
+                        "metadata": {
+                            "isPinned": False,
+                            "ipythonRawCell": kwargs["ipython_raw_cell"],
+                            "ipythonCellId": kwargs["ipython_cell_id"],
+                        },
+                        "createdAt": datetime.datetime.utcnow().isoformat() + "Z"
                     },
-                    "createdAt": datetime.datetime.utcnow().isoformat() + "Z"
-                },
-                "meta": {},
-                "type": "codeplot",
-                "parentId": kwargs["page_id"],
-                "index": "a1",
-                "typeName": "shape"
-            }
-    
-        await self.set(f"shape:"+kwargs['id'], shape)
+                    "meta": {},
+                    "type": "codeplot",
+                    "parentId": kwargs["page_id"],
+                    "index": "a1",
+                    "typeName": "shape"
+                }
+            
 
-       
+        
+            await self.set(f"shape:"+kwargs['id'], shape)
+        except Exception as e:
+            print("Error plotting:", e)
        
 class CustomJSONEncoder(json.JSONEncoder):
     def default(self, obj):

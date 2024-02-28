@@ -26,8 +26,27 @@ Created by [@antl3x](https://github.com/antl3x), [read more](https://antl3x.co/p
   
 - **Open to Everyone**: Designed for data scientists and enthusiasts alike, codeplot aims to enhance your data exploration experience.
 
+# Getting Started (IPython Extension)
+To use codeplot in a IPython Notebook like Jupyter, Google Colab, etc, you can install the IPython Extension using pip:
+
+```bash
+pip install codeplot-ipython
+```
+
+After install you can load the extension and connect to a new room:
+
+```python
+%load_ext codeplot-ipython
+%cP_connect ws://your-ws-url/your-room-id
+```
+
+Now the output of your cells will be automatically plotted in the codeplot canvas! So you don't need to use the `cP.plot` function.
+
+Thats all!
 
 # Getting Started (Python SDK)
+
+If you want to use codeplot in a Python script, and have a more "fine-grained" control over the plots, you can use the Python SDK.
 
 To get started with codeplot, you can install the package using pip:
 

@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: codeplot
-Version: 0.1.0
+Version: 0.4.0
 Summary: codeplot is a canvas designed for code-driven data exploration where you can plot graphs, data frames, markdown and much more using plain Python
 Home-page: https://github.com/codeplot-co/codeplot
 Author: Antonio Moura (@antl3x)
@@ -9,13 +9,18 @@ License: AGPL-3.0-or-later
 Classifier: Programming Language :: Python :: 3
 Requires-Python: >=3.6
 Description-Content-Type: text/markdown
+Requires-Dist: watchdog>=3.0.0
+Requires-Dist: typeid-python>=0.2.2
+Requires-Dist: ypy-websocket>=0.12.4
+Requires-Dist: asyncio>=3.4.3
+Requires-Dist: websockets>=12.0
+Requires-Dist: y-py>=0.6.2
 
 ![codeplot-readme](https://github.com/codeplot-co/codeplot/assets/26308297/e1212d25-a731-4755-875d-e988848f6d87)
 <div align="center">
-<a href="https://codeplot.co">Docs</a> 
-<span> · </span><a href="https://codeplot.co/getting-started">Getting Started</a> 
+<a href="https://codeplot.co">Demo</a> 
 <span> · </span>
-<a href="https://discord.gg/fYTsNp5Wvt">Discord</a>
+<a href="https://codeplot.co/discord">Discord</a>
 </div>
 
 ---
@@ -23,6 +28,9 @@ Description-Content-Type: text/markdown
 codeplot is a dynamic spatial canvas for data exploration, offering an interactive environment for graphing and visualizing data with Python. 
 
 Created by [@antl3x](https://github.com/antl3x), [read more](https://antl3x.co/posts/2024-01-25-today-i-decided-to-create-a-tool-that-i-always-wanted/) about its inception.
+
+# Video Demo
+[![Watch the video](https://img.youtube.com/vi/nu5pY9nxXsA/maxresdefault.jpg)](https://youtu.be/nu5pY9nxXsA)
 
 **Why Choose codeplot?**
 
@@ -36,8 +44,27 @@ Created by [@antl3x](https://github.com/antl3x), [read more](https://antl3x.co/p
   
 - **Open to Everyone**: Designed for data scientists and enthusiasts alike, codeplot aims to enhance your data exploration experience.
 
+# Getting Started (IPython Extension)
+To use codeplot in a IPython Notebook like Jupyter, Google Colab, etc, you can install the IPython Extension using pip:
+
+```bash
+pip install codeplot-ipython
+```
+
+After install you can load the extension and connect to a new room:
+
+```python
+%load_ext codeplot-ipython
+%cP_connect ws://your-ws-url/your-room-id
+```
+
+Now the output of your cells will be automatically plotted in the codeplot canvas! So you don't need to use the `cP.plot` function.
+
+Thats all!
 
 # Getting Started (Python SDK)
+
+If you want to use codeplot in a Python script, and have a more "fine-grained" control over the plots, you can use the Python SDK.
 
 To get started with codeplot, you can install the package using pip:
 
@@ -85,7 +112,13 @@ await cP.plot(df)
 Instead of using the public codeplot server, you can self-host and run codeplot on your local machine using Docker. To do so, you can use the following command:
 
 ```bash
-docker run -p 9107:9107 -p 9108:9108 codeplot/codeplot
+curl -s https://raw.githubusercontent.com/codeplot-co/codeplot/master/minirepos/@codeplot-docker/docker-compose.yaml | docker-compose -f - up
+```
+
+Or if you are using docker-compose v2, you can use the following command instead
+
+```bash
+curl -s https://raw.githubusercontent.com/codeplot-co/codeplot/master/minirepos/@codeplot-docker/docker-compose.yaml | docker compose -f - up
 ```
 
 This will start a codeplot server and a client on your local machine, and you can access it at:
@@ -95,4 +128,14 @@ This will start a codeplot server and a client on your local machine, and you ca
 
 **Join the codeplot Community**
 
-Become part of a forward-thinking community dedicated to advancing data visualization. Connect, engage, and grow with peers on **[Discord](https://discord.gg/fYTsNp5Wvt)**. With codeplot, data visualization is a shared journey. Let's explore new insights together!
+Become part of a forward-thinking community dedicated to advancing data visualization. Connect, engage, and grow with peers on **[Discord](https://codeplot.co/discord)**. With codeplot, data visualization is a shared journey. Let's explore new insights together!
+
+# License and Pricing
+
+Codeplot is crafted to support a wide range of users, from individuals exploring their personal projects to enterprises seeking to enhance their business processes. To accommodate this diversity, Codeplot adopts a dual-license approach.
+
+Codeplot is free to use for personal and non-commercial purposes.
+
+Only pay if you use Codeplot commercially.
+
+Read more about [License and Pricing here](LICENSE.md).
