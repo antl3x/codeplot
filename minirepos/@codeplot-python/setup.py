@@ -2,14 +2,14 @@ from setuptools import setup, find_packages
 
 setup(
     name='codeplot',
-    version='0.4.0',
+    version='1.2.0',
     packages=find_packages(),
     install_requires=[
         'watchdog >= 3.0.0',
         'typeid-python >= 0.2.2',
         'ypy-websocket >= 0.12.4',
         'asyncio >= 3.4.3',
-        'websockets >= 12.0',
+        'websockets >= 11.0',
         'y-py >= 0.6.2',
     ],
     author='Antonio Moura (@antl3x)',

@@ -53,6 +53,11 @@
       cursor: move;
     }
 
+    &:active {
+      display: flex;
+      cursor: grabbing;
+    }
+
     &__TitleContainer {
       display: flex;
       gap: 8px;

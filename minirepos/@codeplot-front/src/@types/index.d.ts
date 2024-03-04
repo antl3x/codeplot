@@ -9,6 +9,7 @@ declare module "*.svg?react" {
 
 declare global {
   interface Window {
+    Plotly: typeof import("plotly.js");
     MathJax: {
       tex2svg: (latex: string, options: any) => any;
       startup: {

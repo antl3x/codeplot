@@ -17,6 +17,7 @@ export type ICodeplotShape = TLBaseShape<
       "application/javascript": string;
       "application/x-latex": string;
       "text/markdown": string;
+      "application/vnd.plotly.v1+json": string;
     };
     w: number;
     h: number;

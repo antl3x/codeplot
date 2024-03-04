@@ -19,6 +19,7 @@ import { DefaultMimeTextPlainRender } from "./[render] DefaultMimeTextPlainRende
 import { Icon } from "@.ui.Icons";
 import { ICodeplotShape } from "./ICodeplotShape";
 import "./styles.css";
+import { DefaultMimeApplicationPlotlyV1Render } from "./[render] DefaultMimeApplicationPlotlyV1Render.tsx";
 /* -------------------------------------------------------------------------- */
 /*                              CodeplotShapeUtil                             */
 /* -------------------------------------------------------------------------- */
@@ -136,6 +137,10 @@ export const RenderSwitch = observer(({ shape }: { shape: ICodeplotShape }) => {
       return <DefaultMimeTextHtmlRender shape={shape} />;
     case "pandas/index":
       return <ArrayToListRender shape={shape} />;
+  }
+
+  if (shape.props.mime?.["application/vnd.plotly.v1+json"]) {
+    return <DefaultMimeApplicationPlotlyV1Render shape={shape} />;
   }
 
   if (shape.props.mime?.["application/x-latex"]) {

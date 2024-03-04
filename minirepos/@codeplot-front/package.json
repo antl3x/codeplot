@@ -1,7 +1,7 @@
 {
   "name": "@codeplot/front",
   "private": true,
-  "version": "0.3.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "compile": "zx _scripts/compile.mjs",
@@ -32,12 +32,14 @@
     "mobx": "^6.12.0",
     "mobx-react": "^9.1.0",
     "mobx-state-tree": "5.4.0",
+    "plotly.js": "^2.29.1",
     "react": "^18.2.0",
     "react-aria-components": "^1.0.1",
     "react-dom": "^18.2.0",
     "react-inspector": "^6.0.2",
     "react-json-view": "^1.21.3",
     "react-katex": "^3.0.1",
+    "react-plotly.js": "^2.6.0",
     "socket.io-client": "^4.7.4",
     "typeid-js": "^0.5.0",
     "y-utility": "^0.1.3",
@@ -46,9 +48,11 @@
     "yjs": "^13.6.12"
   },
   "devDependencies": {
+    "@types/plotly.js": "^2.29.1",
     "@types/react": "^18.2.48",
     "@types/react-dom": "^18.2.17",
     "@types/react-katex": "^3.0.4",
+    "@types/react-plotly.js": "^2.6.3",
     "@typescript-eslint/eslint-plugin": "^6.14.0",
     "@typescript-eslint/parser": "^6.14.0",
     "@vitejs/plugin-react": "^4.2.1",

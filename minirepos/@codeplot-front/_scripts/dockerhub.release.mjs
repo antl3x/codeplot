@@ -7,7 +7,7 @@ echo "$CODEPLOT_DOCKER_ACCESS_TOKEN" | docker login --username "codeplotco" --pa
 
 pnpm compile
 
-docker build -t codeplotco/codeplot-front:latest .
+docker buildx build --platform linux/amd64,linux/arm64 -t codeplotco/codeplot-front:latest .
 docker tag codeplotco/codeplot-front:latest codeplotco/codeplot-front:${pkg.version}
 docker tag codeplotco/codeplot-front:latest codeplotco/codeplot-front:${pkg.version}-$(git rev-parse --short HEAD)
 docker push codeplotco/codeplot-front:latest

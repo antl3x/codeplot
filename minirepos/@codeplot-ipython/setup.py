@@ -2,10 +2,10 @@ from setuptools import setup, find_packages
 
 setup(
     name='codeplot-ipython',
-    version='0.1.0',
+    version='1.8.0',
     packages=find_packages(),
     install_requires=[
-        'codeplot >= 0.4.0',
+        'codeplot >= 1.2.0',
         'asyncio >= 3.4.3',
     ],
     author='Antonio Moura (@antl3x)',
