@@ -113,8 +113,8 @@ class Codeplot:
             kwargs.setdefault("rotation",shape['rotation'] if shape else 0)
             kwargs.setdefault("opacity", shape['opacity'] if shape else 1)
             kwargs.setdefault("is_locked", shape['isLocked'] if shape else False)
-            kwargs.setdefault("x_pos", shape['x'] if shape else -camera["x"] + 100)
-            kwargs.setdefault("y_pos", shape['y'] if shape else -camera["y"] + 100)
+            kwargs.setdefault("x_pos", shape['x'] if shape else 0)
+            kwargs.setdefault("y_pos", shape['y'] if shape else 0)
             kwargs.setdefault("page_id", instance["currentPageId"])
             kwargs.setdefault("ipythonRawCell", None)
             kwargs.setdefault("ipythonCellId", None)
@@ -137,7 +137,7 @@ class Codeplot:
                         "renderWith": "default",
                         "mime": _get_mime_representations(data),
                         "metadata": {
-                            "isPinned": False,
+                            "isPinned": True,
                             "pythonCallerFrameCodeContext": metacode_line,
                             "ipythonRawCell": kwargs["ipythonRawCell"],
                             "ipythonCellId": kwargs["ipythonCellId"],

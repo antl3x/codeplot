@@ -93,7 +93,9 @@ const _copyRoomUrlTldrawAction: NonNullable<TLUiOverrides["actions"]> = (
     readonlyOk: true,
     onSelect() {
       navigator.clipboard.writeText(appStore.wsUrl);
-      ToastQueue.neutral("Room url copied to clipboard!");
+      ToastQueue.neutral("Room url copied to clipboard!", {
+        timeout: 3000,
+      });
     },
   };
   return actions;

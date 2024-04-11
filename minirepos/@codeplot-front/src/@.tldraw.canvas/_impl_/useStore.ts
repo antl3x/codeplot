@@ -3,6 +3,7 @@ import {
   StoreSnapshot,
   TLAnyShapeUtilConstructor,
   TLRecord,
+  TLShape,
   TLStoreWithStatus,
   createTLStore,
   debounce,
@@ -114,7 +115,30 @@ export function useStore({
           switch (change.action) {
             case "add":
             case "update": {
-              const record = yStore.get(id)!;
+              const record = yStore.get(id)! as TLShape & {
+                props: { h: number };
+              };
+
+              // Check if Record has x and y = 0, if so, set it to stack with the last record
+              if (record.x === 0 && record.y === 0) {
+                const lastRecord = store
+                  .allRecords()
+                  .filter((v) => (v as TLShape).type === "codeplot")
+                  .sort((a, b) => {
+                    const _a = a as unknown as { createdAt: number };
+                    const _b = b as unknown as { createdAt: number };
+                    if (_a.createdAt < _b.createdAt) return -1;
+                    if (_a.createdAt > _b.createdAt) return 1;
+                    return 0;
+                  })
+                  .pop() as TLShape & { props: { h: number } };
+
+                if (lastRecord) {
+                  record.x = lastRecord.x;
+                  record.y =
+                    lastRecord.y + lastRecord.props.h + record.props.h / 10;
+                }
+              }
               toPut.push(record);
               break;
             }

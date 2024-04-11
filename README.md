@@ -121,3 +121,7 @@ Codeplot is free to use for personal and non-commercial purposes.
 Only pay if you use Codeplot commercially.
 
 Read more about [License and Pricing here](LICENSE.md).
+
+# Sponsor
+
+This project is sponsored by [LearnPolars.co](https://learnpolars.co). LearnPolars is a platform to learn data manipulation and analysis using Polars, a blazingly fast DataFrame library in Python (Rust).

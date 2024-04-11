@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: codeplot
-Version: 1.2.0
+Version: 1.3.1
 Summary: codeplot is a canvas designed for code-driven data exploration where you can plot graphs, data frames, markdown and much more using plain Python
 Home-page: https://github.com/codeplot-co/codeplot
 Author: Antonio Moura (@antl3x)
@@ -9,12 +9,6 @@ License: AGPL-3.0-or-later
 Classifier: Programming Language :: Python :: 3
 Requires-Python: >=3.6
 Description-Content-Type: text/markdown
-Requires-Dist: watchdog>=3.0.0
-Requires-Dist: typeid-python>=0.2.2
-Requires-Dist: ypy-websocket>=0.12.4
-Requires-Dist: asyncio>=3.4.3
-Requires-Dist: websockets>=11.0
-Requires-Dist: y-py>=0.6.2
 
 ![codeplot-readme](https://github.com/codeplot-co/codeplot/assets/26308297/e1212d25-a731-4755-875d-e988848f6d87)
 <div align="center">
@@ -139,3 +133,7 @@ Codeplot is free to use for personal and non-commercial purposes.
 Only pay if you use Codeplot commercially.
 
 Read more about [License and Pricing here](LICENSE.md).
+
+# Sponsor
+
+This project is sponsored by [LearnPolars.co](https://learnpolars.co). LearnPolars is a platform to learn data manipulation and analysis using Polars, a blazingly fast DataFrame library in Python (Rust).

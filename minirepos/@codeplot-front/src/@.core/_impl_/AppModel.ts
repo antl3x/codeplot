@@ -2,6 +2,7 @@ import { ToastQueue } from "@react-spectrum/toast";
 import {
   StoreSnapshot,
   TLRecord,
+  TLShape,
   Editor as TldrawEditor,
   debounce,
 } from "@tldraw/editor";
@@ -135,7 +136,27 @@ const AppModel = types
         }, 1000),
       );
 
+      /* ---------------------------- autoZoomListener ---------------------------- */
+      /**
+       * # Overview
+       * We want to zoom to the selection when a new shape is added to the canvas.
+       */
+      const autoZoomListener = editor.store.listen((entry) => {
+        const rec = entry?.changes?.added;
+        const recId = Object.keys(rec)?.[0] as TLShape["id"];
+        if (!recId) return;
+
+        editor.select(rec[recId] as TLShape);
+        editor.zoomToSelection();
+        editor.zoomToBounds(editor.getSelectionPageBounds()!);
+        editor.resetZoom();
+        editor.zoomToSelection();
+      });
+
+      /* ------------------------------------ - ----------------------------------- */
+
       self.tldrEditorListeners.push(lin);
+      self.tldrEditorListeners.push(autoZoomListener);
     },
     beforeDestroy() {
       self.tldrEditorListeners.forEach((lin) => lin());

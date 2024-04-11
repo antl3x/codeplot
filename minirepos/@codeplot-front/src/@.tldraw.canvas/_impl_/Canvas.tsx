@@ -126,7 +126,9 @@ export const Canvas = observer((props: React.PropsWithChildren) => {
               aria-label="Copy WS URL to clipboard"
               onClick={() => {
                 navigator.clipboard.writeText(appStore.wsUrl);
-                ToastQueue.neutral("Room url copied to clipboard!");
+                ToastQueue.neutral("Room url copied to clipboard!", {
+                  timeout: 3000,
+                });
               }}
             >
               {appStore.wsUrl}

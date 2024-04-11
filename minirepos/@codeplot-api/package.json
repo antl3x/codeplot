@@ -13,7 +13,6 @@
     "@production:app.deploy": "zx _scripts/@production:app.deploy.mjs"
   },
   "dependencies": {
-    "@codeplot/shared": "workspace:^",
     "cors": "^2.8.5",
     "debug": "^4.3.4",
     "express": "^4.18.2",

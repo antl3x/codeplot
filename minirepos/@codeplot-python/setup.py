@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='codeplot',
-    version='1.2.0',
+    version='1.3.1',
     packages=find_packages(),
     install_requires=[
         'watchdog >= 3.0.0',
