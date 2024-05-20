@@ -234,7 +234,7 @@ const _toolsOverrides: TLUiOverrides["tools"] = (_, tools) => {
 
 const _toolbarOverrides: TLUiOverrides["toolbar"] = (_, toolbar) => {
   return toolbar.filter((item) => {
-    return item.id === "hand" || item.id === "select";
+    return item;
   });
 };
 /* -------------------------------------------------------------------------- */

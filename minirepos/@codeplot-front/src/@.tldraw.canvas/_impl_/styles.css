@@ -51,11 +51,15 @@
   display: none;
 }
 
+button[data-tool="asset"] {
+  display: none;
+}
+
 .tlui-toolbar__tools {
   justify-content: center;
   width: fit-content;
 }
 
-button[title="Styles"] {
+/* button[title="Styles"] {
   display: none;
-}
+} */

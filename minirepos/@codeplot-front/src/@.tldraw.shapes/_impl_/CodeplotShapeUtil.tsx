@@ -5,6 +5,7 @@ import {
   TLOnResizeHandler,
   TLShapeUtilFlag,
   resizeBox,
+  useEditor,
 } from "@tldraw/tldraw";
 import { useEffect, useRef, useState } from "react";
 import { observer } from "mobx-react";
@@ -69,6 +70,9 @@ export const Component = observer(({ shape }: { shape: ICodeplotShape }) => {
   const pinRef = useRef(shape.props.metadata.isPinned);
   const [, forceUpdate] = useState({});
 
+  const editor = useEditor();
+  const [toolId, setToolId] = useState(editor.getCurrentToolId());
+
   // Initialize pin state from props only on the first render
   useEffect(() => {
     pinRef.current = shape.props.metadata.isPinned;
@@ -88,9 +92,14 @@ export const Component = observer(({ shape }: { shape: ICodeplotShape }) => {
 
   return (
     <HTMLContainer
+      onMouseEnter={() => setToolId(editor.getCurrentToolId())}
       id={shape.id}
       data-is_pinned={pinRef.current}
-      className="codeplot-HTMLContainer"
+      className={`${
+        toolId !== "select"
+          ? "codeplot-HTMLContainer codeplot-HTMLContainer--disabled"
+          : "codeplot-HTMLContainer"
+      }`}
       style={{
         width: shape.props.w,
         height: shape.props.h,

@@ -1,3 +1,7 @@
+.codeplot-HTMLContainer--disabled * {
+  pointer-events: none !important;
+}
+
 .codeplot-HTMLContainer {
   display: flex;
   flex-direction: column;

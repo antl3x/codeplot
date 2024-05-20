@@ -145,6 +145,8 @@ const AppModel = types
         const rec = entry?.changes?.added;
         const recId = Object.keys(rec)?.[0] as TLShape["id"];
         if (!recId) return;
+        // We only want to zoom to the selection if the shape is a codeplot
+        if ((rec[recId] as TLShape)?.type !== "codeplot") return;
 
         editor.select(rec[recId] as TLShape);
         editor.zoomToSelection();

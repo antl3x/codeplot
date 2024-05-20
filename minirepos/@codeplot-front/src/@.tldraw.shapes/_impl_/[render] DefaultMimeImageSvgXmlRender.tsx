@@ -1,7 +1,8 @@
 import { appStore } from "@.core";
+import { observer } from "mobx-react";
+import { useRef } from "react";
 import { ICodeplotShape } from "./ICodeplotShape";
 import { GLOBAL_IFRAME_SCRIPT, GLOBAL_STYLE } from "./IFRAME_SANDBOX_SCRIPTS";
-import { observer } from "mobx-react";
 
 // import ReactJson from "react-json-view";
 
@@ -13,9 +14,12 @@ type IDefaultMimeImageSvgXmlRenderProps = {
 
 export const DefaultMimeImageSvgXmlRender = observer(
   ({ shape }: IDefaultMimeImageSvgXmlRenderProps) => {
+    const iframeRef = useRef<HTMLIFrameElement>(null);
+
     return (
       <div className="h-full w-full">
         <iframe
+          ref={iframeRef}
           className={`overflow-auto w-full h-full`}
           sandbox="allow-same-origin allow-scripts"
           srcDoc={`

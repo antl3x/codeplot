@@ -108,6 +108,8 @@ export function useStore({
       ) => {
         if (transaction.local) return;
 
+        console.log("not local");
+
         const toRemove: TLRecord["id"][] = [];
         const toPut: TLRecord[] = [];
 
