@@ -1,10 +1,32 @@
 import asyncio
 from IPython.core.magic import Magics, magics_class, line_magic
 from IPython.core.magic_arguments import (argument, magic_arguments, parse_argstring)
-
+import threading
 import codeplot
 
 
+class AsyncLoopThread:
+    """A class that manages an asyncio loop in a separate thread."""
+    def __init__(self):
+        self.loop = asyncio.new_event_loop()
+        self.thread = threading.Thread(target=self.run_loop)
+        self.thread.start()
+
+    def run_loop(self):
+        """Run the loop until it is stopped."""
+        asyncio.set_event_loop(self.loop)
+        self.loop.run_forever()
+
+    def stop(self):
+        """Stop the loop and wait for the thread to finish."""
+        self.loop.call_soon_threadsafe(self.loop.stop)
+        self.thread.join()
+
+    def run_coroutine(self, coro):
+        """Thread-safe way to schedule a coroutine in the loop."""
+        return asyncio.run_coroutine_threadsafe(coro, self.loop)
+
+async_loop_thread = AsyncLoopThread()  # Initialize this somewhere suitable
 
 
 @magics_class
@@ -15,7 +37,7 @@ class CodeplotMagics(Magics):
         params = line.split()
         if params:
             url = params[0]
-            asyncio.create_task(self.shell.user_ns['_cP_extension'].connect_to_codeplot(url))
+            async_loop_thread.run_coroutine(self.shell.user_ns['_cP_extension'].connect_to_codeplot(url))
         else:
             raise Exception("No URL provided.")
 
@@ -62,7 +84,7 @@ class IPythonExtension:
     def _display_hook__call__(self, result=None):
         """Custom display hook."""
         if result is not None and self.cP:
-            asyncio.create_task(self.cP.plot(result, **self._plot_magic_args))
+            async_loop_thread.run_coroutine(self.cP.plot(result, **self._plot_magic_args))
 
         self._plot_magic_args = {}
         if not self._suppress:
@@ -73,7 +95,7 @@ class IPythonExtension:
         """Custom publishing method that integrates with Codeplot."""
         data = kwargs.get('data')
         if data and self.cP:
-            asyncio.create_task(self.cP.plot(data, **self._plot_magic_args))
+            async_loop_thread.run_coroutine(self.cP.plot(data, **self._plot_magic_args))
 
         if not self._suppress:
             self._original_display_pub_publish(*args, **kwargs)

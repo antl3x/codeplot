@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='codeplot-ipython',
-    version='1.14.1',
+    version='1.15.0',
     packages=find_packages(),
     install_requires=[
         'codeplot >= 1.3.1',

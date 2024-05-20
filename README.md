@@ -27,7 +27,7 @@ Created by [@antl3x](https://github.com/antl3x), [read more](https://antl3x.co/p
 - **Open to Everyone**: Designed for data scientists and enthusiasts alike, codeplot aims to enhance your data exploration experience.
 
 # Getting Started (IPython Extension)
-To use codeplot in a IPython Notebook like Jupyter, Google Colab, etc, you can install the IPython Extension using pip:
+To use codeplot in a IPython environment like Jupyter, Google Colab, etc, you can install the IPython Extension using pip:
 
 ```bash
 pip install codeplot-ipython
@@ -41,6 +41,8 @@ After install you can load the extension and connect to a new room:
 ```
 
 Now the output of your cells will be automatically plotted in the codeplot canvas! So you don't need to use the `cP.plot` function.
+
+Take a look at [the Notebook Example](/examples/Demo%20Notebook.ipynb)
 
 Thats all!
 
@@ -71,23 +73,18 @@ async def main():
 asyncio.run(main())
 ```
 
+Take a look at [the Notebook (SDK Example)](/examples/Demo%20Notebook%20(SDK).ipynb)
+
+---
+
+## Demo - codeplot.co
+
 You can use the public codeplot client & server to start plotting right away:
 
 1. Join the codeplot room at [codeplot.co](https://codeplot.co)
 2. Use the room id to connect to the room using the code above
 
 
-If you want to use codeplot in a Jupyter Notebook, you can use the following code:
-
-```python
-import codeplot
-cP = await codeplot.connect("ws://your-ws-url/your-room-id")
-
-# Now you can start plotting
-await cP.plot(df.describe())
-await cP.plot(df.head(10))
-await cP.plot(df)
-```
 
 # Run Codeplot on Docker
 
