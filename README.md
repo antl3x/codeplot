@@ -11,9 +11,9 @@ Codeplot is a infinity canvas for data exploration.
 
 It is a game-changing tool for data scientists, analysts, and researchers, offering an unparalleled platform for data analysis and visualization. 
 
-With its innovative infinity canvas, users can effortlessly create, manipulate, and explore their data in real-time, utilizing the power of Python.
+Users can effortlessly create, manipulate, and explore their data in real-time, utilizing the power of Python.
 
-Experience a productivity boost—say goodbye to the constraints of traditional scrolling notebooks and embrace a more efficient way to uncover insights in your data.
+Experience a productivity boost—say goodbye to the constraints of traditional scrolling notebooks and embrace a more efficient way to do Exploratory Data Analysis.
 
 Created by [@antl3x](https://github.com/antl3x), [read more](https://antl3x.co/posts/2024-01-25-today-i-decided-to-create-a-tool-that-i-always-wanted/) about its inception.
 
