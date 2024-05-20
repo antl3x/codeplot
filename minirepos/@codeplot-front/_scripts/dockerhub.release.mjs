@@ -7,6 +7,7 @@ echo "$CODEPLOT_DOCKER_ACCESS_TOKEN" | docker login --username "codeplotco" --pa
 
 pnpm compile
 
+docker buildx create --use
 # Build and push the multi-architecture image
 docker buildx build -t codeplotco/codeplot-front:latest --platform linux/amd64,linux/arm64 --push .
 
