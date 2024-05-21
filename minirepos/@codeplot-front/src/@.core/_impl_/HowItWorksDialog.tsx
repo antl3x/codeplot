@@ -32,7 +32,7 @@ export function HowItWorksDialog() {
                     width: "100%",
                     position: "absolute",
                   }}
-                  src="https://www.youtube.com/embed/nu5pY9nxXsA"
+                  src="https://www.youtube.com/embed/x7QLEu5t17g"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen

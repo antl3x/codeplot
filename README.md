@@ -20,7 +20,7 @@ Your go-to tool for an amazing Exploratory Data Analysis workflow.
 Created by [@antl3x](https://github.com/antl3x), [read more](https://antl3x.co/posts/2024-01-25-today-i-decided-to-create-a-tool-that-i-always-wanted/) about its inception.
 
 # Video Demo
-[![Watch the video](https://img.youtube.com/vi/nu5pY9nxXsA/maxresdefault.jpg)](https://youtu.be/nu5pY9nxXsA)
+[![Watch the video](https://img.youtube.com/vi/x7QLEu5t17g/maxresdefault.jpg)](https://youtu.be/x7QLEu5t17g)
 
 **Why Choose codeplot?**
 
