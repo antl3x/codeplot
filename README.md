@@ -120,7 +120,3 @@ Become part of a forward-thinking community dedicated to advancing data visualiz
 # License
 
 Codeplot is open source software licensed under the Apache License 2.0. This means you can use, modify, and distribute the software for any purpose, including commercial use. See the [LICENSE](LICENSE) file for details.
-
-# Sponsor
-
-This project is sponsored by [LearnPolars.co](https://learnpolars.co). LearnPolars is a platform to learn data manipulation and analysis using Polars, a blazingly fast DataFrame library in Python (Rust).
