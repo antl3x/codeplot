@@ -13,7 +13,7 @@ Think of it as Figma, but for data teams.
 
 Dive in, plot your data, and boost your productivity. 
 
-It’s data analysis without the scroll.
+It's data analysis without the scroll.
 
 Your go-to tool for an amazing Exploratory Data Analysis workflow.
 
@@ -117,15 +117,9 @@ This will start a codeplot server and a client on your local machine, and you ca
 
 Become part of a forward-thinking community dedicated to advancing data visualization. Connect, engage, and grow with peers on **[Discord](https://codeplot.co/discord)**. With codeplot, data visualization is a shared journey. Let's explore new insights together!
 
-# License and Pricing
+# License
 
-Codeplot is crafted to support a wide range of users, from individuals exploring their personal projects to enterprises seeking to enhance their business processes. To accommodate this diversity, Codeplot adopts a dual-license approach.
-
-Codeplot is free to use for personal and non-commercial purposes.
-
-Only pay if you use Codeplot commercially.
-
-Read more about [License and Pricing here](LICENSE.md).
+Codeplot is open source software licensed under the Apache License 2.0. This means you can use, modify, and distribute the software for any purpose, including commercial use. See the [LICENSE](LICENSE) file for details.
 
 # Sponsor
 
